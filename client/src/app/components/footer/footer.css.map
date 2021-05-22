@@ -1,0 +1,10 @@
+{
+    "version": 3,
+    "mappings": "ACgBA;;GAEG",
+    "sources": [
+        "footer.scss",
+        "../../_sass/abstracts/_variables.scss"
+    ],
+    "names": [],
+    "file": "footer.css"
+}

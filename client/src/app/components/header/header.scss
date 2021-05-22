@@ -1,0 +1,89 @@
+@import '../../_sass/abstracts/variables';
+
+* {
+	font-family: $font-family-base;
+	
+}
+
+
+.header {
+	&-item {
+		height : 15vh !important;
+		vertical-align : middle ;
+	}
+	&-title {
+		font-weight: bold;
+		font-size: 1.2rem;
+		text-transform: uppercase;
+		color : white !important;
+		display: block;
+		line-height: 10vh !important;
+		text-align: center;
+		transition: all 0.5s ease-out;
+		margin-left : 0 !important;
+	}
+	&-subtitle {
+		font-weight: bold;
+		font-size: 1.2rem;
+		text-transform: uppercase;
+		color : white;
+		display: block;
+		line-height: 5vh;
+		
+	}
+	&-menu {
+
+	}
+}
+
+.header-title:hover, .header-subtitle:hover, .header-link a:hover  {
+	color : $color-main !important;
+	
+}
+
+.item {
+	padding : 2rem !important;
+	color : white;
+	font-size: 1.4rem;
+}
+
+.activelink {
+	color :$color-main !important;
+	font-weight: bold;
+	font-size: 1.2rem;
+	text-transform: uppercase;
+	color : white;
+	transition: all 0.5s ease-out;
+	display: block;
+	line-height: 5vh;
+	margin-left : 1.7vw !important;
+	
+}
+
+.header-link a {
+	font-weight: bold;
+	font-size: 1.2rem;
+	text-transform: uppercase;
+	color : white;
+	transition: all 0.5s ease-out;
+	display: block;
+	line-height: 5vh;
+	
+}
+
+.ui.vertical.menu {
+	min-height : 100vh;
+	width : 15vw !important;
+	background-color: #0a0a0a9a !important;
+	border-radius : 0 !important;
+	align-items: center;
+	margin-bottom : 0 !important
+}
+
+.ui.vertical.menu .item a {
+	margin-left: 0.7vw;
+}
+.icon {
+	padding-right: 2vw;
+	
+}

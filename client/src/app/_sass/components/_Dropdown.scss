@@ -1,0 +1,19 @@
+.ui.selection.dropdown.large {
+    min-width: 13vw !important;
+    max-width: 13vw !important;
+    max-height: 2vh;
+}
+
+.ui.selection.dropdown.medium {
+    min-width: 7vw !important;
+    max-width: 10vw !important;
+    max-height: 2vh;
+}
+
+.ui.dropdown>.text {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow:hidden;
+    display : block
+}
+

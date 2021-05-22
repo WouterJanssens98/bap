@@ -1,0 +1,46 @@
+$color-black: #000000;
+$color-grey: #E5E5E5;
+$color-white: #FFFFFF;
+$color-purple: #7E57C5;
+$color-green:#2EB956;
+$color-green-light: #CEFA54;
+$color-red: #B92E2E;
+$color-orange:#FCA311;
+$color-blue-light: #2D88FF;
+$color-blue-dark: #14213D;
+$color-beige: #FDFFF9;
+$color-main : #FFCC24;
+$color-secondary : #8F8F8F;
+$color-interaction : #4183c4;
+$color-background : #0a0a0abb;
+
+/*
+ * Bootstrap
+ */
+$theme-colors: (
+  "primary": $color-purple,
+  "danger": $color-red,
+  "ahs-purple": $color-purple
+);
+
+$font-family-base: 'Montserrat', sans-serif;
+
+
+$grid-columns: 12 !default;
+$grid-gutter-width: 48px !default;
+$grid-row-columns: 6 !default;
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px
+) !default;
+
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1360px
+) !default;

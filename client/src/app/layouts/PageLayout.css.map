@@ -1,0 +1,13 @@
+{
+    "version": 3,
+    "mappings": "AEgBA;;GAEG;AClBH,OAAO,CAAC,wFAAI;AHIZ,AAAA,YAAY,CAAC;EACT,UAAU,EEwBM,IAAI;EFvBpB,WAAW,EAAE,IAAwB;EACrC,UAAU,EALO,GAAG,CAAC,KAAK,CAAC,IAAI;CAMlC",
+    "sources": [
+        "PageLayout.scss",
+        "../_sass/abstracts/_index.scss",
+        "../_sass/abstracts/_variables.scss",
+        "../_sass/abstracts/_fonts.scss",
+        "../_sass/abstracts/_functions.scss"
+    ],
+    "names": [],
+    "file": "PageLayout.css"
+}

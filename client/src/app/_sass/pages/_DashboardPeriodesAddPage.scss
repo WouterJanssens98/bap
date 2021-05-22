@@ -1,0 +1,12 @@
+.addperiode {
+    &-form {
+        width : 60%;
+        margin-left:  20%;
+        padding-top : 5vh;
+        display :flex;
+        flex-direction: row;
+        justify-content: space-between;
+        flex-wrap  : wrap;
+        overflow-x :hidden
+    }
+}

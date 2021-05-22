@@ -1,0 +1,30 @@
+html {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: $color-white;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    width: 100vw;
+}
+
+a {
+    transition : all 0.3s ease-out
+}
+
+.renner-add-icon:hover{
+    color : $color-interaction;
+}
+.renner-add-icon {
+    transition : all 0.3s ease-out
+}
+
+.error-status {
+    margin : 0 auto;
+    text-align: center;
+    color : red;
+    padding: 10px;
+}

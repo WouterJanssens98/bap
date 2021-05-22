@@ -1,0 +1,72 @@
+.renner {
+    &-add {
+        color : $color-secondary;
+        font-weight: bold;
+        text-align: center;
+        margin-left: 5vw;
+        margin-right: 5vw;
+        margin-top: 5vh;
+        border-radius : 10px;
+        width : 220px;
+        height : 110px;
+        box-shadow: 1px 1px 10px  $color-secondary;
+        text-transform : uppercase;
+        &-icon {
+            color : $color-main;
+            font-size : 3rem
+        }
+    }
+    &-overview {
+        margin-left: 5vw;
+        margin-right: 5vw;
+        width : 75vw;
+        margin-top : 5vh;
+        height : 600px;
+        box-shadow: 1px 1px 10px  $color-secondary;
+        border-radius : 10px;
+
+    }
+    &-table {
+        border-bottom : 0.5px solid $color-secondary
+    }
+    &-tablehead {
+        width : 85%;
+        margin-left : 5%;
+        margin-right: 10%;
+        display : flex;
+        flex-direction : row ;
+        justify-content : space-between;
+        padding-top : 25px;
+        padding-bottom : 20px;
+        color : $color-secondary;
+        font-weight : bold;
+        text-align: center;
+
+    }
+    &-tablecontent {
+        width : 90%;
+        margin-left : 5%;
+        margin-right : 5%;
+        display : flex;
+        flex-direction : row ;
+        justify-content : space-between;
+        padding-top : 15px;
+        padding-bottom : 15px;
+        color : black ;
+        font-weight : bold;
+    }
+    &-tableactions {
+        font-weight: bold;
+        color : $color-main;
+        i {
+           position: relative;
+           top : 3px
+           
+        }
+    }
+    &-tablelink {
+        color : $color-main;
+    }
+
+
+}

@@ -1,0 +1,10 @@
+/*
+ * Bootstrap
+ */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap");
+.page-footer {
+  margin-top: 48px;
+  padding-top: 24px;
+  border-top: 2px solid #000;
+}
+/*# sourceMappingURL=PageLayout.css.map */
