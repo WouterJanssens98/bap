@@ -3,7 +3,7 @@ import { User, IUser } from '../../models/mongoose';
 const multer  = require('multer');
 const AWS = require('aws-sdk');
 const fs=require('fs');
-const keys = require('./keys.js');
+// const keys = require('./keys.js');
 
 import { AuthService, IConfig } from '../../services';
 import { NotFoundError } from '../../utilities';

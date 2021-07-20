@@ -1,8 +1,8 @@
 import { NextFunction, Request, Response } from 'express';
-import { IPeriode, Periode } from '../../models/mongoose';
+import { IRider, Rider } from '../../models/mongoose';
 import { NotFoundError } from '../../utilities';
 
-class PeriodeController {
+class RennerController {
 
   
   public index = async (
@@ -10,7 +10,7 @@ class PeriodeController {
     res: Response,
     next: NextFunction,
   ): Promise<Response<any>> => {
-    const periodes : Array<IPeriode> = await Periode.find().exec();
+    const periodes : Array<IRider> = await Rider.find().exec();
     return res.status(200).json(periodes);
   };
 
@@ -18,14 +18,58 @@ class PeriodeController {
   public create = async (req: Request, res: Response, next: NextFunction) => {
     
     try {
-      const periodeCreate = new Periode({
+      const rennerCreate = new Rider({
         author: req.body.author,
-        fromYear : req.body.fromYear,
-        toYear : req.body.toYear,
-        authorMail : req.body.authorMail
+        authorMail : req.body.authorMail,
+        info : { 
+          name : req.body.data.info.name,
+          nickname : req.body.data.info.nickname,
+          placeofbirth : req.body.data.info.placeofbirth,
+          youth : req.body.data.info.youth,
+          career : req.body.data.info.career,
+          aftercareer : req.body.data.info.aftercareer
+        },
+        media : {
+          profilePicture : req.body.data.media.profilePicture,
+          bannerPicture : req.body.data.media.bannerPicture,
+          youthPicture : req.body.data.media.youthPicture,
+          careerPicture : req.body.data.media.careerPicture,
+          afterCareerPicture : req.body.data.media.afterCareerPicture
+        },
+        
+        victories : { 
+          one : { 
+            victoryOneYear : req.body.data.victories.one.year,
+            victoryOneRide : req.body.data.victories.one.ride,
+            victoryOneTeam : req.body.data.victories.one.team,
+          },
+          two : {
+            victoryTwoYear : req.body.data.victories.two.year,
+            victoryTwoRide : req.body.data.victories.two.ride,
+            victoryTwoTeam : req.body.data.victories.two.team,
+    
+          },
+          three : { 
+            victoryThreeYear : req.body.data.victories.three.year,
+            victoryThreeRide : req.body.data.victories.three.ride,
+            victoryThreeTeam : req.body.data.victories.three.team,
+          },
+          four : { 
+            victoryFourYear : req.body.data.victories.four.year,
+            victoryFourRide : req.body.data.victories.four.ride,
+            victoryFourTeam : req.body.data.victories.four.team,
+    
+          },
+          five : {
+            victoryFiveYear : req.body.data.victories.five.year,
+            victoryFiveRide : req.body.data.victories.five.ride,
+            victoryFiveTeam : req.body.data.victories.five.team
+          }
+        },
       });
-      const periode = await periodeCreate.save();
-      return res.status(201).json(periode);
+      console.log(rennerCreate);
+      const createdRenner = await rennerCreate.save();
+      return res.status(201).json(createdRenner);
     } catch (err) {
       next(err);
     }
@@ -38,7 +82,7 @@ class PeriodeController {
         next: NextFunction,
       ): Promise<Response<any>> => {
         const { id } = req.params;
-        const periode : IPeriode = await Periode.findById(id)
+        const periode : IRider = await Rider.findById(id)
         // .populate({
         //   path : 'values',
         //   populate : {
@@ -142,4 +186,4 @@ class PeriodeController {
 
 }
 
-export default PeriodeController;
+export default RennerController;

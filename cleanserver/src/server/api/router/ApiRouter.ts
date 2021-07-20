@@ -8,12 +8,14 @@ import {
 import { IConfig, AuthService, Role } from '../../services';
 import {
   UserController,
-  PeriodeController
+  PeriodeController,
+  RennerController
 } from '../controllers';
 
 class ApiRouter {
   public router: Router;
   private periodeController: PeriodeController;
+  private rennerController: RennerController;
   private userController: UserController;
   private config: IConfig;
   private authService: AuthService;
@@ -31,6 +33,7 @@ class ApiRouter {
   private  registerControllers(): void {
     this.userController = new UserController(this.config, this.authService);
     this.periodeController = new PeriodeController();
+    this.rennerController = new RennerController();
    
   }
 
@@ -61,6 +64,16 @@ class ApiRouter {
     this.router.get('/periode', this.periodeController.index)
     this.router.post('/periode/add', this.periodeController.create)
     this.router.get('/periode/:id', this.periodeController.show)
+
+
+    /*
+     * Renner routes
+     */
+
+
+    this.router.get('/renner', this.rennerController.index)
+    this.router.post('/renner/add', this.rennerController.create)
+    this.router.get('/renner/:id', this.rennerController.show)
 
     
 

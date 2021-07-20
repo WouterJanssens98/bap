@@ -46,7 +46,7 @@ const DashboardHomePage = () => {
                 </div>
               </div>
             </div>
-
+{/* 
             <div class="stat"> 
               <div> 
                 <p class="stat-title">OVERWINNINGEN</p>
@@ -59,7 +59,7 @@ const DashboardHomePage = () => {
                   <p class="stat-amount">25</p>
                 </div>
               </div>
-            </div>
+            </div> */}
 
            
             <div class="stat"> 

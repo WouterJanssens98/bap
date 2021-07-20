@@ -6,6 +6,9 @@ const useApi = () => useContext(ApiContext);
 const ApiProvider = ({children}) => {
   // const BASE_URL = `${apiConfig.baseURL}`;
 
+
+
+  // API CALLS VOOR PERIODES
   const createPeriode = async (fromYear,toYear,author, authorMail) => {
     let url = `/api/periode/add`;
 
@@ -57,11 +60,39 @@ const ApiProvider = ({children}) => {
     const response = await fetch(url, options);
     return response.json();
   }
+
+
+  // API CALLS VOOR RENNERS
+
+
+  const createRenner = async (data,author,authorMail) => {
+    let url = `/api/renner/add`;
+
+    const options = {
+      method: "post",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        "data" : data,
+        "author" :author,
+        "authorMail" : authorMail
+      })
+    };
+    console.log(data);
+    const response = await fetch(url, options);
+    if(response.status == 201){
+      return response
+    }else{
+      return(`Invalid response from API : status ${response.status}`)
+    }
+  }
   
 
   return (
     <ApiContext.Provider value={{ 
-      createPeriode,getPeriodes,getPeriode
+      createPeriode,getPeriodes,getPeriode,createRenner
       
       }}>
       {children}

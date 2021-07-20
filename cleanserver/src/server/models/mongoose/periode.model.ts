@@ -7,7 +7,7 @@ interface IPeriode extends Document {
   toYear : number;
   imageUrl : string;
   author : IUser['_id'];
-  authorMail : string,
+  authorMail : string;
   _createdAt: number;
   _modifiedAt: number;
   _deletedAt: number;
