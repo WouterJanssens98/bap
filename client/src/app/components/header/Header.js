@@ -11,6 +11,7 @@ const Header = (props) => {
 
       <div class="item header-item">
         <a  href="/" class="header-title">De Flandriens</a>
+        <a  href="/" class="header-title">Admin Dashboard</a>
       </div>
 
       <div class="item header-link">

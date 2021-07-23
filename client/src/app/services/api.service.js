@@ -82,7 +82,7 @@ const ApiProvider = ({children}) => {
     };
     console.log(data);
     const response = await fetch(url, options);
-    if(response.status == 201){
+    if(response.status === 201){
       return response
     }else{
       return(`Invalid response from API : status ${response.status}`)

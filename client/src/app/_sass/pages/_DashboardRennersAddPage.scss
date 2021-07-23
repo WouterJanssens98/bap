@@ -36,11 +36,11 @@
         width : 80%;
         margin-left:  10%;
         padding-top : 5vh;
+        padding-bottom : 5vh;
         display :flex;
         flex-direction: row;
-        justify-content: space-between;
+        height:fit-content !important;
         flex-wrap  : wrap;
-        overflow-x :hidden
     }
     &-formextra {
         width : 80%;

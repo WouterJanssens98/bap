@@ -7,6 +7,7 @@ interface IInfo {
   nickname : string;
   placeofbirth : string;
   dateofbirth : string;
+  periode : string;
   youth : string;
   career : string;
   aftercareer : string;
@@ -60,6 +61,7 @@ const riderSchema: Schema = new Schema(
       youth : { type : String, required : true, unique : true, max : 1000},
       career : { type : String, required : true, unique : true, max : 1000},
       aftercareer : { type : String, required : true, unique : true, max : 1000},
+      periode : {type : String, required : true, unique : true, max :256}
     },
     media : {
       profilePicture :  { type: String, required: true, unique: true, max: 128 },

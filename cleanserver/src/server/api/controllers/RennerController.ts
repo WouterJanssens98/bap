@@ -24,7 +24,9 @@ class RennerController {
         info : { 
           name : req.body.data.info.name,
           nickname : req.body.data.info.nickname,
+          dateofbirth : req.body.data.info.dateofbirth,
           placeofbirth : req.body.data.info.placeofbirth,
+          periode : req.body.data.info.periode,
           youth : req.body.data.info.youth,
           career : req.body.data.info.career,
           aftercareer : req.body.data.info.aftercareer

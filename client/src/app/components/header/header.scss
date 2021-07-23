@@ -8,8 +8,10 @@
 
 .header {
 	&-item {
-		height : 15vh !important;
+		height : fit-content !important;
 		vertical-align : middle ;
+		margin-top:5vh;
+		margin-bottom:5vh;
 	}
 	&-title {
 		font-weight: bold;
@@ -17,7 +19,7 @@
 		text-transform: uppercase;
 		color : white !important;
 		display: block;
-		line-height: 10vh !important;
+		line-height: 2vh !important;
 		text-align: center;
 		transition: all 0.5s ease-out;
 		margin-left : 0 !important;
@@ -36,8 +38,11 @@
 	}
 }
 
-.header-title:hover, .header-subtitle:hover, .header-link a:hover  {
+.header-item:hover, .header-subtitle:hover, .header-link a:hover  {
 	color : $color-main !important;
+	a {
+		color : $color-main !important;
+	}
 	
 }
 

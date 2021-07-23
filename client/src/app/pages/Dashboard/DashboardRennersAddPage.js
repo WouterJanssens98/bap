@@ -38,6 +38,10 @@ const DashboardRennersAddPage = () => {
     const [victoryFourthRide,setvictoryFourthRide] = useState();
     const [victoryFifthRide,setvictoryFifthRide] = useState();
 
+    // state to keep track of the selected period
+
+    const [riderPeriod,setRiderPeriod] = useState();
+
 
     const Upload = async () => {
         const pictures = [profilePicture, bannerPicture,youthPicture,careerPicture,afterCareerPicture];
@@ -67,25 +71,30 @@ const DashboardRennersAddPage = () => {
         const nickname = document.getElementById('nickname').value;
         const placeofbirth = document.getElementById('placeofbirth').value;
         const dateofbirth = document.getElementById('dateofbirth').value;
+        const periode = document.getElementById('periode').value;
         const youth = document.getElementById('youth').value;
         const career = document.getElementById('career').value;
         const aftercareer = document.getElementById('aftercareer').value;
-
-        let counter = 0;
-        for(let i=0;i<pictures.length;i++) {
-            let fileInput = pictures[i]
-            let file = fileInput.current.files[0]
-            console.log(file)
-            if(file == undefined){
-                return false
-            }else {
-                counter +=1
-                console.log(counter)
+        if(name !== "" && nickname !== "" && placeofbirth !== "" && dateofbirth !== "" && periode !== "" && youth !== "" && career !== "" && aftercareer !== ""){
+            let counter = 0;
+            for(let i=0;i<pictures.length;i++) {
+                let fileInput = pictures[i]
+                let file = fileInput.current.files[0]
+                console.log(file)
+                if(file == undefined){
+                    return false
+                }else {
+                    counter +=1
+                    console.log(counter)
+                }
             }
+            if(counter === 5){
+                return true // all required images were selected
+            }
+        }else{
+            return false
         }
-        if(counter == 5){
-            return true // all required images were selected
-        }
+        
     }
 
     const handleDropdown = (event, data) => {
@@ -105,13 +114,13 @@ const DashboardRennersAddPage = () => {
             let uploadedFiles = await Upload();
             const rennerData = {
                 "info" : {
-                    "name" : "testname",
-                    "nickname" : "testnickname",
-                    "placeofbirth" : "testplace",
-                    "dateofbirth" : "testdate",
-                    "youth" : "testyouth",
-                    "career" : "testcareer",
-                    "aftercareer" : "testaftercareer"
+                    "name" : document.getElementById('name').value,
+                    "nickname" : document.getElementById('nickname').value,
+                    "placeofbirth" : document.getElementById('placeofbirth').value,
+                    "dateofbirth" : document.getElementById('dateofbirth').value,
+                    "youth" : document.getElementById('youth').value,
+                    "career" : document.getElementById('career').value,
+                    "aftercareer" : document.getElementById('aftercareer').value
                 },
                 "media" : {
                     "profilePicture" : uploadedFiles[0],
@@ -124,34 +133,34 @@ const DashboardRennersAddPage = () => {
                     "one" : {
                         "year" : victoryOneYear,
                         "ride" : victoryOneRide,
-                        "team" : "quickstep"
+                        "team" : document.getElementById('victoryOneTeam').value
                     },
                     "two" : {
                         "year" : victorySecondYear,
                         "ride" : victorySecondRide,
-                        "team" : "quickstep"
+                        "team" : document.getElementById('victoryTwoTeam').value
                     },
                     "three" : {
                         "year" : victoryThirdYear,
                         "ride" : victoryThirdRide,
-                        "team" : "quickstep"
+                        "team" : document.getElementById('victoryThreeTeam').value
                     },
                     "four" : {
                         "year" : victoryFourthYear,
                         "ride" : victoryFourthRide,
-                        "team" : "quickstep"
+                        "team" : document.getElementById('victoryFourTeam').value
                     },
                     "five" : {
                         "year" : victoryFifthYear,
                         "ride" : victoryFifthRide,
-                        "team" : "quickstep"
+                        "team" : document.getElementById('victoryFiveTeam').value
                     }
 
                 }
             }
             const request = await createRenner(rennerData,JSON.parse(getCookie('user')),JSON.parse(getCookie('userEmail')))
-            if(request.status == 201 ){
-            //   history.push(Routes.DASHBOARD_RENNERS)
+            if(request.status === 201 ){
+                history.push(Routes.DASHBOARD_RENNERS)
             } else {
                 document.getElementsByClassName('error-status')[0].style.display = "block" ;
             }
@@ -160,12 +169,19 @@ const DashboardRennersAddPage = () => {
         }
         
     }
-
+    const periods = [
+        { key: 1, text: '1950-1960', value: "1950-1960" },
+        { key: 2, text: '1960-1970', value: "1960-1970" },
+        { key: 3, text: '1970-1980', value: "1970-1980" },
+        { key: 4, text: '1980-1990', value: "1980-1990" },
+        { key: 5, text: '1990-2000', value: "1990-2000" },
+        { key: 6, text: '2000-2010', value: "2000-2010" },
+    ]
 
     const ritten = [
-    { key: 1, text: 'De Ronde Van Vlaanderen', value: 1 },
-    { key: 2, text: 'Omloop het Nieuwsblad', value: 2 },
-    { key: 3, text: 'Kuurne Brussel Kuurne', value: 3 },
+    { key: 1, text: 'De Ronde Van Vlaanderen', value: "De Ronde Van Vlaanderen" },
+    { key: 2, text: 'Omloop het Nieuwsblad', value: "Omloop het Nieuwsblad" },
+    { key: 3, text: 'Kuurne Brussel Kuurne', value: "Kuurne Brussel Kuurne" },
     ]
 
     const jaren = [];
@@ -211,6 +227,11 @@ const DashboardRennersAddPage = () => {
                 <div class="ui input addrenner-field">
                     <p class="addrenner-label">Geboortedatum</p>
                     <input id="dateofbirth" class="addrenner-input"  min="1920-01-01" max="2000-12-31" type="date"/>
+                </div>
+
+                <div class="ui input addrenner-field">
+                    <p class="addrenner-label">Periode</p>
+                    <DropdownLarge setState={setRiderPeriod} onChange={handleDropdown} options={periods}/>
                 </div>
 
                 
@@ -290,7 +311,7 @@ const DashboardRennersAddPage = () => {
                             </td>
                             <td>
                                 <div class="ui input">
-                                    <input class="addrenner-ploeg" type="text" placeholder="Quick Step Cycling Team"/>
+                                    <input class="addrenner-ploeg" id="victoryOneTeam" type="text" placeholder="Quick Step Cycling Team"/>
                                 </div>
                             </td>
                         </tr>
@@ -305,7 +326,7 @@ const DashboardRennersAddPage = () => {
                             </td>
                             <td>
                                 <div class="ui input">
-                                    <input class="addrenner-ploeg" type="text" placeholder="Quick Step Cycling Team"/>
+                                    <input class="addrenner-ploeg" id="victoryTwoTeam" type="text" placeholder="Quick Step Cycling Team"/>
                                 </div>
                             </td>
                         </tr>
@@ -320,7 +341,7 @@ const DashboardRennersAddPage = () => {
                             </td>
                             <td>
                                 <div class="ui input">
-                                    <input class="addrenner-ploeg" type="text" placeholder="Quick Step Cycling Team"/>
+                                    <input class="addrenner-ploeg" id="victoryThreeTeam" type="text" placeholder="Quick Step Cycling Team"/>
                                 </div>
                             </td>
                         </tr>
@@ -335,7 +356,7 @@ const DashboardRennersAddPage = () => {
                             </td>
                             <td>
                                 <div class="ui input">
-                                    <input class="addrenner-ploeg" type="text" placeholder="Quick Step Cycling Team"/>
+                                    <input class="addrenner-ploeg" id="victoryFourTeam" type="text" placeholder="Quick Step Cycling Team"/>
                                 </div>
                             </td>
                         </tr>
@@ -350,7 +371,7 @@ const DashboardRennersAddPage = () => {
                             </td>
                             <td>
                                 <div class="ui input">
-                                    <input class="addrenner-ploeg" type="text" placeholder="Quick Step Cycling Team"/>
+                                    <input class="addrenner-ploeg" id="victoryFiveTeam" type="text" placeholder="Quick Step Cycling Team"/>
                                 </div>
                             </td>
                         </tr>
