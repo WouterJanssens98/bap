@@ -1,7 +1,25 @@
-import { default as React, Fragment} from 'react';
+import { default as React, Fragment, useState, useCallback, useEffect} from 'react';
 import { useAuth, useApi } from '../../services';
 
 const DashboardRennersPage = () => {
+  const [rennerData, setRennerData] = useState();
+
+  const { getRenners} = useApi();
+  const initFetch = useCallback(
+    () => {
+      const getInfo = async () => {
+        const rennerData = await getRenners();
+        setRennerData(rennerData)
+        console.log(rennerData)
+      }
+      getInfo();
+    });
+
+  useEffect(() => {
+  
+    initFetch();
+  },[]);
+
 
   return (
     <Fragment>
@@ -17,7 +35,7 @@ const DashboardRennersPage = () => {
       
         <div class="renner-overview">
 
-          <div class="renner-table">
+          <div class="renner-table" >
               <th class="renner-tablehead">
                 <td>ID</td>
                 <td>RENNER</td>
@@ -28,22 +46,43 @@ const DashboardRennersPage = () => {
           </div>
 
           <div>
-              <tr class="renner-tablecontent">
-                <td>1</td>
-                <td>EDDY MERCKX</td>
-                <td>1960-1970</td>
-                <td>26/3/2021</td>
-                <div class="renner-tableactions d-flex">
-                  <a href="/edit" class="d-flex renner-tablelink mr-4">
-                    <i class="fas fa-pen mr-2"></i>
-                    <p>BEWERK</p>
-                  </a>
-                  <a href="/edit" class="d-flex renner-tablelink">
-                    <i class="fas fa-eye mr-2"></i>
-                    <p>TONEN</p>
-                  </a>
-                </div>
-              </tr>
+
+          {rennerData ?
+            (
+              rennerData.length > 0 ?
+              (
+                rennerData.map((item) => {
+                  return (
+                    <tr class="renner-tablecontent">
+                      <td>1</td>
+                      <td>{item.info.name.toUpperCase()}</td>
+                      <td>{item.info.periode.toUpperCase()}</td>
+                      <td>{item.info.name}</td>
+                      <div class="renner-tableactions d-flex">
+                        <a href="/edit" class="d-flex renner-tablelink mr-4">
+                          <i class="fas fa-pen mr-2"></i>
+                          {/* <p>BEWERK</p> */}
+                        </a>
+                        <a href="/edit" class="d-flex renner-tablelink">
+                          <i class="fas fa-eye mr-2"></i>
+                          {/* <p>TONEN</p> */}
+                        </a>
+                      </div>
+                    </tr>
+                    )
+                })
+              )
+              :
+              (
+                <tr>
+                  <td>Nog geen renners toegevoegd.</td>
+                </tr>
+              )
+            )
+            :
+            (
+              <p>Loading data....</p>
+            )}
           </div>
     
         </div>

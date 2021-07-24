@@ -10,8 +10,8 @@ class RennerController {
     res: Response,
     next: NextFunction,
   ): Promise<Response<any>> => {
-    const periodes : Array<IRider> = await Rider.find().exec();
-    return res.status(200).json(periodes);
+    const riders : Array<IRider> = await Rider.find().exec();
+    return res.status(200).json(riders);
   };
 
 
@@ -69,7 +69,6 @@ class RennerController {
           }
         },
       });
-      console.log(rennerCreate);
       const createdRenner = await rennerCreate.save();
       return res.status(201).json(createdRenner);
     } catch (err) {
@@ -93,30 +92,46 @@ class RennerController {
         // })
         // .exec();
         return res.status(200).json(periode);
-    };  
+    };
 
-
-    
-    public showPortfolioFromUserID = async (
+    public showAll = async (
       req: Request,
       res: Response,
       next: NextFunction,
-    ) => {
-      try {
-        const { id } = req.params;
-        const portfolio = await Portfolio.find( { "referredUser" : id } )
-        .populate({
-          path : 'values',
-          populate : {
-            path : 'shoe'
-          }
-        })
-        .exec();
-        return res.status(200).json(portfolio);
-      } catch (err) {
-        next(err);
-      }
-    };
+    ): Promise<Response<any>> => {
+      const periode : IRider = await Rider.find().exec();
+      // .populate({
+      //   path : 'values',
+      //   populate : {
+      //     path : 'shoe'
+      //   }
+      // })
+      // .exec();
+      return res.status(200).json(periode);
+  };
+
+
+    
+    // public showPortfolioFromUserID = async (
+    //   req: Request,
+    //   res: Response,
+    //   next: NextFunction,
+    // ) => {
+    //   try {
+    //     const { id } = req.params;
+    //     const portfolio = await Portfolio.find( { "referredUser" : id } )
+    //     .populate({
+    //       path : 'values',
+    //       populate : {
+    //         path : 'shoe'
+    //       }
+    //     })
+    //     .exec();
+    //     return res.status(200).json(portfolio);
+    //   } catch (err) {
+    //     next(err);
+    //   }
+    // };
 
     
     public update = async (req: Request, res: Response, next: NextFunction) => {

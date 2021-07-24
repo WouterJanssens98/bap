@@ -71,7 +71,7 @@ const DashboardRennersAddPage = () => {
         const nickname = document.getElementById('nickname').value;
         const placeofbirth = document.getElementById('placeofbirth').value;
         const dateofbirth = document.getElementById('dateofbirth').value;
-        const periode = document.getElementById('periode').value;
+        const periode = riderPeriod;
         const youth = document.getElementById('youth').value;
         const career = document.getElementById('career').value;
         const aftercareer = document.getElementById('aftercareer').value;
@@ -109,7 +109,6 @@ const DashboardRennersAddPage = () => {
         ev.preventDefault();
         document.getElementsByClassName('error-status')[0].style.display = "none" ;
         let status = checkCompletion();
-        console.log(status);
         if(status){
             let uploadedFiles = await Upload();
             const rennerData = {
@@ -120,7 +119,8 @@ const DashboardRennersAddPage = () => {
                     "dateofbirth" : document.getElementById('dateofbirth').value,
                     "youth" : document.getElementById('youth').value,
                     "career" : document.getElementById('career').value,
-                    "aftercareer" : document.getElementById('aftercareer').value
+                    "aftercareer" : document.getElementById('aftercareer').value,
+                    "periode" : riderPeriod
                 },
                 "media" : {
                     "profilePicture" : uploadedFiles[0],
@@ -220,6 +220,12 @@ const DashboardRennersAddPage = () => {
                 </div>
 
                 <div class="ui input addrenner-field">
+                    <p class="addrenner-label">Periode</p>
+                    <DropdownLarge setState={setRiderPeriod} onChange={handleDropdown} options={periods}/>
+                </div>
+
+
+                <div class="ui input addrenner-field">
                     <p class="addrenner-label">Plaats van geboorte</p>
                     <input id="placeofbirth" class="addrenner-input" type="text" placeholder="vb. Gent"/>
                 </div>
@@ -229,10 +235,7 @@ const DashboardRennersAddPage = () => {
                     <input id="dateofbirth" class="addrenner-input"  min="1920-01-01" max="2000-12-31" type="date"/>
                 </div>
 
-                <div class="ui input addrenner-field">
-                    <p class="addrenner-label">Periode</p>
-                    <DropdownLarge setState={setRiderPeriod} onChange={handleDropdown} options={periods}/>
-                </div>
+                
 
                 
 

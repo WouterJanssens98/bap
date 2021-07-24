@@ -32,6 +32,20 @@ const ApiProvider = ({children}) => {
       return(`Invalid response from API : status ${response.status}`)
     }
   }
+
+  const getRenners = async () => {
+    let url = `/api/renner`;
+
+    const options = {
+      method: "get",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      }
+    };
+    const response = await fetch(url, options);
+    return response.json();
+  }
   
   const getPeriodes = async () => {
     let url = `/api/periode`;
@@ -92,7 +106,7 @@ const ApiProvider = ({children}) => {
 
   return (
     <ApiContext.Provider value={{ 
-      createPeriode,getPeriodes,getPeriode,createRenner
+      createPeriode,getPeriodes,getPeriode,createRenner,getRenners
       
       }}>
       {children}
