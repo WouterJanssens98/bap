@@ -1,6 +1,5 @@
 import { default as React, Fragment, useState, useCallback, useEffect} from 'react';
 import { useAuth, useApi } from '../../services';
-import { Loading } from '../../components';
 
 const DashboardRittenPage = () => {
 
@@ -36,14 +35,14 @@ const DashboardRittenPage = () => {
     
       <div class="renner-overview">
       
-      <table class="renner-table">
-          <tr class="renner-tablehead">
+      <div class="renner-table">
+          <th class="renner-tablehead">
             <td>ID</td>
             <td>RIT</td>
             <td>TYPE</td>
             <td>ACTIES</td>
-          </tr>
-     
+          </th>
+      </div>
       
       {rittenData ?
             (
@@ -52,9 +51,9 @@ const DashboardRittenPage = () => {
                 rittenData.map((item,index) => {
                   return (
                     <tr class="renner-tablecontent">
-                      <td>{index + 1}</td>
-                      <td>{item.info.name.toUpperCase()}</td>
-                      <td>{item.info.type.toUpperCase()}</td>
+                      <td class="pl-2">{index + 1}</td>
+                      <td  class="pl-4 pr-3">{item.info.name.toUpperCase()}</td>
+                      <td  class="ml-2">{item.info.type.toUpperCase()}</td>
                       <td>
                         <div class="renner-tableactions d-flex">
                           <a href="/edit" class="d-flex renner-tablelink mr-4">
@@ -80,14 +79,10 @@ const DashboardRittenPage = () => {
             )
             :
             (
-              <tr class="renner-tablecontent pb-5">
-                <div class="loader pb-3 pt-3">
-                   <Loading  />
-                </div>
-              </tr>
+              <p class="renner-loadingtable">Loading data....</p>
             )}
       
-      </table>
+
       </div>
 
       

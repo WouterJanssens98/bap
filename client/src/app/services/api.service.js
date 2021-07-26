@@ -46,6 +46,20 @@ const ApiProvider = ({children}) => {
     const response = await fetch(url, options);
     return response.json();
   }
+
+  const getRitten = async () => {
+    let url = `/api/ritten`;
+
+    const options = {
+      method: "get",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      }
+    };
+    const response = await fetch(url, options);
+    return response.json();
+  }
   
   const getPeriodes = async () => {
     let url = `/api/periode`;
@@ -102,11 +116,35 @@ const ApiProvider = ({children}) => {
       return(`Invalid response from API : status ${response.status}`)
     }
   }
+
+  const createRit = async (data,author,authorMail) => {
+    let url = `/api/ritten/add`;
+
+    const options = {
+      method: "post",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        "data" : data,
+        "author" :author,
+        "authorMail" : authorMail
+      })
+    };
+    console.log(data);
+    const response = await fetch(url, options);
+    if(response.status === 201){
+      return response
+    }else{
+      return(`Invalid response from API : status ${response.status}`)
+    }
+  }
   
 
   return (
     <ApiContext.Provider value={{ 
-      createPeriode,getPeriodes,getPeriode,createRenner,getRenners
+      createPeriode,getPeriodes,getPeriode,createRenner,getRenners,createRit,getRitten
       
       }}>
       {children}

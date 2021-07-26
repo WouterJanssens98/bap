@@ -21,39 +21,46 @@
         margin-right: 5vw;
         width : 75vw;
         margin-top : 5vh;
-        height : 600px;
+        height : fit-content;
+        min-height: 12vh;
         box-shadow: 1px 1px 10px  $color-secondary;
         border-radius : 10px;
 
     }
     &-table {
-        border-bottom : 0.5px solid $color-secondary
+       
+        margin-left:auto;
+        margin-right:auto;
+        width : 70%;
+        text-align: center;
     }
     &-tablehead {
-        width : 85%;
-        margin-left : 5%;
-        margin-right: 10%;
-        display : flex;
-        flex-direction : row ;
-        justify-content : space-between;
-        padding-top : 25px;
-        padding-bottom : 20px;
+        
         color : $color-secondary;
         font-weight : bold;
-        text-align: center;
+        text-align: left;
+        td {
+            padding-top:15px;
+            padding-bottom: 15px;
+            padding-left : 10px;
+            padding-right : 10px;
+        }
 
     }
     &-tablecontent {
-        width : 90%;
-        margin-left : 5%;
-        margin-right : 5%;
-        display : flex;
-        flex-direction : row ;
-        justify-content : space-between;
-        padding-top : 15px;
-        padding-bottom : 15px;
+        position: relative;
         color : black ;
         font-weight : bold;
+        text-align : left;
+        td {
+            padding-left : 10px;
+            padding-right : 10px;
+            padding-bottom: 10px;
+
+            
+        }
+        
+
     }
     &-tableactions {
         font-weight: bold;
@@ -67,6 +74,18 @@
     &-tablelink {
         color : $color-main;
     }
+    &-emptytable {
+        text-align: center;
+        padding-top:30px;
+        padding-bottom: 30px;
+        font-weight: bold;
+        flex-direction : row ;
+        justify-content : space-between;
+        width : 100vw;
+
+    }
+
+
 
 
 }

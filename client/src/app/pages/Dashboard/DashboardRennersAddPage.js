@@ -12,7 +12,7 @@ import S3 from "react-aws-s3";
 const DashboardRennersAddPage = () => {
 
     let history = useHistory();
-    const {currentUser, getCookie} = useAuth();
+    const {getCookie} = useAuth();
     const {createRenner} = useApi();
 
 
@@ -88,7 +88,7 @@ const DashboardRennersAddPage = () => {
                     console.log(counter)
                 }
             }
-            if(counter === 5){
+            if(counter === pictures.length){
                 return true // all required images were selected
             }
         }else{
@@ -297,8 +297,8 @@ const DashboardRennersAddPage = () => {
                     <div class="renner-table">
                         <th class="addrenner-tablehead">
                             <td>NR.</td>
-                            <td>JAAR</td>
-                            <td>RIT</td>
+                            <td class="pr-5">JAAR</td>
+                            <td class="pl-5">RIT</td>
                             <td>PLOEG</td>
                         </th>
                     </div>
