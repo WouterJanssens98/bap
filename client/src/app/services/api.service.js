@@ -9,7 +9,7 @@ const ApiProvider = ({children}) => {
 
 
   // API CALLS VOOR PERIODES
-  const createPeriode = async (fromYear,toYear,author, authorMail) => {
+  const createPeriode = async (data,author, authorMail) => {
     let url = `/api/periode/add`;
 
     const options = {
@@ -19,14 +19,13 @@ const ApiProvider = ({children}) => {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        "fromYear" : parseInt(fromYear),
-        "toYear" : parseInt(toYear),
-        "author" : author,
+        "data" : data,
+        "author" :author,
         "authorMail" : authorMail
       })
     };
     const response = await fetch(url, options);
-    if(response.status == 201){
+    if(response.status === 201){
       return response
     }else{
       return(`Invalid response from API : status ${response.status}`)

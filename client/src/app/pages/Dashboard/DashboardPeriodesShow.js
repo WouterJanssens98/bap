@@ -38,7 +38,7 @@ const [ periode, setPeriode ] = useState();
         (
         <div>
         
-            <p className="addrenner-title">{`PERIODE ${periode.fromYear}-${periode.toYear}`}</p>
+            <p className="addrenner-title">{`PERIODE ${periode.start}-${periode.end}`}</p>
             
             <div class="addrenner-overview">
 
@@ -53,7 +53,7 @@ const [ periode, setPeriode ] = useState();
 
                 <div class="renner-table">
 
-                {periode.referredRiders.length > 0 ? 
+                {/* {periode.referredRiders.length > 0 ? 
                 (
                     periode.referredRiders.map((rider) => {
                         return (
@@ -77,7 +77,7 @@ const [ periode, setPeriode ] = useState();
                 ):
                 (
                     <p className="text-center mt-5 mb-5">No riders added yet </p>
-                )}
+                )} */}
                 </div>
             </div>
         </div>

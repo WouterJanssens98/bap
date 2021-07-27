@@ -1,5 +1,6 @@
 import { default as React, Fragment,useState,useEffect, useCallback} from 'react';
 import { useAuth, useApi } from '../../services';
+import { Loading } from '../../components';
 
 const DashboardPeriodesPage = () => {
 
@@ -39,39 +40,59 @@ const DashboardPeriodesPage = () => {
     
       <div class="renner-overview">
 
-      <div class="renner-table">
-          <th class="renner-tablehead">
+     
+      <table class="renner-table">
+          <tr class="renner-tablehead">
             <td>ID</td>
-            <td>PERIODE</td>
-            <td>AANTAL RENNERS</td>
+            <td>START</td>
+            <td>EINDE</td>
             <td>ACTIES</td>
-          </th>
-      </div>
-
-      <div class="renner-table">
-
-        {periodes && periodes.map((periode) => {
-          return (
-            <tr class="renner-tablecontent">
-            <td>{periodes.indexOf(periode) + 1}</td>
-            <td>{periode.fromYear}-{periode.toYear}</td>
-            <td class="">{(periode.referredRiders).length}</td>
-              <div class="renner-tableactions d-flex">
-                <a href={`periodes/edit/${periode.id}`} class="d-flex renner-tablelink mr-4">
-                  <i class="fas fa-pen mr-2"></i>
-                  <p>BEWERK</p>
-                </a>
-                <a href={`periodes/show/${periode.id}`} class="d-flex renner-tablelink">
-                  <i class="fas fa-eye mr-2"></i>
-                  <p>TONEN</p>
-                </a>
-              </div>
-            </tr>
-          )
-        })}
-                  
-
-      </div>
+          </tr>
+     
+      
+      {periodes ?
+            (
+              periodes.length > 0 ?
+              (
+                periodes.map((item,index) => {
+                  return (
+                    <tr class="renner-tablecontent">
+                      <td>{index + 1}</td>
+                      <td>{item.start}</td>
+                      <td>{item.end}</td>
+                      <td>
+                        <div class="renner-tableactions d-flex">
+                          <a href="/edit" class="d-flex renner-tablelink mr-4">
+                            <i class="fas fa-pen mr-2"></i>
+                            {/* <p>BEWERK</p> */}
+                          </a>
+                          <a href="/edit" class="d-flex renner-tablelink">
+                            <i class="fas fa-eye mr-2"></i>
+                            {/* <p>TONEN</p> */}
+                          </a>
+                        </div>
+                      </td>
+                    </tr>
+                    )
+                })
+              )
+              :
+              (
+                
+                  <td class="renner-emptytable">Nog geen renners toegevoegd.</td>
+               
+              )
+            )
+            :
+            (
+              <tr class="renner-tablecontent pb-5">
+                <div class="loader pb-3 pt-3">
+                   <Loading  />
+                </div>
+              </tr>
+            )}
+      
+      </table>
       
 
       </div>

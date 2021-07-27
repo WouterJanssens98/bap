@@ -19,10 +19,11 @@ class PeriodeController {
     
     try {
       const periodeCreate = new Periode({
+        start: req.body.data.info.start,
+        end : req.body.data.info.end,
+        bannerImage : req.body.data.info.bannerImage,
         author: req.body.author,
-        fromYear : req.body.fromYear,
-        toYear : req.body.toYear,
-        authorMail : req.body.authorMail
+        authorMail : req.body.authorMail,
       });
       const periode = await periodeCreate.save();
       return res.status(201).json(periode);
