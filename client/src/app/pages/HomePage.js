@@ -8,9 +8,15 @@ const HomePage = () => {
 
   let history = useHistory();
 
-  const handleClick = () => {
+  const handleClick2 = () => {
     history.push(Routes.DASHBOARD_HOME)
   }
+
+  const handleClick = () => {
+    // check screen width here
+    history.push(Routes.SELECTION)
+  }
+
   return (
     <Fragment>
       <div className="home-div">
@@ -21,6 +27,7 @@ const HomePage = () => {
         </div>
 
         <Button onClick={() => handleClick()} className="home-btn" color="yellow">DE GESCHIEDENIS START HIER</Button>
+        <Button onClick={() => handleClick2()} className="home-btn" color="yellow">DASH</Button>
       </div>
     </Fragment>
   );

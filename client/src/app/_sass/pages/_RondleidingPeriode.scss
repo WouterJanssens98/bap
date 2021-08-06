@@ -1,0 +1,22 @@
+.rondleiding {
+    &-info {
+        height : 100%;
+        width : 100%;
+        display : inline-block;
+        background-color : orange;
+        backdrop-filter: brightness(60%);
+        
+    }
+    &-title {
+        text-align : center;
+        color : white;
+        font-size : 3rem;
+        filter: brightness(100%) !important;
+       
+    }
+   
+}
+
+#test {
+    color:white;
+}

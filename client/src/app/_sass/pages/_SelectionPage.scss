@@ -1,0 +1,59 @@
+.selection-div {
+    width : 100vw;
+    height : 100vh;
+    display : flex;
+    flex-direction: row;
+    
+}
+
+.selection1, .selection2 {
+    width : 50%;
+    background-color : black
+}
+
+.selection1 {
+    transition: all 0.2s ease-in-out;
+    border-right : 1px solid white;
+    background-image: url("../../assets/images/selection1.jpg");
+    background-repeat:no-repeat;
+    background-size: cover;
+    filter: blur(4px);
+    cursor: pointer
+}
+
+.selection2 {
+    transition: all 0.2s ease-in-out;
+    border-left : 1px solid white;
+    background-image: url("../../assets/images/selection2.jpg");
+    background-repeat:no-repeat;
+    background-size: cover;
+    filter: blur(4px);
+    cursor: pointer
+}
+
+.selection2:hover, .selection1:hover{
+    filter: blur(0px) !important
+}
+
+.selection {
+    &-text1 {
+        position: absolute;
+        font-weight: bold;
+        font-size : 3rem;
+        color : white;
+        bottom : 50px;
+        right : 50px;
+        text-shadow: 1px 1px 2px black;
+        text-align: right;
+    }
+    &-text2 {
+        position: absolute;
+        font-weight: bold;
+        font-size : 3rem;
+        color : white;
+        bottom : 50px;
+        left : 50px;
+        text-shadow: 1px 1px 2px black;
+        text-align: left;
+    }
+}

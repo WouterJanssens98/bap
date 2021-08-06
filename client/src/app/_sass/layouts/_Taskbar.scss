@@ -1,0 +1,58 @@
+.taskbar-header {
+    height : 10vh;
+    width: 100%;
+    background-color : $color-header;
+    position: fixed;
+    top : 0;
+}
+.taskbar-actions {
+    width : 35%;
+    height : 100%;
+    margin-left:  auto;
+    margin-right : auto;
+    display : flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    transition: all 0.5s ease-in-out;
+    text-align: center
+}
+
+.taskbar-button {
+    transition: all 0.2s ease-in-out;
+    font-size : 2.8rem;
+    color : white;
+    vertical-align: bottom;
+    margin-top : auto;
+    margin-bottom: auto;
+}
+
+.taskbar-button2 {
+    transition: all 0.2s ease-in-out;
+    font-size : 3.2rem;
+    color : white;
+    vertical-align: bottom;
+    margin-top : auto;
+    margin-bottom: auto;
+}
+
+
+.taskbar-button:hover ,
+.taskbar-button2:hover {
+    color : $color-main
+}
+
+.taskbar-setup {
+    padding-top : 10vh;
+    height : 100%;
+}
+
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%
+}
+
+.page {
+    height : 100vh;
+    overflow: hidden;
+}

@@ -1,11 +1,12 @@
 import React from 'react';
 import {BrowserRouter as Router, Redirect, Switch} from 'react-router-dom';
 import * as Routes from './routes';
-import { HomePage,DashboardHomePage,DashboardRennersPage,DashboardRittenPage,DashboardPeriodesPage,DashboardRennersAddPage,DashboardRittenAddPage, DashboardPeriodesAddPage,SignInPage,SignUpPage,DashboardPeriodesShow,DashboardPeriodesEdit} from './pages';
-import {DashboardLayout,PageLayout, AuthLayout} from './layouts';
+import * as  Pages from './pages';
+import {DashboardLayout,PageLayout, TaskbarLayout, AuthLayout} from './layouts';
 import { AuthRouteWithLayout, RouteWithLayout } from './utilities';
 import { ApiProvider, AuthProvider } from './services';
-import 'semantic-ui-css/semantic.min.css'
+import 'semantic-ui-css/semantic.min.css';
+import 'reactjs-popup/dist/index.css';
 
 import './app.scss';
 
@@ -17,18 +18,21 @@ function App() {
           <Router basename='/'>
             <Switch>
             
-              <RouteWithLayout exact path={Routes.HOME} component={HomePage} layout={PageLayout}/>
-              <AuthRouteWithLayout exact path={Routes.DASHBOARD_HOME} component={DashboardHomePage} layout={DashboardLayout}/>
-              <AuthRouteWithLayout exact path={Routes.DASHBOARD_RENNERS} component={DashboardRennersPage} layout={DashboardLayout}/>
-              <AuthRouteWithLayout exact path={Routes.DASHBOARD_RITTEN} component={DashboardRittenPage} layout={DashboardLayout}/>
-              <AuthRouteWithLayout exact path={Routes.DASHBOARD_PERIODES} component={DashboardPeriodesPage} layout={DashboardLayout}/>
-              <AuthRouteWithLayout exact path={Routes.DASHBOARD_RENNERS_ADD} component={DashboardRennersAddPage} layout={DashboardLayout}/>
-              <AuthRouteWithLayout exact path={Routes.DASHBOARD_RITTEN_ADD} component={DashboardRittenAddPage} layout={DashboardLayout}/>
-              <AuthRouteWithLayout exact path={Routes.DASHBOARD_PERIODES_ADD} component={DashboardPeriodesAddPage} layout={DashboardLayout}/>
-              <AuthRouteWithLayout exact path={Routes.DASHBOARD_PERIODES_SHOW} component={DashboardPeriodesShow} layout={DashboardLayout}/>
-              <AuthRouteWithLayout exact path={Routes.DASHBOARD_PERIODES_EDIT} component={DashboardPeriodesEdit} layout={DashboardLayout}/>
-              <RouteWithLayout exact path={Routes.LOGIN} component={SignInPage} layout={PageLayout}/>
-              <RouteWithLayout exact path={Routes.REGISTER} component={SignUpPage} layout={PageLayout}/>
+              <RouteWithLayout exact path={Routes.HOME} component={Pages.HomePage} layout={PageLayout}/>
+              <RouteWithLayout exact path={Routes.SELECTION} component={Pages.SelectionPage} layout={PageLayout}/>
+              <RouteWithLayout exact path={Routes.COMPLETE_INFO} component={Pages.CompleteInfoPage} layout={PageLayout}/>
+              <RouteWithLayout exact path={Routes.RONDLEIDING_PERIODE} component={Pages.RondleidingPeriode} layout={TaskbarLayout}/>
+              <AuthRouteWithLayout exact path={Routes.DASHBOARD_HOME} component={Pages.DashboardHomePage} layout={DashboardLayout}/>
+              <AuthRouteWithLayout exact path={Routes.DASHBOARD_RENNERS} component={Pages.DashboardRennersPage} layout={DashboardLayout}/>
+              <AuthRouteWithLayout exact path={Routes.DASHBOARD_RITTEN} component={Pages.DashboardRittenPage} layout={DashboardLayout}/>
+              <AuthRouteWithLayout exact path={Routes.DASHBOARD_PERIODES} component={Pages.DashboardPeriodesPage} layout={DashboardLayout}/>
+              <AuthRouteWithLayout exact path={Routes.DASHBOARD_RENNERS_ADD} component={Pages.DashboardRennersAddPage} layout={DashboardLayout}/>
+              <AuthRouteWithLayout exact path={Routes.DASHBOARD_RITTEN_ADD} component={Pages.DashboardRittenAddPage} layout={DashboardLayout}/>
+              <AuthRouteWithLayout exact path={Routes.DASHBOARD_PERIODES_ADD} component={Pages.DashboardPeriodesAddPage} layout={DashboardLayout}/>
+              <AuthRouteWithLayout exact path={Routes.DASHBOARD_PERIODES_SHOW} component={Pages.DashboardPeriodesShow} layout={DashboardLayout}/>
+              <AuthRouteWithLayout exact path={Routes.DASHBOARD_PERIODES_EDIT} component={Pages.DashboardPeriodesEdit} layout={DashboardLayout}/>
+              <RouteWithLayout exact path={Routes.LOGIN} component={Pages.SignInPage} layout={PageLayout}/>
+              <RouteWithLayout exact path={Routes.REGISTER} component={Pages.SignUpPage} layout={PageLayout}/>
               {/* <Redirect from="/dashboard" to="/dashboard/overview" /> */}
               {/* <RouteWithLayout exact path={Routes.REGISTER} component={LoginPage}/> */}
            
