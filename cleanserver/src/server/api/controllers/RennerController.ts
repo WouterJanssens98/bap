@@ -112,26 +112,19 @@ class RennerController {
 
 
     
-    // public showPortfolioFromUserID = async (
-    //   req: Request,
-    //   res: Response,
-    //   next: NextFunction,
-    // ) => {
-    //   try {
-    //     const { id } = req.params;
-    //     const portfolio = await Portfolio.find( { "referredUser" : id } )
-    //     .populate({
-    //       path : 'values',
-    //       populate : {
-    //         path : 'shoe'
-    //       }
-    //     })
-    //     .exec();
-    //     return res.status(200).json(portfolio);
-    //   } catch (err) {
-    //     next(err);
-    //   }
-    // };
+    public showRidersFromPeriod = async (
+      req: Request,
+      res: Response,
+      next: NextFunction,
+    ) => {
+      try {
+        const { id } = req.params;
+        const riders = await Rider.find( { 'info.periode' : id } ).exec();
+        return res.status(200).json(riders);
+      } catch (err) {
+        next(err);
+      }
+    };
 
     
     public update = async (req: Request, res: Response, next: NextFunction) => {

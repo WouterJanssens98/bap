@@ -1,0 +1,24 @@
+.listenIcon {
+    transition: all 0.2s ease-in-out;
+    position: absolute;
+    color : white;
+    top : -20px;
+    right : -35px;
+    font-size : 1.5rem;
+    background-color : $color-main;
+    padding : 7px !important;
+    border-radius: 50%;
+}
+
+.listenIcon-hovering{
+    transition: all 0.2s ease-in-out;
+    position: absolute;
+    color : white;
+    top : -20px;
+    right : -35px;
+    font-size : 1.7rem;
+    background-color : $color-interaction;
+    padding : 7px !important;
+    border-radius: 50%;
+}
+

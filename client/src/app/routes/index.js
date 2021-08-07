@@ -30,4 +30,5 @@ export const DASHBOARD_PERIODES_EDIT = '/dashboard/periodes/edit/:id';
 /// RONDLEIDING
 
 export const RONDLEIDING_PERIODE = '/rondleiding/:id'
+export const RONDLEIDING_RENNERS = '/rondleiding/:periode/:id'
 

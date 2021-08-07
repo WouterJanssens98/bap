@@ -5,10 +5,10 @@ import { Taskbar } from '../components';
 
 const TaskbarLayout = ({children}) => {
 
+
   return (
     <div className="page">
-        <Taskbar/>
-            <main className="page-main taskbar-setup">
+            <main className="page-main">
                 {children}
             </main>
     </div>

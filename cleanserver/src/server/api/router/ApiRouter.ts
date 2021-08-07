@@ -77,6 +77,7 @@ class ApiRouter {
     this.router.get('/renner', this.rennerController.index)
     this.router.post('/renner/add', this.rennerController.create)
     this.router.get('/renner/:id', this.rennerController.show)
+    this.router.get('/renner-periode/:id', this.rennerController.showRidersFromPeriod)
 
       /*
      * Ritten routes

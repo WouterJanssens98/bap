@@ -46,6 +46,20 @@ const ApiProvider = ({children}) => {
     return response.json();
   }
 
+  const getRidersFromPeriod = async (id) => {
+    let url = `/api/renner-periode/${id}`;
+
+    const options = {
+      method: "get",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      }
+    };
+    const response = await fetch(url, options);
+    return response.json();
+  }
+
   const getRitten = async () => {
     let url = `/api/ritten`;
 
@@ -143,7 +157,7 @@ const ApiProvider = ({children}) => {
 
   return (
     <ApiContext.Provider value={{ 
-      createPeriode,getPeriodes,getPeriode,createRenner,getRenners,createRit,getRitten
+      createPeriode,getPeriodes,getPeriode,createRenner,getRenners,createRit,getRitten,getRidersFromPeriod
       
       }}>
       {children}

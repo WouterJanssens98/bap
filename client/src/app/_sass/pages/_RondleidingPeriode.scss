@@ -1,5 +1,6 @@
 .rondleiding {
     &-info {
+        position: relative;
         height : 100%;
         width : 100%;
         display : inline-block;
@@ -10,13 +11,29 @@
     &-title {
         text-align : center;
         color : white;
-        font-size : 3rem;
+        font-size : 3.5rem;
+        font-weight: bold;
+        letter-spacing: 2px;
         filter: brightness(100%) !important;
+        text-shadow: 1px 1px 0.5px grey;
+        display: block;
+        margin-top:auto;
+        margin-bottom: auto;
+        padding : 0px;
+        // text-decoration: underline;
+        // text-decoration-color : $color-main;
+       
+        
        
     }
    
 }
 
-#test {
-    color:white;
+.listen {
+    position: absolute;
+    width : fit-content;
+    left: 50%;
+    margin-top : 35vh;
+    transform: translateX(-50%);
+    border-bottom: 3px solid $color-main;
 }

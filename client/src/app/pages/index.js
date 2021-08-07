@@ -5,13 +5,14 @@ import { default as SignUpPage } from './SignUpPage';
 import { default as SelectionPage} from './SelectionPage';
 import { default as CompleteInfoPage} from './CompleteInfoPage';
 import {DashboardHomePage,DashboardRennersPage,DashboardRittenPage,DashboardPeriodesPage,DashboardRennersAddPage,DashboardRittenAddPage,DashboardPeriodesAddPage,DashboardPeriodesShow,DashboardPeriodesEdit} from './Dashboard';
-import {RondleidingPeriode} from './Rondleiding';
+import {RondleidingPeriode,RondleidingRenners} from './Rondleiding';
 export {
 	SjabloonPage,
 	HomePage,
 	SelectionPage,
 	CompleteInfoPage,
 	RondleidingPeriode,
+	RondleidingRenners,
 	DashboardHomePage,
 	DashboardRennersPage,
 	DashboardRittenPage,

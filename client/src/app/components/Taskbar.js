@@ -1,22 +1,19 @@
-import { default as React, useState } from 'react';
+import { default as React, useState,useEffect } from 'react';
 import { NavLink } from "react-router-dom";
-
-
+import { AudioPlayerProvider } from "react-use-audio-player";
+import { AudioPlayer } from '../components';
 
 const Taskbar = (props) => {
 
-  const [isPlaying, setPlayingState] = useState(true);
-  const [soundItem, setSoundItem] = useState("")
-  // button.addEventListener("click", function(){
-  //   if(audio.paused){
-  //     setSoundPlaying(true)
-  //   } else {
-  //     audio.pause();
-  //     button.innerHTML = "Play";
-  //   }
-  // });
+  const [isPlaying, setPlayingState] = useState(false);
+  console.log(props.audioState)
+ 
   const handleClick = () => {
     setPlayingState(!isPlaying);
+  }
+
+  function drag(ev) {
+    console.log("dragging!");
   }
 
   return (
@@ -26,19 +23,18 @@ const Taskbar = (props) => {
 
           <div className="taskbar-actions">
 
-            <i class="taskbar-button fas fa-headphones-alt"></i>
+            <i draggable="true" onDragStart={(ev) => drag(ev)}  class="taskbar-button fas fa-headphones-alt"></i>
 
-            {isPlaying ? 
-            (
-              <i class="taskbar-button2 far fa-pause-circle"></i>
-            ):
-            (
-              <i class="taskbar-button2 far fa-play-circle"></i>
-            )}
-            <i onClick={(ev) => handleClick()} class=" taskbar-button fas fa-award"></i>
+            <AudioPlayerProvider>
+                <AudioPlayer clearAudioState={props.clearAudioState} updateAudioState={props.updateAudioState} file={props.audioState}/>
+            </AudioPlayerProvider>
+
+            
+            <i draggable="true" onClick={(ev) => handleClick()} class=" taskbar-button fas fa-award"></i>
 
 
           </div>
+          
   
     </div>
 

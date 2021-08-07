@@ -22,6 +22,7 @@ function App() {
               <RouteWithLayout exact path={Routes.SELECTION} component={Pages.SelectionPage} layout={PageLayout}/>
               <RouteWithLayout exact path={Routes.COMPLETE_INFO} component={Pages.CompleteInfoPage} layout={PageLayout}/>
               <RouteWithLayout exact path={Routes.RONDLEIDING_PERIODE} component={Pages.RondleidingPeriode} layout={TaskbarLayout}/>
+              <RouteWithLayout exact path={Routes.RONDLEIDING_RENNERS} component={Pages.RondleidingRenners} layout={PageLayout}/>
               <AuthRouteWithLayout exact path={Routes.DASHBOARD_HOME} component={Pages.DashboardHomePage} layout={DashboardLayout}/>
               <AuthRouteWithLayout exact path={Routes.DASHBOARD_RENNERS} component={Pages.DashboardRennersPage} layout={DashboardLayout}/>
               <AuthRouteWithLayout exact path={Routes.DASHBOARD_RITTEN} component={Pages.DashboardRittenPage} layout={DashboardLayout}/>
