@@ -7,6 +7,8 @@ import { AuthRouteWithLayout, RouteWithLayout } from './utilities';
 import { ApiProvider, AuthProvider } from './services';
 import 'semantic-ui-css/semantic.min.css';
 import 'reactjs-popup/dist/index.css';
+import "react-tiger-transition/styles/main.min.css";
+
 
 import './app.scss';
 

@@ -1,15 +1,15 @@
-import { default as React, Fragment,useState, useRef} from 'react';
+import { default as React, Component  ,Fragment,useState,useEffect, useRef} from 'react';
 import { useAuth, useApi } from '../services';
 import * as Routes from '../routes';
 import { Button } from 'semantic-ui-react';
 import { useHistory } from 'react-router-dom';
 import Popup from 'reactjs-popup';
+import { TransitionGroup, CSSTransition } from "react-transition-group";
+import {Fade,Slide} from 'react-reveal';
 
 const CompleteInfoPage = () => {
 
     let history = useHistory();
-   
-
     function setCookie(name,value,days) {
         var expires = "";
         if (days) {
@@ -45,19 +45,27 @@ const CompleteInfoPage = () => {
     }
 
     const handleClose = () => {
-        history.push(Routes.RONDLEIDING_PERIODE)
-    }
+        history.push(Routes.RONDLEIDING_PERIODE.replace(':id',1))
+    };
+
+   
+
+    useEffect(() => {
+        let el = document.querySelector('.page');
+        el.classList.add('fade-in');
+      });
+
+    
 
 
 
   return (
-    <Fragment>
-        
+       <Fragment>
             <div className="complete-div">
-
+                
                     <div className="complete-info">
                         <h1 className="complete-info-title">VERVOLLEDIG JOUW PROFIEL</h1>
-
+                        <Fade top cascade>
                         <div className="complete-input">
 
                             <div class="ui input complete-field">
@@ -76,6 +84,7 @@ const CompleteInfoPage = () => {
                             </div>
 
                         </div>
+                        </Fade>
                         
                         <button onClick={(ev) => handleClick(ev)} className="button complete-btn"> START DE RONDLEIDING</button>
                         <div style={{ display : "none" }} class="error-completion">Gelieve alle verplichte velden in te vullen.</div>
@@ -130,10 +139,9 @@ const CompleteInfoPage = () => {
                         </Popup>
                     </div>
                     
-                    
+                
             </div>
-           
-    </Fragment>
+            </Fragment>
   );
 };
 

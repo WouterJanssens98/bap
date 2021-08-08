@@ -2,6 +2,7 @@ import { default as React, useState,useEffect } from 'react';
 import { NavLink } from "react-router-dom";
 import { AudioPlayerProvider } from "react-use-audio-player";
 import { AudioPlayer } from '../components';
+import {Fade,Slide} from 'react-reveal';
 
 const Taskbar = (props) => {
 
@@ -20,7 +21,7 @@ const Taskbar = (props) => {
 
     
     <div className="taskbar-header">
-
+        <Fade top>
           <div className="taskbar-actions">
 
             <i draggable="true" onDragStart={(ev) => drag(ev)}  class="taskbar-button fas fa-headphones-alt"></i>
@@ -34,7 +35,7 @@ const Taskbar = (props) => {
 
 
           </div>
-          
+          </Fade>
   
     </div>
 
