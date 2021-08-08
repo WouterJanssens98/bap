@@ -1,39 +1,25 @@
-.riderpage {
+.riderpage-first {
     height : 90vh;
-    margin-top:10vh;
-    width :100vw;
-    background-color: orange;
-    z-index:3;
-    display: inline-block;
-}
-.riderpage2 {
-    height : 100vh;
-    padding-top : 100vh;
-    top : 100vh;
-    display:inline-block;
-    width :100vw;
-    background-color: orange;
-    z-index:3;
-    display: inline-block;
-}
-.riderpage3 {
-    height : fit-content;
     margin-top : 10vh;
     width :100vw;
-    background-color: orange;
-    z-index:3;
-    display: inline-block;
-}
-.riderpage4 {
-    height : fit-content;
-    width :100vw;
-    margin-top : -100vh !important;
-    background-color: orange;
     z-index:3;
     display: inline-block;
 }
 
-// custom css for awesome slider
-.awssld {
-    margin-top : -20vh
+
+.riderpage-title {
+    position: absolute;
+    width : fit-content;
+    left: 20%;
+    top : 30%;
+    transform: translateX(-50%);
+    border-bottom: 3px solid $color-main;
+    padding-right: 10px;
+    p {
+        font-size : 3.5rem;
+        text-transform: uppercase;
+        color : white;
+        font-weight : bold;
+        margin-bottom: 10px;
+    }
 }

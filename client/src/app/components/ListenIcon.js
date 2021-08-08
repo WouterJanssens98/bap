@@ -1,7 +1,6 @@
-import { default as React, useState } from 'react';
+import { default as React,Fragment, useState } from 'react';
 import { NavLink } from "react-router-dom";
-
-
+import Popup from 'reactjs-popup';
 
 const ListenIcon = (props) => {
 
@@ -28,11 +27,13 @@ const ListenIcon = (props) => {
 
   
 
+  
+
   return (
 
-    
-    <i  onDrop={(ev) => {drop(ev,props.audioURL)}} onDragLeave={(ev) => leaveDrop(ev)} onDragOver={(ev) => allowDrop(ev)} className={hovering ? "listenIcon-hovering fas fa-headphones-alt" : "listenIcon fas fa-headphones-alt"}></i>
-
+  <Fragment >
+    <i  onDrop={(ev) => {drop(ev,props.audioURL)}} onDragLeave={(ev) => leaveDrop(ev)} onDragOver={(ev) => allowDrop(ev)} className={hovering ? "listenIcon-hovering fas fa-headphones-alt" : "listenIcon fas fa-headphones-alt"}></i>   
+  </Fragment>
   );
 };
 

@@ -25,43 +25,7 @@ const RiderPage = (props) => {
     
         
 
-        {props.ridersData && props.ridersData.length > 0 ?
-            (
-                <div className="riderpage3">
-                    <AwesomeSlider cssModule={AwesomeSliderStyles}>
-                        {props.ridersData.map((currElement, index) => {
-                            return (
-                            <div id="thisone">
-                                <div style={{  
-                                    backgroundImage: "url(" + props.ridersData[id-1].bannerPicture + ")",
-                                    backgroundPosition: 'center',
-                                    backgroundSize: 'cover',
-                                    backgroundRepeat: 'no-repeat',
-                                }}>
-                                    <p>testing</p>
-                                </div>
-
-                                <div className="riderpage2">
-
-                                    <p>nieuw!</p>
-                                </div>
-                                
-                            </div>
-                            )
-                            })
-                        }
-                    </AwesomeSlider>
-                
-
-                </div>
-            )
-            :
-            (
-                <div></div>
-            )
-            
-        
-        }
+       
        
        
 

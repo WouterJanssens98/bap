@@ -1,90 +1,87 @@
-import { default as React, Fragment,useState, useCallback, useEffect} from 'react';
+import { default as React, Fragment,useState, useCallback, useEffect,useRef} from 'react';
 import { useHistory, useParams } from 'react-router';
 import ReactDOM from 'react-dom'
 import { useAuth, useApi } from '../../services';
 import {useSpring, animated} from 'react-spring';
-import { Loading,ListenIcon,Taskbar,RiderPage } from '../../components';
-import AwesomeSlider from 'react-awesome-slider';
-import "react-awesome-slider/dist/styles.css";
-import "react-awesome-slider/dist/styles.css";
-import "react-awesome-slider/dist/captioned.css";
-import AwesomeSliderStyles from 'react-awesome-slider/src/styled/open-animation';
+import { Loading,ListenIcon,InfoIcon,Taskbar } from '../../components';
+import {Fade,Slide} from 'react-reveal';
 
 const RondleidingPeriode = () => {
   const { periode,id } = useParams();
   const history = useHistory();
-  const [ridersData, setRidersData] = useState();
+  const [riderData, setRiderData] = useState();
   const [audioState, setAudioState] = useState("");
   const { getRidersFromPeriod} = useApi();
+
+  const updateAudioState = async (url) => {
+    console.log("Setting new URl");
+    setAudioState(url)
+  }
+
+  const clearAudioState = async () => {
+    setAudioState("")
+  }
+
+  const ref = useRef();
+  const openModal = () => ref.current.open();
+
+  const handleClick = async (ev) => {
+    ev.preventDefault();
+    console.log("Clicked!")
+    openModal();
+  }
+  const update = async() => {
+    console.log("Finished listening/reading")
+  }
+
   const initFetch = useCallback(
     () => {
       const getInfo = async () => {
         const ridersData = await getRidersFromPeriod(periode);
-        setRidersData(ridersData);
-        console.log(ridersData[0].media)
+        setRiderData(ridersData[id-1]);
+        // console.log(riderData.media.audioURL)
+        console.log(ridersData);
       }
       getInfo();
     });
 
-    const buttonStyle = {
-        padding: "15px",
-        borderRadius: "50%",
-        background: "red",
-        opacity: 0.7,
-        fontSize: "20px"
-        };
-        const contentStyle = {
-        color: "black",
-        fontSize: "20px"
-        };
-        const bgImg = {
-        position: "absolute",
-        zIndex: -1,
-        left: 0,
-        top: 0,
-        width: "100%"
-        };
+    
     
   useEffect(() => {
     let el = document.querySelector('.page');
     el.classList.add('fade-in');
     initFetch();
-  },[]);
+  },[audioState]);
   
 
   
   
   return (
     <div>
-        <Taskbar />
-        <div>
-            <RiderPage ridersData={ridersData} id={1}/>
-
-
-
-
-
-            {/* {ridersData && ridersData.length > 0 ?
-            (
-                <AwesomeSlider cssModule={AwesomeSliderStyles}>
-                    {ridersData.map((currElement, index) => {
-                        return (
-                            <div>
-                                <RiderPage id={index}/>
-                            </div>
-                        )
-                        })
-                    }
-                </AwesomeSlider>
-            )
-            :
-            (
-                <div></div>
-            )
-            
-        
-        }; */}
-        </div>
+        <Taskbar update={update} clearAudioState={clearAudioState} updateAudioState={updateAudioState} audioState={audioState}/>
+        {riderData ?
+        ( <Fade left cascade>
+          <div className="riderpage-first" style={{  
+            backgroundImage: "url(" + riderData.media.bannerPicture + ")",
+            backgroundPosition: 'center',
+            backgroundSize: 'cover',
+            backgroundRepeat: 'no-repeat',
+          }}>
+              <div className="riderpage-title">
+              <p >{riderData.info.name}</p>
+              <ListenIcon  onClick={(ev) => handleClick(ev)} updateAudioState={updateAudioState} audioURL={riderData.media.audioURL}/>
+              <div onClick={(ev,key) => handleClick(ev,1)}>
+                <InfoIcon />
+              </div>
+              </div>
+          </div>
+          </Fade>
+        )
+        :
+        (
+            <Loading />
+        )
+      };
   </div>
   )};
 

@@ -27,7 +27,7 @@ const Taskbar = (props) => {
             <i draggable="true" onDragStart={(ev) => drag(ev)}  class="taskbar-button fas fa-headphones-alt"></i>
 
             <AudioPlayerProvider>
-                <AudioPlayer clearAudioState={props.clearAudioState} updateAudioState={props.updateAudioState} file={props.audioState}/>
+                <AudioPlayer update={props.update} clearAudioState={props.clearAudioState} updateAudioState={props.updateAudioState} file={props.audioState}/>
             </AudioPlayerProvider>
 
             

@@ -16,7 +16,7 @@ const AudioPlayer = (props) => {
         src: props.file,
         format: "mp3",
         autoplay: true,
-        onend: props.file === ""
+        onend: props.update
     })
  
     if (!ready && !loading) return <i disabled onClick={togglePlayPause} class="taskbar-button3 far fa-play-circle"></i>
