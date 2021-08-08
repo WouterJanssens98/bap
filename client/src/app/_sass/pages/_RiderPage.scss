@@ -3,14 +3,31 @@
     margin-top : 10vh;
     width :100vw;
     z-index:3;
-    display: inline-block;
+    display: block;
+}
+
+.riderpage-second {
+    height : fit-content;
+    width :100vw;
+    background-color : $color-third;
+    display: block;
+}
+
+.riderpage-info {
+    display : flex;
+    flex-direction : row;
+    justify-content : space-evenly;
+    width : 70%;
+    margin-left : auto;
+    margin-right : auto;
+    padding-top : 80px;
 }
 
 
 .riderpage-title {
     position: absolute;
     width : fit-content;
-    left: 20%;
+    left: 10%;
     top : 30%;
     transform: translateX(-50%);
     border-bottom: 3px solid $color-main;
@@ -21,5 +38,491 @@
         color : white;
         font-weight : bold;
         margin-bottom: 10px;
+    }
+}
+
+
+
+.riderpage-info-1{
+    width : 220px;
+    height : 220px;
+    border-radius: 50%;
+    margin-left : 8vw;
+    border : 1px solid $color-main
+}
+
+.riderpage-info-2{
+    flex-direction: column;
+    margin-top :auto;
+    margin-bottom: auto;
+    padding-left : 5%;
+    &-top {
+        border-bottom : 1px solid white;
+        display : flex;
+        flex-direction: row;
+        justify-content: space-between;
+        height : fit-content;
+       
+        &-name {
+            font-size : 3rem;
+            text-transform: uppercase;
+            font-weight: bold;
+            color : $color-main;
+            padding-right : 20px;
+            margin-bottom: 5px;
+
+
+        }
+        &-icon {
+            font-size :3rem;
+            color : white;
+            margin-top : 8px;
+            height : fit-content;
+        }
+    };
+    &-middle {
+        display : flex;
+        flex-direction: row;
+        justify-content: center;
+        height : fit-content;
+       
+        &-name {
+            font-size : 1.5rem;
+            text-transform: uppercase;
+            font-weight: bold;
+            color : $color-main;
+            padding-left : 15px;
+            margin-top : 8px;
+
+
+        }
+        &-icon {
+            font-size :1.5rem;
+            color : white;
+            margin-top : 12px;
+            height : fit-content;
+        }
+    };
+    
+}
+
+.riderpage-timeline {
+    height : fit-content;
+    width : 100vw;
+    background-color : $color-third;
+}
+
+.youth {
+    padding-top  :10vh;
+    height : fit-content;
+    width : 100%;
+    display : flex;
+    flex-direction: row;
+    justify-content: center;
+    position :relative;
+
+    &-left {
+        width : 33%;
+        height : fit-content;
+        padding-right : 50px;
+        display : flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        p {
+            text-align: right;
+            text-transform: uppercase;
+            font-weight: bold;
+            color : white;
+            font-size : 1.5rem;
+            margin-bottom: 5px
+           
+        };
+        i {
+            margin-left : 8px
+        }
+
+    };
+    &-center {
+        width : 70px;
+        height : 70px;
+        border-radius: 50%;
+        border : 3px solid $color-main;
+        background-color : white;
+        margin-top:auto
+    };
+    &-right {
+        width : 33%;
+        padding-left : 50px;
+        height : fit-content;
+        margin-top : auto;
+        margin-bottom : auto;
+        p {
+            text-align: left;
+            text-transform: uppercase;
+            font-weight: bold;
+            color : white;
+            font-size : 3.5rem;
+            text-shadow: 2px 2px 2px black;
+            
+        }
+    }
+}
+
+.youth-listen {
+    margin-left : auto;
+    height : fit-content;
+    display : flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.youth-media {
+    transition: all 0.5s ease-in-out;
+    min-height : 20vh;
+    
+   
+    display :flex;
+    flex-direction: row;
+    div {
+        transition: all 0.5s ease-in-out;
+        width : 50%;
+    }
+    &-images {
+        transition: all 0.5s ease-in-out;
+        border-right: 2px solid white;
+    }
+    &-image {
+        display : none;
+        margin-top : 5vh;
+        width : auto;
+        height : 70%;
+        margin-left : auto;
+        margin-right: auto;
+        border-radius: 5px;
+        box-shadow: 5px 8px 15px -4px rgba(0,0,0,0.71);
+    }
+    &-info {
+        transition: all 0.5s ease-in-out;
+        p {
+            transition: all 0.5s ease-in-out;
+
+            padding-top : 5vh;
+            padding-bottom : 5vh;
+            height : 60%;
+            width : 70%;
+            color : white;
+            margin-left : auto;
+            margin-right : auto;
+            text-align: justify;
+        }
+        &-tag {
+            display : none;
+        }
+    } 
+
+}
+
+.career {
+    height : fit-content;
+    width : 100%;
+    display : flex;
+    flex-direction: row;
+    justify-content: center;
+    position :relative;
+
+    &-left {
+        width : 33%;
+        height : fit-content;
+        padding-left : 50px;
+        display : flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        p {
+            text-align: left;
+            text-transform: uppercase;
+            font-weight: bold;
+            color : white;
+            font-size : 1.5rem;
+            margin-bottom: 5px
+           
+        };
+        i {
+            margin-right : 8px
+        }
+
+    };
+    &-center {
+        width : 70px;
+        height : 70px;
+        border-radius: 50%;
+        border : 3px solid $color-main;
+        background-color : white;
+        margin-top:auto
+    };
+    &-right {
+        width : 33%;
+        padding-right : 50px;
+        height : fit-content;
+        margin-top : auto;
+        margin-bottom : auto;
+        p {
+            text-align: right;
+            text-transform: uppercase;
+            font-weight: bold;
+            color : white;
+            font-size : 3.5rem;
+            text-shadow: 2px 2px 2px black;
+            
+        }
+    }
+}
+
+.career-listen {
+    margin-right : auto;
+    height : fit-content;
+    display : flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+
+.career-media {
+    transition: all 0.5s ease-in-out;
+    min-height : 20vh;
+   
+    display :flex;
+    flex-direction: row;
+    div {
+        transition: all 0.5s ease-in-out;
+        width : 50%;
+    }
+    &-images {
+        transition: all 0.5s ease-in-out;
+        border-left: 2px solid white;
+    }
+    &-image {
+        display : none;
+        margin-top : 5vh;
+        width : auto;
+        height : 70%;
+        margin-left : auto;
+        margin-right: auto;
+        border-radius: 5px;
+        box-shadow: 5px 8px 15px -4px rgba(0,0,0,0.71);
+    }
+    &-info {
+        transition: all 0.5s ease-in-out;
+        p {
+            transition: all 0.5s ease-in-out;
+
+            padding-top : 5vh;
+            padding-bottom : 5vh;
+            height : 60%;
+            width : 70%;
+            color : white;
+            margin-top : auto;
+            margin-bottom: auto;
+            margin-left : auto;
+            margin-right : auto;
+            text-align: justify;
+        }
+        &-tag {
+            display : none;
+        }
+    } 
+
+}
+
+.aftercareer {
+    height : fit-content;
+    width : 100%;
+    display : flex;
+    flex-direction: row;
+    justify-content: center;
+    position :relative;
+
+    &-left {
+        width : 33%;
+        height : fit-content;
+        padding-right : 50px;
+        display : flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        p {
+            text-align: right;
+            text-transform: uppercase;
+            font-weight: bold;
+            color : white;
+            font-size : 1.5rem;
+            margin-bottom: 5px
+           
+        };
+        i {
+            margin-left : 8px
+        }
+
+    };
+    &-center {
+        width : 70px;
+        height : 70px;
+        border-radius: 50%;
+        border : 3px solid $color-main;
+        background-color : white;
+        margin-top:auto
+    };
+    &-right {
+        width : 33%;
+        padding-left : 50px;
+        height : fit-content;
+        margin-top : auto;
+        margin-bottom : auto;
+        p {
+            text-align: left;
+            text-transform: uppercase;
+            font-weight: bold;
+            color : white;
+            font-size : 3.5rem;
+            text-shadow: 2px 2px 2px black;
+            
+        }
+    }
+}
+
+.aftercareer-listen {
+    margin-left : auto;
+    height : fit-content;
+    display : flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.aftercareer-media {
+    transition: all 0.5s ease-in-out;
+    min-height : 20vh;
+    
+   
+    display :flex;
+    flex-direction: row;
+    div {
+        transition: all 0.5s ease-in-out;
+        width : 50%;
+    }
+    &-images {
+        transition: all 0.5s ease-in-out;
+        border-right: 2px solid white;
+    }
+    &-image {
+        display : none;
+        margin-top : 5vh;
+        width : auto;
+        height : 70%;
+        margin-left : auto;
+        margin-right: auto;
+        border-radius: 5px;
+        box-shadow: 5px 8px 15px -4px rgba(0,0,0,0.71);
+    }
+    &-info {
+        transition: all 0.5s ease-in-out;
+        p {
+            transition: all 0.5s ease-in-out;
+
+            padding-top : 5vh;
+            padding-bottom : 5vh;
+            height : 60%;
+            width : 70%;
+            color : white;
+            margin-top : auto;
+            margin-bottom: auto;
+            margin-left : auto;
+            margin-right : auto;
+            text-align: justify;
+        }
+        &-tag {
+            display : none;
+        }
+    } 
+
+}
+
+
+.rider-spacer {
+    width : 100%;
+    height : 10vh;
+    background-color : white
+}
+
+.rider-victories {
+    width : 100%;
+    height : fit-content;
+    padding-bottom: 10vh;
+    background-color : $color-third;
+
+    h1 {
+        padding-top : 10vh;
+        padding-bottom : 7.5vh;
+        color: $color-main;
+        text-transform: uppercase;
+        font-weight: bold;
+        font-size : 3rem;
+        text-align: center;
+    }
+}
+
+.rider-victory {
+    position: relative;
+    display : flex;
+    flex-direction: row;
+    width : 500px;
+    margin-left : auto;
+    margin-right : auto;
+    height : fit-content;
+    margin-top : auto;
+    margin-bottom: 25px;
+    &-count {
+        width : 90px;
+        height : 90px;
+        line-height: 90px;
+        font-size : 3rem;
+        color : $color-main;
+        font-weight: bold;
+       
+        text-align: center;
+        margin-top : auto;
+        margin-bottom: auto;
+        border-radius : 50%
+    }
+    &-year {
+        width : 90px;
+        height : 90px;
+        line-height: 90px;
+        font-size : 2rem;
+        color : $color-main;
+        font-weight: bold;
+        background-color: white;
+        text-align: center;
+        margin-top : auto;
+        margin-bottom: auto;
+        border-radius : 50%;
+        border : 2px solid $color-main;
+        z-index : 2
+    }
+    &-ride {
+        height : 60px;
+        width : 70%;
+        margin-left : -15px;
+        border : 2px solid $color-main;
+        border-radius:  5px ;
+        background-color: white;
+        margin-top : auto;
+        margin-bottom: auto;
+        &-name {
+            text-align: center;
+            padding-top : 4px;
+            margin-bottom: 0px;
+            font-weight: bold;
+        }
+        &-team {
+            text-align: center;
+        }
     }
 }

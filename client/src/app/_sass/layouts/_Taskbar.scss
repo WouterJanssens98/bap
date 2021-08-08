@@ -7,13 +7,13 @@
     z-index :3
 }
 .taskbar-actions {
-    width : 35%;
+    width : 15%;
     height : 100%;
     margin-left:  auto;
     margin-right : auto;
     display : flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: space-between;
     transition: all 0.5s ease-in-out;
     text-align: center
 }

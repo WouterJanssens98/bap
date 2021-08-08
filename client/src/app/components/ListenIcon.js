@@ -32,7 +32,7 @@ const ListenIcon = (props) => {
   return (
 
   <Fragment >
-    <i  onDrop={(ev) => {drop(ev,props.audioURL)}} onDragLeave={(ev) => leaveDrop(ev)} onDragOver={(ev) => allowDrop(ev)} className={hovering ? "listenIcon-hovering fas fa-headphones-alt" : "listenIcon fas fa-headphones-alt"}></i>   
+    <i  onDrop={(ev) => {drop(ev,props.audioURL)}} onDragLeave={(ev) => leaveDrop(ev)} onDragOver={(ev) => allowDrop(ev)} class={hovering ? `listenIcon-hovering ${props.className} fas fa-headphones-alt` : `listenIcon ${props.className} fas fa-headphones-alt`}></i>   
   </Fragment>
   );
 };

@@ -32,7 +32,7 @@ const HomePage = () => {
             <h1 className="text-center">DE FLANDRIENS</h1>
           </Slide>
           <Fade left cascade>
-          <h2 className="text-center">Een virtuele rit doorheen de geschiedenis van de Belgische wielersport</h2>
+          <h2 className="text-center">Een virtuele rit doorheen de geschiedenis <br></br>van de Belgische wielersport</h2>
           </Fade>
           
         </div>

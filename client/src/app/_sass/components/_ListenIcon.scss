@@ -1,48 +1,33 @@
 .listenIcon {
-    transition: all 0.2s ease-in-out;
-    position: absolute;
-    color : white;
-    top : -20px;
-    right : -35px;
+    transition: all 0.5s ease-in-out;
     font-size : 1.5rem;
+    color : white;
     background-color : $color-main;
     padding : 7px !important;
     border-radius: 50%;
 }
 
 .listenIcon-hovering{
-    transition: all 0.2s ease-in-out;
-    position: absolute;
+    transition: all 0.5s ease-in-out;
     color : white;
     top : -20px;
     right : -35px;
-    font-size : 1.7rem;
+    font-size : 1.5rem;
     background-color : $color-interaction;
     padding : 7px !important;
     border-radius: 50%;
 }
 
-.InfoIcon {
-    transition: all 0.2s ease-in-out;
+.rondleidingperiode-icon {
     position: absolute;
     color : white;
     top : -20px;
-    right : -80px;
-    font-size : 1.5rem;
-    background-color : $color-main;
-    padding : 7px !important;
-    border-radius: 50%;
+    right : -35px;
 }
 
-div[role="tooltip"] {
-    width : 160px !important;
+.rondleidingrenner-icon {
+    z-index : 3
 }
 
-// .InfoIcon:hover {
-//     transition: all 0.2s ease-in-out;
-//     font-size : 1.7rem;
-//     background-color : $color-interaction;
-//     padding : 7px !important;
-//     border-radius: 50%;
-// }
+
 

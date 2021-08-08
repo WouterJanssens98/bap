@@ -31,7 +31,7 @@ const Taskbar = (props) => {
             </AudioPlayerProvider>
 
             
-            <i draggable="true" onClick={(ev) => handleClick()} class=" taskbar-button fas fa-award"></i>
+            {/* <i draggable="true" onClick={(ev) => handleClick()} class=" taskbar-button fas fa-award"></i> */}
 
 
           </div>

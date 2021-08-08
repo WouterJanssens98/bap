@@ -83,9 +83,9 @@ const RondleidingPeriode = () => {
           }}>
             <div className="listen">
               <p className="rondleiding-title">{periodesData[id-1].start}-{periodesData[id-1].end}</p>
-              <ListenIcon  onClick={(ev) => handleClick(ev)} updateAudioState={updateAudioState} audioURL={periodesData[id-1].audioURL}/>
+              <ListenIcon  className={"rondleidingperiode-icon"} onClick={(ev) => handleClick(ev)} updateAudioState={updateAudioState} audioURL={periodesData[id-1].audioURL}/>
               <div onClick={(ev) => handleClick(ev)}>
-                <InfoIcon />
+                <InfoIcon className={"rondleiding-icon2"} />
               </div>
             </div>
             <div className="continue">
@@ -105,7 +105,7 @@ const RondleidingPeriode = () => {
                     &times;
                     </button>
                     {/* <div className="header">Info</div> */}
-                    <Fade top cascade>
+                    <Fade bottom cascade>
                     <div className="content">
                         <p className="periode-info">UITLEG BIJ DE JAREN {periodesData[id-1].start}-{periodesData[id-1].end}
                         </p>

@@ -1,0 +1,18 @@
+.InfoIcon {
+    transition: all 0.2s ease-in-out;
+    color : white;
+    font-size : 1.5rem;
+    background-color : $color-main;
+    padding : 7px !important;
+    border-radius: 50%;
+}
+
+div[role="tooltip"] {
+    width : 160px !important;
+}
+
+.rondleiding-icon2 {
+    position: absolute;
+    top : -20px;
+    right : -80px;
+}
