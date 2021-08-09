@@ -7,8 +7,9 @@ import { Dropdown } from 'semantic-ui-react'
 //   { key: 3, text: 'Choice 3', value: 3 },
 // ]
 
-const DropdownExampleClearable = (props) => (
-  <Dropdown fluid search className="large" id={props.id}  setState={props.setState} onChange={props.onChange} clearable options={props.options} selection />
+const DropdownExampleClearable = (props) => 
+(
+  <Dropdown fluid search className="large" id={props.id} setState={props.setState} onChange={props.onChange} clearable options={props.options} selection />
 )
 
 export default DropdownExampleClearable

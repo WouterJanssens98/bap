@@ -21,7 +21,7 @@ const ListenIcon = (props) => {
 
   async function drop(ev,url) {
     ev.preventDefault();
-    await props.updateAudioState(url);
+    await props.updateAudioState(url,props.type);
     setHovering(false)
   }
 

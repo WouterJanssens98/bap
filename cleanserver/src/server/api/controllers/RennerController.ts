@@ -36,7 +36,10 @@ class RennerController {
           bannerPicture : req.body.data.media.bannerPicture,
           youthPicture : req.body.data.media.youthPicture,
           careerPicture : req.body.data.media.careerPicture,
-          afterCareerPicture : req.body.data.media.afterCareerPicture
+          afterCareerPicture : req.body.data.media.afterCareerPicture,
+          audioURLYouth : req.body.data.media.audioURLYouth,
+          audioURLCareer : req.body.data.media.audioURLCareer,
+          audioURLAfterCareer : req.body.data.media.audioURLAfterCareer,
         },
         
         victories : { 

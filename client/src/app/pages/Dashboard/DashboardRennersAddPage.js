@@ -21,6 +21,9 @@ const DashboardRennersAddPage = () => {
     const youthPicture = useRef();
     const careerPicture = useRef();
     const afterCareerPicture = useRef();
+    const audioURLYouth = useRef();
+    const audioURLCareer = useRef();
+    const audioURLAfterCareer = useRef();
 
 
     // states to keep track of selected year
@@ -44,7 +47,7 @@ const DashboardRennersAddPage = () => {
 
 
     const Upload = async () => {
-        const pictures = [profilePicture, bannerPicture,youthPicture,careerPicture,afterCareerPicture];
+        const pictures = [profilePicture, bannerPicture];
         let result = [];
 
         for(let i=0;i<pictures.length;i++){
@@ -65,8 +68,60 @@ const DashboardRennersAddPage = () => {
         return result;
     }
 
+   
+    const Upload2 = async() => {
+        const pictures = [youthPicture,careerPicture,afterCareerPicture];
+        let result = [];
+        for(let i=0;i<pictures.length;i++){
+            let pictureArray = [];
+            let fileInput = pictures[i]
+            let files = fileInput.current.files;
+            console.log(files);
+            for(let i=0;i<files.length;i++){
+                let file = fileInput.current.files[i];
+                let newfilename = fileInput.current.files[i].name;
+                const config = {
+                    bucketName: process.env.REACT_APP_BUCKET_NAME,
+                    dirName: process.env.REACT_APP_DIR_NAME /* optional */,
+                    region: process.env.REACT_APP_REGION,
+                    accessKeyId: process.env.REACT_APP_ACCESS_ID,
+                    secretAccessKey: process.env.REACT_APP_ACCESS_KEY,
+                };
+                const ReactS3Client = new S3(config);
+                let response = await ReactS3Client.uploadFile(file,newfilename);
+                pictureArray[i] = response.location;
+            }
+            result[i] = pictureArray;          
+        }
+        return result;
+    }
+
+     
+    const Upload3 = async () => {
+        const sounds = [audioURLYouth, audioURLCareer,audioURLAfterCareer];
+        let result = [];
+
+        for(let i=0;i<sounds.length;i++){
+            let fileInput = sounds[i]
+            let file = fileInput.current.files[0];
+            let newfilename = fileInput.current.files[0].name;
+            const config = {
+                bucketName: process.env.REACT_APP_BUCKET_NAME,
+                dirName: process.env.REACT_APP_DIR_NAME /* optional */,
+                region: process.env.REACT_APP_REGION,
+                accessKeyId: process.env.REACT_APP_ACCESS_ID,
+                secretAccessKey: process.env.REACT_APP_ACCESS_KEY,
+            };
+            const ReactS3Client = new S3(config);
+            let response = await ReactS3Client.uploadFile(file,newfilename);
+            result[i] = response.location
+        }
+        return result;
+    }
+
+
     function checkCompletion ()  {
-        const pictures = [profilePicture, bannerPicture,youthPicture,careerPicture,afterCareerPicture];
+        const pictures = [profilePicture, bannerPicture,youthPicture,careerPicture,afterCareerPicture,audioURLYouth,audioURLCareer,audioURLAfterCareer];
         const name = document.getElementById('name').value;
         const nickname = document.getElementById('nickname').value;
         const placeofbirth = document.getElementById('placeofbirth').value;
@@ -99,8 +154,6 @@ const DashboardRennersAddPage = () => {
 
     const handleDropdown = (event, data) => {
         data.setState(data.value)
-        
-
       };
 
 
@@ -110,7 +163,9 @@ const DashboardRennersAddPage = () => {
         document.getElementsByClassName('error-status')[0].style.display = "none" ;
         let status = checkCompletion();
         if(status){
-            let uploadedFiles = await Upload();
+            let uploadedFiles1 = await Upload();
+            let uploadedFiles2 = await Upload2();
+            let uploadedFiles3 = await Upload3();
             const rennerData = {
                 "info" : {
                     "name" : document.getElementById('name').value,
@@ -123,11 +178,14 @@ const DashboardRennersAddPage = () => {
                     "periode" : riderPeriod
                 },
                 "media" : {
-                    "profilePicture" : uploadedFiles[0],
-                    "bannerPicture" : uploadedFiles[1],
-                    "youthPicture" : uploadedFiles[2],
-                    "careerPicture" : uploadedFiles[3],
-                    "afterCareerPicture" : uploadedFiles[4]
+                    "profilePicture" : uploadedFiles1[0],
+                    "bannerPicture" : uploadedFiles1[1],
+                    "youthPicture" : uploadedFiles2[0],
+                    "careerPicture" : uploadedFiles2[1],
+                    "afterCareerPicture" : uploadedFiles2[2],
+                    "audioURLYouth" : uploadedFiles3[0],
+                    "audioURLCareer" : uploadedFiles3[1],
+                    "audioURLAfterCareer" : uploadedFiles3[2],
                 },
                 "victories" : {
                     "one" : {
@@ -257,12 +315,17 @@ const DashboardRennersAddPage = () => {
 
                 <div class="ui form textarea addrenner-field">
                     <p class="addrenner-label">Tekstje over jeugd</p>
-                    <textarea id="youth" rows="15" cols="140" class="addrenner-input" type="text" placeholder="vb. Gent"/>
+                    <textarea id="youth" rows="15" cols="140" class="addrenner-input" type="text"/>
                 </div>
 
                 <div class="ui input addrenner-field">
-                    <p class="addrenner-label">Jeugdfoto</p>
-                    <input class="addrenner-input" ref={youthPicture} accept="image/png, image/jpeg, image/jpg" type="file" placeholder="vb. Gent"/>
+                    <p class="addrenner-label">Audiofragment jeugd</p>
+                    <input class="addrenner-input" ref={audioURLYouth} accept="audio/*" type="file"/>
+                </div>
+
+                <div class="ui input addrenner-field">
+                    <p class="addrenner-label">Jeugdfoto's</p>
+                    <input class="addrenner-input" multiple ref={youthPicture} accept="image/png, image/jpeg, image/jpg" type="file" placeholder="vb. Gent"/>
                 </div>
 
                 <div class="ui form textarea addrenner-field">
@@ -271,8 +334,13 @@ const DashboardRennersAddPage = () => {
                 </div>
 
                 <div class="ui input addrenner-field">
-                    <p class="addrenner-label">Foto in gloriedagen</p>
-                    <input class="addrenner-input" ref={careerPicture} accept="image/png, image/jpeg, image/jpg" type="file" placeholder="vb. Gent"/>
+                    <p class="addrenner-label">Audiofragment carrière</p>
+                    <input class="addrenner-input" ref={audioURLCareer} accept="audio/*" type="file"/>
+                </div>
+
+                <div class="ui input addrenner-field">
+                    <p class="addrenner-label">Foto's in gloriedagen</p>
+                    <input class="addrenner-input" multiple ref={careerPicture} accept="image/png, image/jpeg, image/jpg" type="file" placeholder="vb. Gent"/>
                 </div>
 
 
@@ -283,8 +351,13 @@ const DashboardRennersAddPage = () => {
                 </div>
 
                 <div class="ui input addrenner-field">
-                    <p class="addrenner-label">Na carrière foto</p>
-                    <input class="addrenner-input" ref={afterCareerPicture} accept="image/png, image/jpeg, image/jpg" type="file" placeholder="vb. Gent"/>
+                    <p class="addrenner-label">Audiofragment na carrière</p>
+                    <input class="addrenner-input" ref={audioURLAfterCareer} accept="audio/*" type="file"/>
+                </div>
+
+                <div class="ui input addrenner-field">
+                    <p class="addrenner-label">Na carrière foto's</p>
+                    <input class="addrenner-input" multiple ref={afterCareerPicture} accept="image/png, image/jpeg, image/jpg" type="file" placeholder="vb. Gent"/>
                 </div>
 
 

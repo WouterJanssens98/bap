@@ -16,9 +16,12 @@ interface IInfo {
 interface IMedia {
   profilePicture : string;
   bannerPicture : string;
-  youthPicture : string;
-  careerPicture : string;
-  afterCareerPicture : string;
+  youthPicture : Array<string>;
+  careerPicture : Array<string>;
+  afterCareerPicture : Array<string>;
+  audioURLYouth : string;
+  audioURLCareer : string;
+  audioURLAfterCareer : string;
 }
 interface IVictories {
   victoryOneYear : number,
@@ -64,11 +67,15 @@ const riderSchema: Schema = new Schema(
       periode : {type : String, required : true, unique : true, max :256}
     },
     media : {
-      profilePicture :  { type: String, required: true, unique: true, max: 128 },
-      bannerPicture :  { type: String, required: true, unique: true, max: 128 },
-      youthPicture :  { type: String, required: true, unique: true, max: 128 },
-      careerPicture :  { type: String, required: true, unique: true, max: 128 },
-      afterCareerPicture :  { type: String, required: true, unique: true, max: 128 },
+      profilePicture :  { type: String, required: true, unique: false, max: 128 },
+      bannerPicture :  { type: String, required: true, unique: false, max: 128 },
+      youthPicture :  { type: Array, required: true, unique: false, max: 500 },
+      careerPicture :  { type: Array, required: true, unique: false, max: 500 },
+      afterCareerPicture :  { type: Array, required: true, unique: false, max: 500 },
+      audioURLYouth :  { type: String, required: true, unique: false, max: 128 },
+      audioURLCareer :  { type: String, required: true, unique: false, max: 128 },
+      audioURLAfterCareer :  { type: String, required: true, unique: false, max: 128 },
+
     },
     victories : {
       one : {

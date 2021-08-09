@@ -48,7 +48,8 @@
     height : 220px;
     border-radius: 50%;
     margin-left : 8vw;
-    border : 1px solid $color-main
+    border : 2px solid $color-main;
+    box-shadow: 5px 8px 15px -4px rgba(0,0,0,0.71);
 }
 
 .riderpage-info-2{

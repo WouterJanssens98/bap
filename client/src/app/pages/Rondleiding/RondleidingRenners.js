@@ -21,9 +21,21 @@ const RondleidingPeriode = () => {
   const CarouselUI = ({ children }) => <div className="rider-carousel-container">{children}</div>;
   const Carousel = makeCarousel(CarouselUI);
 
-  const updateAudioState = async (url) => {
+  const updateAudioState = async (url,type) => {
     console.log("Setting new URl");
-    setAudioState(url)
+    setAudioState(url);
+    switch(type){
+      case 1:
+        openModal1();
+        break;
+      case 2:
+        openModal2();
+        break;
+      case 3:
+        openModal3();
+        break;
+    }
+    
   }
 
   const clearAudioState = async () => {
@@ -33,11 +45,16 @@ const RondleidingPeriode = () => {
   const ref = useRef();
   const ref1 = useRef();
   const ref2 = useRef();
+  const ref3 = useRef();
+
   const openModal1 = () => ref1.current.open();
   const closeModal1 = () => ref1.current.close();
 
   const openModal2 = () => ref2.current.open();
   const closeModal2 = () => ref2.current.close();
+
+  const openModal3 = () => ref3.current.open();
+  const closeModal3 = () => ref3.current.close();
 
   const handleClick = async (ev,id) => {
     ev.preventDefault();
@@ -135,7 +152,7 @@ const RondleidingPeriode = () => {
   
   return (
     <div>
-        <Taskbar update={update} start={openModal2} clearAudioState={clearAudioState} updateAudioState={updateAudioState} audioState={audioState}/>
+        <Taskbar update={update} start={console.log("starting!")} clearAudioState={clearAudioState} updateAudioState={updateAudioState} audioState={audioState}/>
         {riderData ?
         ( 
         <div className="riderpage">
@@ -148,10 +165,7 @@ const RondleidingPeriode = () => {
           }}>
               <div className="riderpage-title">
                 <p >{riderData.info.name}</p>
-                <ListenIcon className={"rondleidingperiode-icon"} onClick={(ev) => handleClick(ev)} updateAudioState={updateAudioState} audioURL={riderData.media.audioURL}/>
-                <div onClick={(ev,key) => handleClick(ev,1)}>
-                  <InfoIcon className={"rondleiding-icon2"} />
-                </div>
+                
               </div>
               <span class="scroll-btn">
                 <p >
@@ -178,7 +192,6 @@ const RondleidingPeriode = () => {
               <div className="riderpage-info-2">
                 <div className="riderpage-info-2-top">
                   <p className="riderpage-info-2-top-name">{riderData.info.name}</p>
-                  <i className="riderpage-info-2-top-icon fas fa-award"> </i>
                 </div>
                 <div className="riderpage-info-2-middle">
                   <i className="riderpage-info-2-middle-icon fas fa-birthday-cake"> </i>
@@ -199,7 +212,7 @@ const RondleidingPeriode = () => {
                     <div className="youth-left">
                       <p>{`jeugd`}</p>
                       <div className="youth-listen">
-                        <ListenIcon className={"rondleidingrenner-icon"} onClick={(ev) => handleClick(ev)} updateAudioState={updateAudioState} audioURL={riderData.media.audioURL}/> 
+                        <ListenIcon type={1} className={"rondleidingrenner-icon"} onClick={(ev) => handleClick(ev)} updateAudioState={updateAudioState} audioURL={riderData.media.audioURLYouth}/> 
                         <div onClick={(ev) => handleOpen1(ev)}>
                           <InfoIcon />
                         </div>
@@ -220,13 +233,14 @@ const RondleidingPeriode = () => {
                 
                 <Fade delay={500} left cascade>
                 <div className="youth-media-images">
-                  <div className="youth-media-image"  style={{  
-            backgroundImage: "url(" + riderData.media.youthPicture + ")",
-            backgroundPosition: 'center',
-            backgroundSize: 'cover',
-            backgroundRepeat: 'no-repeat',
-          }}>
-                  </div>
+                      <div className="youth-media-image"  style={{  
+                        backgroundImage: "url(" + riderData.media.youthPicture[0] + ")",
+                        backgroundPosition: 'center',
+                        backgroundSize: 'cover',
+                        backgroundRepeat: 'no-repeat',
+                      }}>
+                      </div>
+                      
                 </div>
                 </Fade>
                 <Fade delay={500} right cascade >
@@ -258,7 +272,7 @@ const RondleidingPeriode = () => {
                     <div className="career-left">
                       <p>{`WIELERCARRIERE`}</p>
                       <div className="career-listen">
-                        <ListenIcon className={"rondleidingrenner-icon"} onClick={(ev) => handleClick(ev)} updateAudioState={updateAudioState} audioURL={riderData.media.audioURL}/> 
+                        <ListenIcon type={2} className={"rondleidingrenner-icon"} onClick={(ev) => handleClick(ev)} updateAudioState={updateAudioState} audioURL={riderData.media.audioURLCareer}/> 
                         <div onClick={(ev) => handleOpen2(ev)}>
                           <InfoIcon />
                         </div>
@@ -274,7 +288,7 @@ const RondleidingPeriode = () => {
                 <Fade delay={500} left cascade >
                   <div className="career-media-info"> 
 
-                    <p className="career-media-info-tag">{riderData.info.youth}</p>
+                    <p className="career-media-info-tag">{riderData.info.career}</p>
                   
                   </div>
                 </Fade>
@@ -283,7 +297,7 @@ const RondleidingPeriode = () => {
                 <Fade delay={500} right cascade>
                 <div className="career-media-images">
                   <div className="career-media-image"  style={{  
-            backgroundImage: "url(" + riderData.media.careerPicture + ")",
+            backgroundImage: "url(" + riderData.media.careerPicture[0] + ")",
             backgroundPosition: 'center',
             backgroundSize: 'cover',
             backgroundRepeat: 'no-repeat',
@@ -303,7 +317,7 @@ const RondleidingPeriode = () => {
                     <div className="aftercareer-left">
                       <p>{"Na het wielrennen"}</p>
                       <div className="aftercareer-listen">
-                        <ListenIcon className={"rondleidingrenner-icon"} onClick={(ev) => handleClick(ev)} updateAudioState={updateAudioState} audioURL={riderData.media.audioURL}/> 
+                        <ListenIcon  type={3} className={"rondleidingrenner-icon"} onClick={(ev) => handleClick(ev)} updateAudioState={updateAudioState} audioURL={riderData.media.audioURLAfterCareer}/> 
                         <div onClick={(ev) => handleOpen3(ev)}>
                           <InfoIcon />
                         </div>
@@ -326,7 +340,7 @@ const RondleidingPeriode = () => {
               <Fade delay={500} left cascade>
                 <div className="aftercareer-media-images">
                   <div className="aftercareer-media-image"  style={{  
-            backgroundImage: "url(" + riderData.media.afterCareerPicture + ")",
+            backgroundImage: "url(" + riderData.media.afterCareerPicture[0] + ")",
             backgroundPosition: 'center',
             backgroundSize: 'cover',
             backgroundRepeat: 'no-repeat',
@@ -338,7 +352,7 @@ const RondleidingPeriode = () => {
                 <Fade delay={500} right cascade >
                 <div className="aftercareer-media-info"> 
 
-                  <p className="aftercareer-media-info-tag">{riderData.info.youth}</p>
+                  <p className="aftercareer-media-info-tag">{riderData.info.aftercareer}</p>
                 
                 </div>
                 </Fade>
@@ -437,11 +451,25 @@ const RondleidingPeriode = () => {
                     {/* <div className="header">Info</div> */}
                     <Fade bottom cascade>
                     <div className="content">
-                        <p className="periode-info">{riderData.info.name}
-                        </p>
-                        <div className="periode-uitleg">
-                            <p className="mt-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum quis nunc vulputate, bibendum urna in, sodales lacus. Sed pretium mi ac ultrices lobortis. Duis vitae tortor quam. Aenean et neque enim. Maecenas ac sapien non urna malesuada finibus a non leo. Maecenas a accumsan nisl, convallis consequat leo. Vivamus a aliquet enim. Curabitur non nisi eu arcu consequat feugiat eu eget dui. Cras ultrices mauris vitae massa malesuada, quis mattis diam facilisis. Praesent tempor, nulla et elementum molestie, massa mauris finibus lectus, in condimentum tortor sem quis sem. Pellentesque non libero tristique, efficitur nulla sed, tincidunt tellus. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Fusce facilisis convallis erat, sit amet lacinia diam sollicitudin et. Curabitur ut urna vel mi bibendum euismod nec a justo.</p>
-                        </div>
+                       
+                    <Carousel defaultWait={10000} maxTurns={100}>
+
+                    {riderData.media.youthPicture.map((item,index) => {
+                      return (
+                        <Slide right>
+                      <div className="carousel-innerdiv" style={{  
+                        backgroundImage: "url(" + riderData.media.youthPicture[index] + ")",
+                        backgroundPosition: 'center',
+                        backgroundSize: 'contain',
+                        backgroundRepeat: 'no-repeat',
+                      }}>
+                      </div>
+                    </Slide>
+                      )
+                    })}
+                    
+
+                  </Carousel>
                     </div>
                     </Fade>
                     <div className="actions">
@@ -451,7 +479,7 @@ const RondleidingPeriode = () => {
                           closeModal1();
                         }}
                     >
-                        INFO SLUITEN
+                        SLUITEN
                     </button>
                     </div>
                 </div>
@@ -473,16 +501,23 @@ const RondleidingPeriode = () => {
                     <Fade bottom cascade>
                     <div className="content">
                        
-                    <Carousel defaultWait={5000} >
-                    <Slide right>
+                    <Carousel defaultWait={10000} maxTurns={100}>
+
+                    {riderData.media.youthPicture.map((item,index) => {
+                      return (
+                        <Slide right>
                       <div className="carousel-innerdiv" style={{  
-                        backgroundImage: "url(" + riderData.media.bannerPicture + ")",
+                        backgroundImage: "url(" + riderData.media.careerPicture[index] + ")",
                         backgroundPosition: 'center',
                         backgroundSize: 'contain',
                         backgroundRepeat: 'no-repeat',
                       }}>
                       </div>
                     </Slide>
+                      )
+                    })}
+                    
+
                   </Carousel>
                     </div>
                     </Fade>
@@ -499,6 +534,56 @@ const RondleidingPeriode = () => {
                 </div>
                 )}
         </Popup>
+
+        <Popup      
+                modal
+                nested
+                ref={ref3}
+            >
+                {close => (
+                <div className="popup-modal completepage">
+                    <button className="close" onClick={close}>
+                    &times;
+                    </button>
+                    {/* <div className="header">Info</div> */}
+                    <Fade bottom cascade>
+                    <div className="content">
+                       
+                    <Carousel defaultWait={10000} maxTurns={100}>
+
+                    {riderData.media.youthPicture.map((item,index) => {
+                      return (
+                        <Slide right>
+                      <div className="carousel-innerdiv" style={{  
+                        backgroundImage: "url(" + riderData.media.afterCareerPicture[index] + ")",
+                        backgroundPosition: 'center',
+                        backgroundSize: 'contain',
+                        backgroundRepeat: 'no-repeat',
+                      }}>
+                      </div>
+                    </Slide>
+                      )
+                    })}
+                    
+
+                  </Carousel>
+                    </div>
+                    </Fade>
+                    <div className="actions">
+                    <button
+                        className="complete-btn-small"
+                        onClick={() => {
+                          closeModal3();
+                        }}
+                    >
+                        SLUITEN
+                    </button>
+                    </div>
+                </div>
+                )}
+        </Popup>
+
+        
 
 
         </div>
