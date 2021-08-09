@@ -7,6 +7,10 @@ import {Fade,Slide} from 'react-reveal';
 const Taskbar = (props) => {
 
   const [isPlaying, setPlayingState] = useState(false);
+
+  const [file, setFile] = useState("");
+
+
   console.log(props.audioState)
  
   const handleClick = () => {
@@ -16,6 +20,14 @@ const Taskbar = (props) => {
   function drag(ev) {
     console.log("dragging!");
   }
+  const handleFile = () => {
+    setFile("")
+  }
+
+  useEffect(() => {
+    console.log("Useffect called!")
+    setFile(props.audioState)
+  },[props.audioState]);
 
   return (
 
@@ -27,7 +39,7 @@ const Taskbar = (props) => {
             <i draggable="true" onDragStart={(ev) => drag(ev)}  class="taskbar-button fas fa-headphones-alt"></i>
 
             <AudioPlayerProvider>
-                <AudioPlayer update={props.update} clearAudioState={props.clearAudioState} updateAudioState={props.updateAudioState} file={props.audioState}/>
+                <AudioPlayer start={props.start} handleFile={handleFile} update={props.update} clearAudioState={props.clearAudioState} updateAudioState={props.updateAudioState} file={file}/>
             </AudioPlayerProvider>
 
             

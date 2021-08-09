@@ -6,6 +6,7 @@ import {useSpring, animated} from 'react-spring';
 import { Loading,ListenIcon,InfoIcon,Taskbar } from '../../components';
 import {Fade,Slide,Zoom,Mirror} from 'react-reveal';
 import Popup from 'reactjs-popup';
+import makeCarousel from 'react-reveal/makeCarousel';
 
 const RondleidingPeriode = () => {
   const { periode,id } = useParams();
@@ -16,6 +17,9 @@ const RondleidingPeriode = () => {
 
   const [open1,setOpen1] = useState(false)
   const [open2,setOpen2] = useState(false)
+
+  const CarouselUI = ({ children }) => <div className="rider-carousel-container">{children}</div>;
+  const Carousel = makeCarousel(CarouselUI);
 
   const updateAudioState = async (url) => {
     console.log("Setting new URl");
@@ -28,8 +32,12 @@ const RondleidingPeriode = () => {
 
   const ref = useRef();
   const ref1 = useRef();
+  const ref2 = useRef();
   const openModal1 = () => ref1.current.open();
   const closeModal1 = () => ref1.current.close();
+
+  const openModal2 = () => ref2.current.open();
+  const closeModal2 = () => ref2.current.close();
 
   const handleClick = async (ev,id) => {
     ev.preventDefault();
@@ -96,6 +104,11 @@ const RondleidingPeriode = () => {
 
   const update = async() => {
     console.log("Finished listening/reading")
+    setAudioState("")
+  }
+
+  const start = async() => {
+    await openModal1();
   }
 
   const initFetch = useCallback(
@@ -122,7 +135,7 @@ const RondleidingPeriode = () => {
   
   return (
     <div>
-        <Taskbar update={update} clearAudioState={clearAudioState} updateAudioState={updateAudioState} audioState={audioState}/>
+        <Taskbar update={update} start={openModal2} clearAudioState={clearAudioState} updateAudioState={updateAudioState} audioState={audioState}/>
         {riderData ?
         ( 
         <div className="riderpage">
@@ -182,7 +195,7 @@ const RondleidingPeriode = () => {
           <div className="riderpage-timeline">
 
               <div className="youth">
-                  <Fade left>
+                  <Fade delay={500} left>
                     <div className="youth-left">
                       <p>{`jeugd`}</p>
                       <div className="youth-listen">
@@ -193,19 +206,19 @@ const RondleidingPeriode = () => {
                       </div>
                     </div>
                   </Fade>
-                  <Fade bottom>
+                  <Fade delay={500} bottom>
                   <div className="youth-center"></div>
                   </Fade>
-                  <Fade right>
+                  <Fade delay={500} right>
                   <div className="youth-right">               
                     <p>1945</p>                  
                   </div>
                   </Fade>
               </div>
-              <Fade bottom cascade>
+              <Fade delay={500} bottom cascade>
               <div className="youth-media">
                 
-                <Fade left cascade>
+                <Fade delay={500} left cascade>
                 <div className="youth-media-images">
                   <div className="youth-media-image"  style={{  
             backgroundImage: "url(" + riderData.media.youthPicture + ")",
@@ -216,7 +229,7 @@ const RondleidingPeriode = () => {
                   </div>
                 </div>
                 </Fade>
-                <Fade right cascade >
+                <Fade delay={500} right cascade >
                 <div className="youth-media-info"> 
 
                   <p className="youth-media-info-tag">{riderData.info.youth}</p>
@@ -230,18 +243,18 @@ const RondleidingPeriode = () => {
               </Fade>
 
               <div className="career">
-                   <Fade left>
+                   <Fade delay={500} left>
                   <div className="career-right">               
                     <p>1965</p>                  
                   </div>
                   </Fade>
 
-                  <Fade bottom>
+                  <Fade delay={500} bottom>
                   <div className="career-center"></div>
                   </Fade>
                   
 
-                  <Fade right>
+                  <Fade delay={500} right>
                     <div className="career-left">
                       <p>{`WIELERCARRIERE`}</p>
                       <div className="career-listen">
@@ -255,10 +268,10 @@ const RondleidingPeriode = () => {
 
               </div>
 
-              <Fade bottom cascade>
+              <Fade delay={500} bottom cascade>
               <div className="career-media">
 
-                <Fade left cascade >
+                <Fade delay={500} left cascade >
                   <div className="career-media-info"> 
 
                     <p className="career-media-info-tag">{riderData.info.youth}</p>
@@ -267,7 +280,7 @@ const RondleidingPeriode = () => {
                 </Fade>
 
 
-                <Fade right cascade>
+                <Fade delay={500} right cascade>
                 <div className="career-media-images">
                   <div className="career-media-image"  style={{  
             backgroundImage: "url(" + riderData.media.careerPicture + ")",
@@ -286,7 +299,7 @@ const RondleidingPeriode = () => {
               </div>
               </Fade>
               <div className="aftercareer">
-                  <Fade left>
+                  <Fade delay={500} left>
                     <div className="aftercareer-left">
                       <p>{"Na het wielrennen"}</p>
                       <div className="aftercareer-listen">
@@ -297,20 +310,20 @@ const RondleidingPeriode = () => {
                       </div>
                     </div>
                   </Fade>
-                  <Fade bottom>
+                  <Fade delay={500} bottom>
                   <div className="aftercareer-center"></div>
                   </Fade>
-                  <Fade right>
+                  <Fade delay={500} right>
                   <div className="aftercareer-right">               
                     <p>1978</p>                  
                   </div>
                   </Fade>
               </div>
 
-              <Fade bottom cascade>
+              <Fade delay={500} bottom cascade>
               <div className="aftercareer-media">
 
-              <Fade left cascade>
+              <Fade delay={500} left cascade>
                 <div className="aftercareer-media-images">
                   <div className="aftercareer-media-image"  style={{  
             backgroundImage: "url(" + riderData.media.afterCareerPicture + ")",
@@ -322,7 +335,7 @@ const RondleidingPeriode = () => {
                 </div>
                 </Fade>
 
-                <Fade right cascade >
+                <Fade delay={500} right cascade >
                 <div className="aftercareer-media-info"> 
 
                   <p className="aftercareer-media-info-tag">{riderData.info.youth}</p>
@@ -336,7 +349,7 @@ const RondleidingPeriode = () => {
               </Fade>
 
               </div>
-              <Fade left opposite={true}>
+              <Fade delay={500} left opposite={true}>
               <div className="rider-spacer" style={{  
                   backgroundImage: "url(http://pngimg.com/uploads/cycling/cycling_PNG79.png)",
                   backgroundPosition: 'center',
@@ -351,7 +364,7 @@ const RondleidingPeriode = () => {
                 
                 <h1>Meest memorable overwinningen</h1>
                
-              <Fade left cascade>
+              <Fade delay={500} left cascade>
               <div>
                 <div className="rider-victory">
                   <p className="rider-victory-count">1</p>
@@ -398,18 +411,7 @@ const RondleidingPeriode = () => {
                   </div>
                 </div>
               </div>
-              </Fade>
-
-
-
-
-
-
-
-
-
-
-                
+              </Fade>               
               </div>
               
         </div>
@@ -421,6 +423,7 @@ const RondleidingPeriode = () => {
       }
       {riderData ?
       (
+        <div>
         <Popup      
                 modal
                 nested
@@ -453,7 +456,53 @@ const RondleidingPeriode = () => {
                     </div>
                 </div>
                 )}
-      </Popup>
+        </Popup>
+        
+        
+        <Popup      
+                modal
+                nested
+                ref={ref2}
+            >
+                {close => (
+                <div className="popup-modal completepage">
+                    <button className="close" onClick={close}>
+                    &times;
+                    </button>
+                    {/* <div className="header">Info</div> */}
+                    <Fade bottom cascade>
+                    <div className="content">
+                       
+                    <Carousel defaultWait={5000} >
+                    <Slide right>
+                      <div className="carousel-innerdiv" style={{  
+                        backgroundImage: "url(" + riderData.media.bannerPicture + ")",
+                        backgroundPosition: 'center',
+                        backgroundSize: 'contain',
+                        backgroundRepeat: 'no-repeat',
+                      }}>
+                      </div>
+                    </Slide>
+                  </Carousel>
+                    </div>
+                    </Fade>
+                    <div className="actions">
+                    <button
+                        className="complete-btn-small"
+                        onClick={() => {
+                          closeModal2();
+                        }}
+                    >
+                        SLUITEN
+                    </button>
+                    </div>
+                </div>
+                )}
+        </Popup>
+
+
+        </div>
+        
 
 
       )
