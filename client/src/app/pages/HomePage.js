@@ -26,16 +26,17 @@ const HomePage = () => {
   return (
     <Fragment>
       <div className="home-div">
-
+      <Fade top cascade>
         <div className="home-text">
-          <Slide left cascade>
+          
             <h1 className="text-center">DE FLANDRIENS</h1>
-          </Slide>
-          <Fade left cascade>
-          <h2 className="text-center">Een virtuele rit doorheen de geschiedenis <br></br>van de Belgische wielersport</h2>
-          </Fade>
+         
+         
+            <h2 className="text-center">Een virtuele rit doorheen de geschiedenis <br></br>van de Belgische wielersport</h2>
+        
           
         </div>
+        </Fade>
 
         <Button onClick={() => handleClick()} className="home-btn" color="yellow">DE GESCHIEDENIS START HIER</Button>
         {/* <Button onClick={() => handleClick2()} className="home-btn" color="yellow">DASH</Button> */}

@@ -73,22 +73,7 @@ const DashboardHomePage = () => {
                 </div>
               </div>
             </div>
-          {/* 
-            <div class="stat"> 
-              <div> 
-                <p class="stat-title">OVERWINNINGEN</p>
-              </div>
-              <div class="stat-info"> 
-                <div class="col-6">
-                  <i class="stat-icon2 fas fa-trophy"></i> 
-                </div>
-                <div class="col-6">
-                  <p class="stat-amount">25</p>
-                </div>
-              </div>
-            </div> */}
-
-           
+                     
             <div class="stat"> 
               <div> 
                 <p class="stat-title">KILOMETERS</p>
@@ -119,7 +104,7 @@ const DashboardHomePage = () => {
               >
 
               <div class="stat-featured" style={{  
-                backgroundImage: "url(" + rennerData[0].media.bannerPicture + ")",
+                backgroundImage: "url(" + rennerData[rennerData.length-1].media.bannerPicture + ")",
                 backgroundPosition: 'center',
                 backgroundSize: 'cover',
                 backgroundRepeat: 'no-repeat'
@@ -128,9 +113,9 @@ const DashboardHomePage = () => {
                 <div class="stat-featuredrider">
                   <p class="stat-title2">LAATSTE TOEVOEGING</p>
 
-                  <p class="stat-title3">{rennerData[0].info.name.toUpperCase()}</p>
+                  <p class="stat-title3">{rennerData[rennerData.length-1].info.name.toUpperCase()}</p>
 
-                  <p class="stat-title3">{rennerData[0].info.periode}</p>
+                  <p class="stat-title3">{rennerData[rennerData.length-1].info.periode}</p>
                 </div>
                   
               </div>

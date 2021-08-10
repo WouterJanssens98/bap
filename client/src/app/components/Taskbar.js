@@ -51,11 +51,6 @@ const Taskbar = (props) => {
     history.push(Routes.HOME)
   }
 
-  console.log(props.length)
-  console.log(props.id)
-
-  
-
   useEffect(() => {
     setFile(props.audioState)
   },[props.audioState,id]);
@@ -119,8 +114,10 @@ const Taskbar = (props) => {
                     return <div onClick={(ev) => handleNextPeriod(ev)} className="taskbar-link2">Volgende periode</div>
                 if (props.periode != undefined && props.length != parseInt(props.id) && parseInt(props.periodeID) != 2)
                     return <div onClick={(ev) => handleNextRider(ev)} className="taskbar-link2">Volgende renner</div>
-                if (props.periode != undefined && parseInt(props.periodeID) === 2)
-                return <div onClick={(ev) => handleEnd(ev)} className="taskbar-link2">Einde rondleiding</div>
+                if (props.periode != undefined && props.length != parseInt(props.id) && parseInt(props.periodeID) === 2)
+                    return <div onClick={(ev) => handleNextRider(ev)} className="taskbar-link2">Volgende renner</div>
+                if (props.periode != undefined && props.length === parseInt(props.id) && parseInt(props.periodeID) === 2)
+                    return <div onClick={(ev) => handleEnd(ev)} className="taskbar-link2">Einde rondleiding</div>  
                 else
                   return <p></p>
             })()
