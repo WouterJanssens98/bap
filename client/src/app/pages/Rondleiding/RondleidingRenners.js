@@ -1,5 +1,5 @@
 import { default as React, Fragment,useState, useCallback, useEffect,useRef} from 'react';
-import { useHistory, useParams } from 'react-router';
+import { useParams } from 'react-router';
 import ReactDOM from 'react-dom'
 import { useAuth, useApi } from '../../services';
 import {useSpring, animated} from 'react-spring';
@@ -9,12 +9,14 @@ import Popup from 'reactjs-popup';
 import makeCarousel from 'react-reveal/makeCarousel';
 
 const RondleidingPeriode = () => {
+  
   const { periode,id } = useParams();
-  const history = useHistory();
   const [riderData, setRiderData] = useState();
   const [audioState, setAudioState] = useState("");
-  const { getRidersFromPeriod} = useApi();
-
+  const [dataLength, setDataLength] = useState();
+  const { getRidersFromPeriod,getPeriodes} = useApi();
+  
+ 
   const [open1,setOpen1] = useState(false)
   const [open2,setOpen2] = useState(false)
 
@@ -117,7 +119,10 @@ const RondleidingPeriode = () => {
     }
   }
 
-
+  const resolvePeriodeID = (periode) => {
+    const periodes = ['1960-1970','1970-1980','1980-1990','1990-2000','2000-2010']
+    return periodes.indexOf(periode)+1
+  }
   const update = async() => {
     console.log("Finished listening/reading")
     setAudioState("")
@@ -131,7 +136,12 @@ const RondleidingPeriode = () => {
     () => {
       const getInfo = async () => {
         const ridersData = await getRidersFromPeriod(periode);
+        const periodes = await getPeriodes();
+        console.log(periodes);
+        console.log(ridersData);
+        setDataLength(ridersData.length)
         setRiderData(ridersData[id-1]);
+       
       }
       getInfo();
     });
@@ -142,15 +152,15 @@ const RondleidingPeriode = () => {
     let el = document.querySelector('.page');
     el.classList.add('fade-in');
     initFetch();
-  },[audioState]);
+  },[audioState,id]);
   
 
   
   
   return (
     <div>
-        <Taskbar update={update} start={console.log("starting!")} clearAudioState={clearAudioState} updateAudioState={updateAudioState} audioState={audioState}/>
-        {riderData ?
+        <Taskbar length={dataLength} periodeID={resolvePeriodeID(periode)} id={id} periode={periode} update={update} start={console.log("starting!")} clearAudioState={clearAudioState} updateAudioState={updateAudioState} audioState={audioState}/>
+        {riderData  ?
         ( 
         <div className="riderpage">
           <Fade bottom cascade>
@@ -432,7 +442,7 @@ const RondleidingPeriode = () => {
         )
         :
         (
-            <Loading />
+           <div></div>
         )
       }
       {riderData ?
@@ -594,7 +604,7 @@ const RondleidingPeriode = () => {
       )
       :
       (
-        <Loading />
+        <div></div>
       )
       }
   </div>

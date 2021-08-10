@@ -102,18 +102,13 @@ const CompleteInfoPage = () => {
                                 {/* <div className="header">Info</div> */}
                                 <div className="content">
                                     <p className="popup-info">DOORHEEN DEZE INTERACTIEVE RONDLEIDING KRIJG JE 
-                                    TWEE ICONEN TER BESCHIKKING. DEZE WERKEN VOLGENS HET "DRAG AND DROP" PRINCIPE.
+                                    TWEE ICONEN TER BESCHIKKING.
                                     </p>
                                     <div className="popup-iconen">
 
                                         <div className="popup-uitleg">
                                             <i class="popup-icon fas fa-headphones-alt"></i>
                                             <p className="mt-4">SLEEP DEZE HOOFDTELEFOON  NAAR GELIJKAARDIGE ICONEN OM HET GELUIDSFRAGMENT TE STARTEN</p>
-                                        </div>
-
-                                        <div className="popup-uitleg">
-                                            <i class="popup-icon fas fa-award"></i>
-                                            <p className="mt-4">SLEEP DEZE MEDAILLE NAAR GELIJKAARDIGE ICONEN OM JE FAVORIETE RENNERS TE SELECTEREN (MAXIMUM 3)</p>
                                         </div>
 
                                         <div className="popup-uitleg">

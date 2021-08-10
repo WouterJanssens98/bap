@@ -4,7 +4,9 @@
     background-color : $color-header;
     position: fixed;
     top : 0;
-    z-index :3
+    z-index :3;
+    display : flex;
+    flex-direction: row;
 }
 .taskbar-actions {
     width : 15%;
@@ -61,4 +63,43 @@
     position: fixed;
     top: 0;
     width: 100%
+}
+
+
+.taskbar-link {
+    transition: all 0.3s ease-in-out;
+    padding : 3px 6px;
+    background-color : $color-main;
+    font-weight: bold;
+    color : white;
+    margin-top : auto;
+    margin-bottom: auto;
+    position: absolute;
+    top : 3vh;
+    left : 2vw;
+    border-radius: 5px;
+    text-transform: uppercase;
+    font-size : 1rem
+}
+
+.taskbar-link2 {
+    transition: all 0.3s ease-in-out;
+    padding : 3px 6px;
+    background-color : $color-main;
+    font-weight: bold;
+    color : white;
+    margin-top : auto;
+    margin-bottom: auto;
+    position: absolute;
+    top : 3vh;
+    right : 2vw;
+    border-radius: 5px;
+    text-transform: uppercase;
+    font-size : 1rem
+}
+
+.taskbar-link:hover,.taskbar-link2:hover{
+    
+    background-color : $color-third;
+    cursor : pointer
 }

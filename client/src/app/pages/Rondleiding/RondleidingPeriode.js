@@ -48,10 +48,7 @@ const RondleidingPeriode = () => {
   }
 
   const handleRoute = async (ev) => {
-    ev.preventDefault();
-    // history.push(Routes.RONDLEIDING_RENNERS.replace(':periode',`${periodesData[id-1].start}-${periodesData[id-1].end}`).replace(':id',1));
-    history.push(Routes.RONDLEIDING_RENNERS.replace(':periode',"1960-1970").replace(':id',1));
-
+    history.push(Routes.RONDLEIDING_RENNERS.replace(':periode',`${periodesData[id-1].start}-${periodesData[id-1].end}`).replace(':id',1));
   }
 
   const update = async() => {
@@ -81,13 +78,17 @@ const RondleidingPeriode = () => {
             backgroundSize: 'cover',
             backgroundRepeat: 'no-repeat',
           }}>
+            
             <div className="listen">
+              <Fade top>
               <p className="rondleiding-title">{periodesData[id-1].start}-{periodesData[id-1].end}</p>
+              </Fade>
               <ListenIcon  className={"rondleidingperiode-icon"} onClick={(ev) => handleClick(ev)} updateAudioState={updateAudioState} audioURL={periodesData[id-1].audioURL}/>
               <div onClick={(ev) => handleClick(ev)}>
                 <InfoIcon className={"rondleiding-icon2"} />
               </div>
             </div>
+            
             <div className="continue">
               <div>
                 <button onClick={(ev) => handleRoute(ev)} class="arrow -long -huge -red"></button>
@@ -135,7 +136,7 @@ const RondleidingPeriode = () => {
       )
     :
     (
-      <Loading />
+      <div></div>
     )
     }
        

@@ -163,7 +163,9 @@ border: 1px solid #cfcece;
     flex-direction: row;
     flex-wrap:wrap;
     justify-content: space-between;
-    width : 100%
+    width : 70%;
+    margin-left: auto;
+    margin-right : auto;
 }
 
 .popup-icon {
@@ -181,7 +183,7 @@ border: 1px solid #cfcece;
     display :flex;
     flex-direction:column;
     flex-wrap : wrap;
-    width : 28%;
+    width : 40%;
     font-size: 0.9rem;
     text-align: center;
 }
