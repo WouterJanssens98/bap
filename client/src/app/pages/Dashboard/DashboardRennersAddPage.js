@@ -33,13 +33,6 @@ const DashboardRennersAddPage = () => {
     const [victoryFourthYear,setvictoryFourthYear] = useState();
     const [victoryFifthYear,setvictoryFifthYear] = useState();
 
-    // states to keep track of selected ride
-
-    const [victoryOneRide,setvictoryOneRide] = useState();
-    const [victorySecondRide,setvictorySecondRide] = useState();
-    const [victoryThirdRide,setvictoryThirdRide] = useState();
-    const [victoryFourthRide,setvictoryFourthRide] = useState();
-    const [victoryFifthRide,setvictoryFifthRide] = useState();
 
     // state to keep track of the selected period
 
@@ -107,7 +100,7 @@ const DashboardRennersAddPage = () => {
             let newfilename = fileInput.current.files[0].name;
             const config = {
                 bucketName: process.env.REACT_APP_BUCKET_NAME,
-                dirName: process.env.REACT_APP_DIR_NAME /* optional */,
+                dirName: process.env.REACT_APP_DIR_NAME2 /* optional */,
                 region: process.env.REACT_APP_REGION,
                 accessKeyId: process.env.REACT_APP_ACCESS_ID,
                 secretAccessKey: process.env.REACT_APP_ACCESS_KEY,
@@ -130,7 +123,9 @@ const DashboardRennersAddPage = () => {
         const youth = document.getElementById('youth').value;
         const career = document.getElementById('career').value;
         const aftercareer = document.getElementById('aftercareer').value;
-        if(name !== "" && nickname !== "" && placeofbirth !== "" && dateofbirth !== "" && periode !== "" && youth !== "" && career !== "" && aftercareer !== ""){
+        const startCareer = document.getElementById('startCareer').value;
+        const endCareer = document.getElementById('endCareer').value;
+        if(name !== "" && nickname !== "" && placeofbirth !== "" && dateofbirth !== "" && periode !== "" && youth !== "" && career !== "" && aftercareer !== "" && startCareer !== "" && endCareer !== ""){
             let counter = 0;
             for(let i=0;i<pictures.length;i++) {
                 let fileInput = pictures[i]
@@ -172,6 +167,8 @@ const DashboardRennersAddPage = () => {
                     "nickname" : document.getElementById('nickname').value,
                     "placeofbirth" : document.getElementById('placeofbirth').value,
                     "dateofbirth" : document.getElementById('dateofbirth').value,
+                    "startCareer" : document.getElementById('startCareer').value,
+                    "endCareer" : document.getElementById('endCareer').value,
                     "youth" : document.getElementById('youth').value,
                     "career" : document.getElementById('career').value,
                     "aftercareer" : document.getElementById('aftercareer').value,
@@ -190,27 +187,27 @@ const DashboardRennersAddPage = () => {
                 "victories" : {
                     "one" : {
                         "year" : victoryOneYear,
-                        "ride" : victoryOneRide,
+                        "ride" : document.getElementById('victoryOneRide').value,
                         "team" : document.getElementById('victoryOneTeam').value
                     },
                     "two" : {
                         "year" : victorySecondYear,
-                        "ride" : victorySecondRide,
+                        "ride" : document.getElementById('victoryTwoRide').value,
                         "team" : document.getElementById('victoryTwoTeam').value
                     },
                     "three" : {
                         "year" : victoryThirdYear,
-                        "ride" : victoryThirdRide,
+                        "ride" : document.getElementById('victoryThreeRide').value,
                         "team" : document.getElementById('victoryThreeTeam').value
                     },
                     "four" : {
                         "year" : victoryFourthYear,
-                        "ride" : victoryFourthRide,
+                        "ride" : document.getElementById('victoryFourRide').value,
                         "team" : document.getElementById('victoryFourTeam').value
                     },
                     "five" : {
                         "year" : victoryFifthYear,
-                        "ride" : victoryFifthRide,
+                        "ride" : document.getElementById('victoryFiveRide').value,
                         "team" : document.getElementById('victoryFiveTeam').value
                     }
 
@@ -228,7 +225,6 @@ const DashboardRennersAddPage = () => {
         
     }
     const periods = [
-        { key: 1, text: '1950-1960', value: "1950-1960" },
         { key: 2, text: '1960-1970', value: "1960-1970" },
         { key: 3, text: '1970-1980', value: "1970-1980" },
         { key: 4, text: '1980-1990', value: "1980-1990" },
@@ -291,14 +287,27 @@ const DashboardRennersAddPage = () => {
                 <div class="ui input addrenner-field">
                     <p class="addrenner-label">Geboortedatum</p>
                     <input id="dateofbirth" class="addrenner-input"  min="1920-01-01" max="2000-12-31" type="date"/>
-                </div>
+                </div>             
 
-                
-
-                
 
                
             </div>
+
+               
+            <div class="addrenner-form">
+
+            <div class="ui input addrenner-field">
+                    <p class="addrenner-label">Start carrière</p>
+                    <input id="startCareer" class="addrenner-input" type="text" placeholder="vb. 1950"/>
+                </div>
+
+                <div class="ui input addrenner-field">
+                    <p class="addrenner-label">Einde carrière</p>
+                    <input id="endCareer" class="addrenner-input" type="text" placeholder="vb. 1960"/>
+                </div>
+
+            </div>
+
             
             <div class="addrenner-formextra">
 
@@ -383,7 +392,9 @@ const DashboardRennersAddPage = () => {
                                 <DropdownMedium setState={setvictoryOneYear} onChange={handleDropdown} options={jaren}/>
                             </td>
                             <td>
-                                <DropdownLarge setState={setvictoryOneRide} onChange={handleDropdown} options={ritten}/>
+                            <div class="ui input">
+                                    <input class="addrenner-ploeg" id="victoryOneRide" type="text" placeholder="Ronde Van Vlaanderen"/>
+                                </div>
                             </td>
                             <td>
                                 <div class="ui input">
@@ -398,7 +409,9 @@ const DashboardRennersAddPage = () => {
                                 <DropdownMedium setState={setvictorySecondYear} onChange={handleDropdown} options={jaren}/>
                             </td>
                             <td>
-                                <DropdownLarge setState={setvictorySecondRide} onChange={handleDropdown} options={ritten}/>
+                            <div class="ui input">
+                                    <input class="addrenner-ploeg" id="victoryTwoRide" type="text" placeholder="Ronde Van Vlaanderen"/>
+                                </div>
                             </td>
                             <td>
                                 <div class="ui input">
@@ -413,7 +426,9 @@ const DashboardRennersAddPage = () => {
                                 <DropdownMedium setState={setvictoryThirdYear} onChange={handleDropdown} options={jaren}/>
                             </td>
                             <td>
-                                <DropdownLarge setState={setvictoryThirdRide} onChange={handleDropdown} options={ritten}/>
+                            <div class="ui input">
+                                    <input class="addrenner-ploeg" id="victoryThreeRide" type="text" placeholder="Ronde Van Vlaanderen"/>
+                                </div>
                             </td>
                             <td>
                                 <div class="ui input">
@@ -428,7 +443,9 @@ const DashboardRennersAddPage = () => {
                                 <DropdownMedium setState={setvictoryFourthYear} onChange={handleDropdown} options={jaren}/>
                             </td>
                             <td>
-                                <DropdownLarge setState={setvictoryFourthRide} onChange={handleDropdown} options={ritten}/>
+                            <div class="ui input">
+                                    <input class="addrenner-ploeg" id="victoryFourRide" type="text" placeholder="Ronde Van Vlaanderen"/>
+                                </div>
                             </td>
                             <td>
                                 <div class="ui input">
@@ -438,12 +455,14 @@ const DashboardRennersAddPage = () => {
                         </tr>
 
                         <tr class="renner-tablecontent">
-                            <td class="mt-2">5</td>
+                            <td class="">5</td>
                             <td>
                                 <DropdownMedium setState={setvictoryFifthYear} onChange={handleDropdown} options={jaren}/>
                             </td>
                             <td>
-                                <DropdownLarge setState={setvictoryFifthRide} onChange={handleDropdown} options={ritten}/>
+                                <div class="ui input">
+                                    <input class="addrenner-ploeg" id="victoryFiveRide" type="text" placeholder="Ronde Van Vlaanderen"/>
+                                </div>
                             </td>
                             <td>
                                 <div class="ui input">

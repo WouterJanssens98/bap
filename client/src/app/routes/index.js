@@ -7,6 +7,7 @@ export const SELECTION = '/selection';
 export const COMPLETE_INFO = '/complete-info';
 
 // USER SIDE
+export const DASHBOARD = '/dashboard';
 export const DASHBOARD_HOME = '/dashboard/overview';
 
 

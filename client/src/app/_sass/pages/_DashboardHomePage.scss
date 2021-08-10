@@ -24,7 +24,8 @@
     &-title3 {
         color : $color-main;
         font-weight : 700;
-        font-size :3rem
+        font-size :3rem;
+        text-shadow: 2px 2px 2px rgba(0,0,0,0.70);
     }
     &-amount {
         text-align : right;
@@ -55,7 +56,7 @@
         width : 71.5vw;
         margin-left : 4vw;
         margin-right : 4vw;
-        height : fit-content;
+        height : 40vh;
         box-shadow: 1px 1px 15px  $color-secondary;
         border-radius : 20px;
         background-image: url("../../assets/images/eddy.jpg");

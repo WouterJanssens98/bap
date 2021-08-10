@@ -119,7 +119,7 @@ const DashboardHomePage = () => {
               >
 
               <div class="stat-featured" style={{  
-                backgroundImage: "url(" + rennerData[0].media.youthPicture + ")",
+                backgroundImage: "url(" + rennerData[0].media.bannerPicture + ")",
                 backgroundPosition: 'center',
                 backgroundSize: 'cover',
                 backgroundRepeat: 'no-repeat'

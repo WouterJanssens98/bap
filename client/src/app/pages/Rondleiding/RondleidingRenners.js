@@ -61,7 +61,6 @@ const RondleidingPeriode = () => {
     switch(id) {
       case 1:
         openModal1();
-        console.log("1!")
         break;
       
     } 
@@ -70,7 +69,7 @@ const RondleidingPeriode = () => {
   const handleOpen1 = (ev) => {
     ev.preventDefault();
     if(open1){
-      document.getElementsByClassName('youth-media')[0].style.minHeight = "25vh";
+      document.getElementsByClassName('youth-media')[0].style.minHeight = "20vh";
       document.getElementsByClassName('youth-media-info-tag')[0].style.display = "none" ;
       document.getElementsByClassName('youth-media-image')[0].style.display = "none" ;
       setOpen1(false)
@@ -87,7 +86,7 @@ const RondleidingPeriode = () => {
   const handleOpen2 = (ev) => {
     ev.preventDefault();
     if(open2){
-      document.getElementsByClassName('career-media')[0].style.minHeight = "25vh";
+      document.getElementsByClassName('career-media')[0].style.minHeight = "20vh";
       document.getElementsByClassName('career-media-info-tag')[0].style.display = "none" ;
       document.getElementsByClassName('career-media-image')[0].style.display = "none" ;
       setOpen2(false)
@@ -104,7 +103,7 @@ const RondleidingPeriode = () => {
   const handleOpen3 = (ev) => {
     ev.preventDefault();
     if(open2){
-      document.getElementsByClassName('aftercareer-media')[0].style.minHeight = "25vh";
+      document.getElementsByClassName('aftercareer-media')[0].style.minHeight = "20vh";
       document.getElementsByClassName('aftercareer-media-info-tag')[0].style.display = "none" ;
       document.getElementsByClassName('aftercareer-media-image')[0].style.display = "none" ;
       setOpen2(false)
@@ -133,8 +132,6 @@ const RondleidingPeriode = () => {
       const getInfo = async () => {
         const ridersData = await getRidersFromPeriod(periode);
         setRiderData(ridersData[id-1]);
-        // console.log(riderData.media.audioURL)
-        console.log(ridersData);
       }
       getInfo();
     });
@@ -164,8 +161,13 @@ const RondleidingPeriode = () => {
             backgroundRepeat: 'no-repeat',
           }}>
               <div className="riderpage-title">
-                <p >{riderData.info.name}</p>
-                
+                <p >{riderData.info.name}</p>                
+              </div>
+              
+              <div className="riderpage-subtitle">
+              <Fade bottom cascade delay={750}>
+                <p >{`"${riderData.info.nickname}"`}</p>
+                </Fade>               
               </div>
               <span class="scroll-btn">
                 <p >
@@ -206,7 +208,6 @@ const RondleidingPeriode = () => {
             </div>
           </div>
           <div className="riderpage-timeline">
-
               <div className="youth">
                   <Fade delay={500} left>
                     <div className="youth-left">
@@ -220,7 +221,9 @@ const RondleidingPeriode = () => {
                     </div>
                   </Fade>
                   <Fade delay={500} bottom>
-                  <div className="youth-center"></div>
+                  <div className="youth-center">
+                    <i class="fas fa-child"></i>
+                  </div>
                   </Fade>
                   <Fade delay={500} right>
                   <div className="youth-right">               
@@ -229,8 +232,7 @@ const RondleidingPeriode = () => {
                   </Fade>
               </div>
               <Fade delay={500} bottom cascade>
-              <div className="youth-media">
-                
+              <div className="youth-media">                
                 <Fade delay={500} left cascade>
                 <div className="youth-media-images">
                       <div className="youth-media-image"  style={{  
@@ -239,32 +241,28 @@ const RondleidingPeriode = () => {
                         backgroundSize: 'cover',
                         backgroundRepeat: 'no-repeat',
                       }}>
-                      </div>
-                      
+                      </div>                      
                 </div>
                 </Fade>
                 <Fade delay={500} right cascade >
-                <div className="youth-media-info"> 
-
-                  <p className="youth-media-info-tag">{riderData.info.youth}</p>
-                
+                <div className="youth-media-info">
+                  <p className="youth-media-info-tag">{riderData.info.youth}</p>                
                 </div>
                 </Fade>
-
-
-
               </div>
               </Fade>
 
               <div className="career">
                    <Fade delay={500} left>
                   <div className="career-right">               
-                    <p>1965</p>                  
+                    <p>{riderData.info.startCareer}</p>                  
                   </div>
                   </Fade>
 
                   <Fade delay={500} bottom>
-                  <div className="career-center"></div>
+                  <div className="career-center">
+                    <i class="fas fa-bicycle"></i>
+                  </div>
                   </Fade>
                   
 
@@ -325,11 +323,13 @@ const RondleidingPeriode = () => {
                     </div>
                   </Fade>
                   <Fade delay={500} bottom>
-                  <div className="aftercareer-center"></div>
+                  <div className="aftercareer-center">
+                  <i class="fas fa-umbrella-beach"></i>
+                  </div>
                   </Fade>
                   <Fade delay={500} right>
                   <div className="aftercareer-right">               
-                    <p>1978</p>                  
+                    <p>{riderData.info.endCareer}</p>                  
                   </div>
                   </Fade>
               </div>
@@ -451,7 +451,7 @@ const RondleidingPeriode = () => {
                     {/* <div className="header">Info</div> */}
                     <Fade bottom cascade>
                     <div className="content">
-                       
+                    <h1 className="pb-2">De jeugd van {riderData.info.name} </h1>
                     <Carousel defaultWait={10000} maxTurns={100}>
 
                     {riderData.media.youthPicture.map((item,index) => {
@@ -500,7 +500,7 @@ const RondleidingPeriode = () => {
                     {/* <div className="header">Info</div> */}
                     <Fade bottom cascade>
                     <div className="content">
-                       
+                    <h1 className="pb-2">{riderData.info.name.split(' ')[0]}'s wielercarrière</h1>
                     <Carousel defaultWait={10000} maxTurns={100}>
 
                     {riderData.media.youthPicture.map((item,index) => {
@@ -548,12 +548,13 @@ const RondleidingPeriode = () => {
                     {/* <div className="header">Info</div> */}
                     <Fade bottom cascade>
                     <div className="content">
-                       
+                    <h1 className="pb-2">{riderData.info.name.split(' ')[0]} na het wielrennen</h1>
                     <Carousel defaultWait={10000} maxTurns={100}>
 
                     {riderData.media.youthPicture.map((item,index) => {
                       return (
                         <Slide right>
+                      
                       <div className="carousel-innerdiv" style={{  
                         backgroundImage: "url(" + riderData.media.afterCareerPicture[index] + ")",
                         backgroundPosition: 'center',

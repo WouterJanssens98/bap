@@ -21,7 +21,9 @@ class PeriodeController {
       const periodeCreate = new Periode({
         start: req.body.data.info.start,
         end : req.body.data.info.end,
+        description : req.body.data.info.description,
         bannerImage : req.body.data.info.bannerImage,
+        audioURL : req.body.data.info.audioURL,
         author: req.body.author,
         authorMail : req.body.authorMail,
       });

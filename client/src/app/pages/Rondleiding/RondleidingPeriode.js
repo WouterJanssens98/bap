@@ -50,7 +50,7 @@ const RondleidingPeriode = () => {
   const handleRoute = async (ev) => {
     ev.preventDefault();
     // history.push(Routes.RONDLEIDING_RENNERS.replace(':periode',`${periodesData[id-1].start}-${periodesData[id-1].end}`).replace(':id',1));
-    history.push(Routes.RONDLEIDING_RENNERS.replace(':periode',"1950-1960").replace(':id',1));
+    history.push(Routes.RONDLEIDING_RENNERS.replace(':periode',"1960-1970").replace(':id',1));
 
   }
 
@@ -110,7 +110,7 @@ const RondleidingPeriode = () => {
                         <p className="periode-info">UITLEG BIJ DE JAREN {periodesData[id-1].start}-{periodesData[id-1].end}
                         </p>
                         <div className="periode-uitleg">
-                            <p className="mt-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum quis nunc vulputate, bibendum urna in, sodales lacus. Sed pretium mi ac ultrices lobortis. Duis vitae tortor quam. Aenean et neque enim. Maecenas ac sapien non urna malesuada finibus a non leo. Maecenas a accumsan nisl, convallis consequat leo. Vivamus a aliquet enim. Curabitur non nisi eu arcu consequat feugiat eu eget dui. Cras ultrices mauris vitae massa malesuada, quis mattis diam facilisis. Praesent tempor, nulla et elementum molestie, massa mauris finibus lectus, in condimentum tortor sem quis sem. Pellentesque non libero tristique, efficitur nulla sed, tincidunt tellus. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Fusce facilisis convallis erat, sit amet lacinia diam sollicitudin et. Curabitur ut urna vel mi bibendum euismod nec a justo.</p>
+                            <p className="mt-4">{periodesData[id-1].description}</p>
                         </div>
                     </div>
                     </Fade>

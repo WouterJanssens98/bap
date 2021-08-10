@@ -12,8 +12,9 @@ const DashboardPeriodesAddPage = () => {
     const {currentUser, getCookie} = useAuth();
     const {createPeriode} = useApi();
     const bannerPicture = useRef();
+    const audioURL = useRef();
 
-    const Upload = async () => {
+    const Upload1 = async () => {
       const pictures = [bannerPicture];
       let result = [];
 
@@ -35,13 +36,37 @@ const DashboardPeriodesAddPage = () => {
       return result;
     }
 
+    const Upload2 = async () => {
+      const audio = [audioURL];
+      let result = [];
+
+      for(let i=0;i<audio.length;i++){
+          let fileInput = audio[i]
+          let file = fileInput.current.files[0];
+          let newfilename = fileInput.current.files[0].name;
+          const config = {
+              bucketName: process.env.REACT_APP_BUCKET_NAME,
+              dirName: process.env.REACT_APP_DIR_NAME2 /* optional */,
+              region: process.env.REACT_APP_REGION,
+              accessKeyId: process.env.REACT_APP_ACCESS_ID,
+              secretAccessKey: process.env.REACT_APP_ACCESS_KEY,
+          };
+          const ReactS3Client = new S3(config);
+          let response = await ReactS3Client.uploadFile(file,newfilename);
+          result[i] = response.location
+      }
+      return result;
+    }
+
+
 
 
     function checkCompletion ()  {
       const pictures = [bannerPicture];
       const start = document.getElementById('start').value;
       const end = document.getElementById('end').value;
-      if(start !== "" && end !== "" ){
+      const description = document.getElementById('description').value;
+      if(start !== "" && end !== "" && description !== ""){
           let counter = 0;
           for(let i=0;i<pictures.length;i++) {
               let fileInput = pictures[i]
@@ -65,19 +90,23 @@ const DashboardPeriodesAddPage = () => {
         document.getElementsByClassName('error-status')[0].style.display = "none" ;
         let status = checkCompletion();
         if(status){
-            let uploadedFiles = await Upload();
+            let uploadedImages = await Upload1();
+            let uploadedSounds = await Upload2();
             const start = document.getElementById('start').value;
             const end = document.getElementById('end').value;
+            const description = document.getElementById('description').value;
             const periodeData = {
               "info" : {
                 "start" : start,
                 "end" : end,
-                "bannerImage" : uploadedFiles[0]
+                "bannerImage" : uploadedImages[0],
+                "audioURL" : uploadedSounds[0],
+                "description" : description
               }
             }
             const request = await createPeriode(periodeData,JSON.parse(getCookie('user')),JSON.parse(getCookie('userEmail')))
             if(request.status === 201 ){
-                history.push(Routes.DASHBOARD_RENNERS)
+                history.push(Routes.DASHBOARD_PERIODES)
             } else {
                 document.getElementsByClassName('error-status')[0].style.display = "block" ;
             }
@@ -107,6 +136,11 @@ const DashboardPeriodesAddPage = () => {
                     <p class="addrenner-label">EINDJAAR</p>
                     <input id="end" class="addrenner-input" type="text" placeholder="vb. 1970"/>
                 </div>
+
+                <div class="ui form textarea addrenner-field">
+                    <p class="addrenner-label">Tekst over periode</p>
+                    <textarea id="description" rows="15" cols="140" class="addrenner-input" type="text"/>
+                </div>
           </div>
 
             <div class="addrenner-formextra">
@@ -115,6 +149,19 @@ const DashboardPeriodesAddPage = () => {
                     <p class="addrenner-label">Omslagfoto (horizontaal)</p>
                     <input class="addrenner-input" ref={bannerPicture} accept="image/png, image/jpeg, image/jpg" type="file" placeholder="vb. Gent"/>
                 </div>
+
+                
+
+            </div>
+
+            <div class="addrenner-formextra">
+
+                <div class="ui input addrenner-field">
+                    <p class="addrenner-label">Audiofragment</p>
+                    <input class="addrenner-input" ref={audioURL} accept="audio/*" type="file"/>
+                </div>
+
+                
 
             </div>
                        

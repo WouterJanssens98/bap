@@ -3,7 +3,9 @@ import { IUser} from './user.model';
 interface IPeriode extends Document {
   start : number;
   end : number;
+  description : string;
   bannerImage : string;
+  audioURL : string;
   author : IUser['_id'];
   authorMail : string;
   _createdAt: number;
@@ -15,7 +17,9 @@ const periodeSchema: Schema = new Schema(
   {
     start: { type: Number, required: true, unique: false, max: 2030 },
     end : { type : Number, required : true, unique : false , max :2030},
-    bannerImage : { type : String, required : false, unique : false, max : 128},
+    description : { type : String, required : true, unique : false , max :2030},
+    bannerImage : { type : String, required : true, unique : false, max : 128},
+    audioURL : { type : String, required : true, unique : false, max : 128},
     _createdAt: { type: Number, required: true, default: Date.now() },
     _modifiedAt: { type: Number, required: false, default: null },
     _deletedAt: { type: Number, required: false, default: null },

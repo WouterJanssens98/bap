@@ -79,7 +79,7 @@ const DashboardPeriodesPage = () => {
               :
               (
                 
-                  <td class="renner-emptytable">Nog geen renners toegevoegd.</td>
+                  <td class="renner-emptytable">Nog geen periodes toegevoegd.</td>
                
               )
             )
