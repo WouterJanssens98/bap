@@ -33,3 +33,12 @@ export const DASHBOARD_PERIODES_EDIT = '/dashboard/periodes/edit/:id';
 export const RONDLEIDING_PERIODE = '/rondleiding/:id'
 export const RONDLEIDING_RENNERS = '/rondleiding/:periode/:id'
 
+// EIGEN KEUZES
+
+export const SELECTIE = '/selectie'
+
+export const SELECTIE_PERIODE = '/selectie/:periode'
+
+export const SELECTIE_RENNER = '/selectie/:periode/:id'
+
+

@@ -7,16 +7,18 @@ import {Fade,Slide} from 'react-reveal';
 
 const SelectionPage = () => {
 
-  
+  const { getPeriodes} = useApi();
   let history = useHistory();
 
   const handleClick2 = () => {
-    history.push(Routes.DASHBOARD_HOME)
+    history.push(Routes.SELECTIE)
   }
 
   const handleClick = () => {
     history.push(Routes.COMPLETE_INFO)
   }
+
+
   useEffect(() => {
     let el = document.querySelector('.page');
     el.classList.add('fade-in');
@@ -35,7 +37,7 @@ const SelectionPage = () => {
         </Slide>
 
         <Slide right>
-        <div className="selection2">
+        <div onClick={handleClick2}  className="selection2">
             <Slide left>
             <p className="selection-text2">ZELF  <br></br>ONTDEKKEN</p>
             </Slide>

@@ -1,0 +1,83 @@
+import { default as React, Component  ,Fragment,useState,useEffect,useCallback, useRef} from 'react';
+import { useAuth, useApi } from '../../services';
+import * as Routes from '../../routes';
+import { useParams } from 'react-router';
+import { Button } from 'semantic-ui-react';
+import { useHistory } from 'react-router-dom';
+import {Fade,Slide} from 'react-reveal';
+
+const SelectiePeriode = () => {
+
+    const { periode } = useParams();
+    const { getRidersFromPeriod} = useApi();
+    let history = useHistory();
+    const [riderData, setRiderData] = useState();
+    const initFetch = useCallback(
+      () => {
+        const getInfo = async () => {
+          const riders = await getRidersFromPeriod(periode);
+          console.log(riders);
+          setRiderData(riders);
+        }
+        getInfo();
+      });
+
+    useEffect(() => {
+        let el = document.querySelector('.page');
+        el.classList.add('fade-in');
+        initFetch();
+      });
+
+  return (
+       <Fragment>
+            <div className="selectie-div2">
+            <a href={'/selectie'} >
+                <div className="selectie-return">
+                Periodes bekijken
+                  </div>
+                
+              </a>
+
+                {riderData ? 
+
+                (<Fade bottom cascade>
+                  <div className="selectie-outer-div2">
+                  {
+                      riderData.map((item,index) => {
+                        return (
+                         
+                        <a href={`/selectie/${item.start}-${item.end}`} className="selectie-inner-div2" style={{  
+                          backgroundImage: "url(" + item.media.bannerPicture + ")",
+                          backgroundPosition: 'center',
+                          backgroundSize: 'cover',
+                          backgroundRepeat: 'no-repeat',
+                          width : `${100/riderData.length}vw`
+                        
+                        }}>
+                          <p className="selectie-inner-text2">{`${item.info.name}`}</p>
+                        </a>
+                       
+                     
+                        )
+                      })
+                  }
+                  </div>
+                  </Fade>
+
+
+
+                )
+                :
+                (
+                  <p></p>
+                )
+                }                        
+                
+                    
+                    
+            </div>
+        </Fragment>
+  );
+};
+
+export default SelectiePeriode;

@@ -6,6 +6,7 @@ import { default as SelectionPage} from './SelectionPage';
 import { default as CompleteInfoPage} from './CompleteInfoPage';
 import {DashboardHomePage,DashboardRennersPage,DashboardRittenPage,DashboardPeriodesPage,DashboardRennersAddPage,DashboardRittenAddPage,DashboardPeriodesAddPage,DashboardPeriodesShow,DashboardPeriodesEdit} from './Dashboard';
 import {RondleidingPeriode,RondleidingRenners} from './Rondleiding';
+import {Selectie,SelectiePeriode,SelectieRenner} from './Selectie';
 export {
 	SjabloonPage,
 	HomePage,
@@ -23,5 +24,8 @@ export {
 	SignInPage,
 	SignUpPage,
 	DashboardPeriodesShow,
-	DashboardPeriodesEdit
+	DashboardPeriodesEdit,
+	Selectie,
+	SelectiePeriode,
+	SelectieRenner
 }

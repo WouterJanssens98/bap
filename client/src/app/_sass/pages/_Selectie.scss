@@ -1,0 +1,55 @@
+.selectie-div {
+    position: relative;
+    width : 100%;
+    height : 100vh;
+    background-color : $color-third;
+}
+
+.selectie-outer-div {
+    position: absolute;
+    top : 12.5%;
+    width : 100%;
+    height : 75vh;
+    display : flex;
+    flex-direction: row;
+    
+    
+}
+
+.selectie-inner-div {
+    position :relative;
+    width : 20vw;
+    transition: all 0.5s ease-in-out;
+    height : 100%;
+    // border: 1px solid rgba(0, 0, 0, .5);
+   
+
+}
+
+.selectie-inner-text {
+    transition: all 0.5s ease-in-out;
+    font-size : 2rem;
+    color : black;
+    margin-left  :10px;
+    background-color : white;
+    margin : 0px;
+    padding-left : 10px;
+    text-align: center;
+
+}
+
+.selectie-inner-div:hover {
+    transition: all 0.5s ease-in-out;
+    width : 50vw !important;
+    border-left : 4px solid $color-main;
+    border-right : 4px solid $color-main;
+   
+
+    .selectie-inner-div {
+        width : 12.5vw !important;
+    };
+    .selectie-inner-text {
+        font-weight: bold;
+    }
+
+}

@@ -1,6 +1,8 @@
 import { default as React, Fragment,useState, useCallback, useEffect,useRef} from 'react';
 import { useParams } from 'react-router';
-import ReactDOM from 'react-dom'
+import { useHistory } from 'react-router-dom';
+import ReactDOM from 'react-dom';
+import * as Routes from '../../routes';
 import { useAuth, useApi } from '../../services';
 import {useSpring, animated} from 'react-spring';
 import { Loading,ListenIcon,InfoIcon,Taskbar } from '../../components';
@@ -15,7 +17,7 @@ const RondleidingPeriode = () => {
   const [audioState, setAudioState] = useState("");
   const [dataLength, setDataLength] = useState();
   const { getRidersFromPeriod,getPeriodes} = useApi();
-  
+  let history = useHistory();
  
   const [open1,setOpen1] = useState(false)
   const [open2,setOpen2] = useState(false)
@@ -145,7 +147,10 @@ const RondleidingPeriode = () => {
       }
       getInfo();
     });
-
+  
+  const testHandler = async (ev) => {
+    history.push(Routes.RONDLEIDING_RENNERS.replace(':periode',periode).replace(':id',parseInt(id)+1))
+  }
     
     
   useEffect(() => {
@@ -386,7 +391,7 @@ const RondleidingPeriode = () => {
              
               <div className="rider-victories">
                 
-                <h1>Meest memorable overwinningen</h1>
+                <h1 onClick={(ev) => testHandler(ev)} >Meest memorable overwinningen</h1>
                
               <Fade delay={500} left cascade>
               <div>
@@ -469,8 +474,8 @@ const RondleidingPeriode = () => {
                         <Slide right>
                       <div className="carousel-innerdiv" style={{  
                         backgroundImage: "url(" + riderData.media.youthPicture[index] + ")",
-                        backgroundPosition: 'center',
-                        backgroundSize: 'contain',
+                        
+                        backgroundSize: 'cover',
                         backgroundRepeat: 'no-repeat',
                       }}>
                       </div>
@@ -513,7 +518,7 @@ const RondleidingPeriode = () => {
                     <h1 className="pb-2">{riderData.info.name.split(' ')[0]}'s wielercarrière</h1>
                     <Carousel defaultWait={10000} maxTurns={100}>
 
-                    {riderData.media.youthPicture.map((item,index) => {
+                    {riderData.media.careerPicture.map((item,index) => {
                       return (
                         <Slide right>
                       <div className="carousel-innerdiv" style={{  
@@ -561,7 +566,7 @@ const RondleidingPeriode = () => {
                     <h1 className="pb-2">{riderData.info.name.split(' ')[0]} na het wielrennen</h1>
                     <Carousel defaultWait={10000} maxTurns={100}>
 
-                    {riderData.media.youthPicture.map((item,index) => {
+                    {riderData.media.afterCareerPicture.map((item,index) => {
                       return (
                         <Slide right>
                       

@@ -1254,3 +1254,9 @@
 2021-08-10 17:26:05 [[32minfo[39m]: 	Server is listening on localhost:8080 {
   "object": {}
 }
+2021-08-11 08:36:57 [[32minfo[39m]: 	Connected to the mongodb database {
+  "object": {}
+}
+2021-08-11 08:36:57 [[32minfo[39m]: 	Server is listening on localhost:8080 {
+  "object": {}
+}

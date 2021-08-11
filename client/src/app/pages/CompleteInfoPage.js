@@ -62,6 +62,12 @@ const CompleteInfoPage = () => {
   return (
        <Fragment>
             <div className="complete-div">
+            <a href={'/selection'} >
+                <div className="selectie-return">
+                naar keuzemenu
+                  </div>
+                
+              </a>
                 
                     <div className="complete-info">
                         <h1 className="complete-info-title">VERVOLLEDIG JOUW PROFIEL</h1>

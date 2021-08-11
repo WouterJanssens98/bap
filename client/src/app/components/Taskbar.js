@@ -65,11 +65,11 @@ const Taskbar = (props) => {
           (
             props.id> 1 ?
             (
-              <div onClick={(ev) => handlePreviousRider(ev)} className="taskbar-link">Vorige renner</div>
+              <a href={Routes.RONDLEIDING_RENNERS.replace(':periode',props.periode).replace(':id',props.id-1)} className="taskbar-link">Vorige renner</a>
             )
               :
             (
-              <div onClick={(ev) => handlePreviousPeriod(ev)} className="taskbar-link">Terug naar periode</div>
+              <a href={Routes.RONDLEIDING_PERIODE.replace(':id',props.periodeID)} className="taskbar-link">naar overzicht</a>
             )
           )
           :
@@ -77,6 +77,25 @@ const Taskbar = (props) => {
             <p></p>
           )
           }
+
+          {props.periode === undefined ? 
+          (
+            id> 1 ?
+            (
+              <a href={Routes.RONDLEIDING_PERIODE.replace(':id',id-1)} className="taskbar-link">vorige periode</a>
+            )
+              :
+            (
+              <a href={Routes.SELECTION} className="taskbar-link">naar keuze</a>
+            )
+          )
+          :
+          (
+            <p></p>
+          )
+          }   
+
+
           <div className="taskbar-actions">
 
             <i draggable="true" onDragStart={(ev) => drag(ev)}  class="taskbar-button fas fa-headphones-alt"></i>
@@ -88,36 +107,16 @@ const Taskbar = (props) => {
 
           </div>
 
-
-          {/* {props.periode != undefined ? 
-          (
-
-            props.length === parseInt(props.id)?
-            ( 
-              
-              <div onClick={(ev) => handleNextPeriod(ev)} className="taskbar-link2">Volgende periode</div>
-            )
-              :
-            (
-              <div onClick={(ev) => handleNextRider(ev)} className="taskbar-link2">Volgende renner</div>
-            )
-          )
-          :
-          (
-            <p></p>
-          )
-          } */}
-
           {
             (() => {
                 if (props.periode != undefined && props.length === parseInt(props.id) && parseInt(props.periodeID) != 2)
-                    return <div onClick={(ev) => handleNextPeriod(ev)} className="taskbar-link2">Volgende periode</div>
+                    return <a href={Routes.RONDLEIDING_PERIODE.replace(':id',props.periodeID+1)} className="taskbar-link2">Volgende periode</a>
                 if (props.periode != undefined && props.length != parseInt(props.id) && parseInt(props.periodeID) != 2)
-                    return <div onClick={(ev) => handleNextRider(ev)} className="taskbar-link2">Volgende renner</div>
+                    return <a href={Routes.RONDLEIDING_RENNERS.replace(':periode',props.periode).replace(':id',parseInt(props.id)+1)} className="taskbar-link2">Volgende renner</a>
                 if (props.periode != undefined && props.length != parseInt(props.id) && parseInt(props.periodeID) === 2)
-                    return <div onClick={(ev) => handleNextRider(ev)} className="taskbar-link2">Volgende renner</div>
+                    return <a href={Routes.RONDLEIDING_RENNERS.replace(':periode',props.periode).replace(':id',parseInt(props.id)+1)} className="taskbar-link2">Volgende renner</a>
                 if (props.periode != undefined && props.length === parseInt(props.id) && parseInt(props.periodeID) === 2)
-                    return <div onClick={(ev) => handleEnd(ev)} className="taskbar-link2">Einde rondleiding</div>  
+                    return <a href={Routes.HOME} className="taskbar-link2">Einde rondleiding</a>  
                 else
                   return <p></p>
             })()

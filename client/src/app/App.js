@@ -1,4 +1,4 @@
-import React from 'react';
+import {React ,useEffect} from 'react';
 import {BrowserRouter as Router, Redirect, Switch} from 'react-router-dom';
 import * as Routes from './routes';
 import * as  Pages from './pages';
@@ -12,6 +12,8 @@ import 'reactjs-popup/dist/index.css';
 import './app.scss';
 
 function App() {
+  
+
   return (
     <div className="app">
       <AuthProvider>
@@ -21,8 +23,10 @@ function App() {
               <Redirect exact from={Routes.DASHBOARD} to={Routes.DASHBOARD_HOME} />
               <RouteWithLayout exact path={Routes.HOME} component={Pages.HomePage} layout={PageLayout}/>
               <RouteWithLayout exact path={Routes.SELECTION} component={Pages.SelectionPage} layout={PageLayout}/>
+              <RouteWithLayout exact path={Routes.SELECTIE} component={Pages.Selectie} layout={PageLayout}/>
+              <RouteWithLayout exact path={Routes.SELECTIE_PERIODE} component={Pages.SelectiePeriode} layout={PageLayout}/>
               <RouteWithLayout exact path={Routes.COMPLETE_INFO} component={Pages.CompleteInfoPage} layout={PageLayout}/>
-              <RouteWithLayout exact path={Routes.RONDLEIDING_PERIODE} component={Pages.RondleidingPeriode} layout={TaskbarLayout}/>
+              <RouteWithLayout exact path={Routes.RONDLEIDING_PERIODE} component={Pages.RondleidingPeriode} layout={PageLayout}/>
               <RouteWithLayout exact path={Routes.RONDLEIDING_RENNERS} component={Pages.RondleidingRenners} layout={PageLayout}/>
               <AuthRouteWithLayout exact path={Routes.DASHBOARD_HOME} component={Pages.DashboardHomePage} layout={DashboardLayout}/>
               <AuthRouteWithLayout exact path={Routes.DASHBOARD_RENNERS} component={Pages.DashboardRennersPage} layout={DashboardLayout}/>
