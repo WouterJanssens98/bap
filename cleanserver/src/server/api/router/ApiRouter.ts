@@ -10,7 +10,8 @@ import {
   UserController,
   PeriodeController,
   RennerController,
-  RittenController
+  RittenController,
+  ScoreController
 } from '../controllers';
 
 class ApiRouter {
@@ -19,6 +20,7 @@ class ApiRouter {
   private rennerController: RennerController;
   private userController: UserController;
   private rittenController: RittenController;
+  private scoreController: ScoreController;
   private config: IConfig;
   private authService: AuthService;
 
@@ -37,6 +39,7 @@ class ApiRouter {
     this.periodeController = new PeriodeController();
     this.rennerController = new RennerController();
     this.rittenController = new RittenController();
+    this.scoreController = new ScoreController();
    
   }
 
@@ -56,9 +59,6 @@ class ApiRouter {
 
 
     /// PROJECT ROUTES ///
-
-
-
 
     /*
      * Periode routes
@@ -87,7 +87,12 @@ class ApiRouter {
       this.router.get('/ritten/:id', this.rittenController.show)
 
 
-
+       /*
+     * Score routes
+     */
+      this.router.get('/score/', this.rittenController.index)
+      this.router.post('/score/add', this.scoreController.create)
+      
     
 
   }

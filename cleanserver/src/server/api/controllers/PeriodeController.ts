@@ -61,7 +61,7 @@ class PeriodeController {
     ) => {
       try {
         const { id } = req.params;
-        const portfolio = await Portfolio.find( { "referredUser" : id } )
+        const portfolio = await Periode.find( { "referredUser" : id } )
         .populate({
           path : 'values',
           populate : {
@@ -86,7 +86,7 @@ class PeriodeController {
         };
 
         // TO DO eventueel berekeningen in backend doen
-        const portfolio = await Portfolio.findOneAndUpdate({ _id: id }, portfolioUpdate, {
+        const portfolio = await Periode.findOneAndUpdate({ _id: id }, portfolioUpdate, {
           new: true,
         }).exec();
   
@@ -105,7 +105,7 @@ class PeriodeController {
       console.log(req.body);
       const { id } = req.params;
       try {
-        const portfolioCreate = new Portfolio({
+        const portfolioCreate = new Periode({
           referredUser: id
         });
         const portfolio = await portfolioCreate.save();
@@ -120,7 +120,7 @@ class PeriodeController {
     add = async (req: Request, res: Response, next: NextFunction) => {
       const { id } = req.params;
       const user = req.body.referredUser;
-      const portfolio = await Portfolio.update( 
+      const portfolio = await Periode.update( 
         { "referredUser" : user }, 
         {$push : {
           referredValues : id
@@ -129,18 +129,6 @@ class PeriodeController {
     };
 
     
-    
-    remove = async (req: Request, res: Response, next: NextFunction) => {
-      const { id } = req.params;
-      const user = req.body.referredUser;
-      const portfolio = await Portfolio.update( 
-        { "referredUser" : user }, 
-        {$pull : {
-          referredValues : id
-        }} );
-        return res.status(201).json(portfolio);
-    };
-
 
 
 }

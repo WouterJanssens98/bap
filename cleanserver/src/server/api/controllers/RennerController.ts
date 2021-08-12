@@ -104,7 +104,7 @@ class RennerController {
       res: Response,
       next: NextFunction,
     ): Promise<Response<any>> => {
-      const periode : IRider = await Rider.find().exec();
+      const periode : Array<IRider> = await Rider.find().exec();
       // .populate({
       //   path : 'values',
       //   populate : {
@@ -142,7 +142,7 @@ class RennerController {
         };
 
         // TO DO eventueel berekeningen in backend doen
-        const portfolio = await Portfolio.findOneAndUpdate({ _id: id }, portfolioUpdate, {
+        const portfolio = await Rider.findOneAndUpdate({ _id: id }, portfolioUpdate, {
           new: true,
         }).exec();
   
@@ -157,45 +157,7 @@ class RennerController {
 
     
 
-    store = async (req: Request, res: Response, next: NextFunction) => {
-      console.log(req.body);
-      const { id } = req.params;
-      try {
-        const portfolioCreate = new Portfolio({
-          referredUser: id
-        });
-        const portfolio = await portfolioCreate.save();
-        return res.status(201).json(portfolio);
-      } catch (err) {
-        console.log(err);
-        next(err);
-      }
-    };
-
     
-    add = async (req: Request, res: Response, next: NextFunction) => {
-      const { id } = req.params;
-      const user = req.body.referredUser;
-      const portfolio = await Portfolio.update( 
-        { "referredUser" : user }, 
-        {$push : {
-          referredValues : id
-        }} );
-        return res.status(201).json(portfolio);
-    };
-
-    
-    
-    remove = async (req: Request, res: Response, next: NextFunction) => {
-      const { id } = req.params;
-      const user = req.body.referredUser;
-      const portfolio = await Portfolio.update( 
-        { "referredUser" : user }, 
-        {$pull : {
-          referredValues : id
-        }} );
-        return res.status(201).json(portfolio);
-    };
 
 
 

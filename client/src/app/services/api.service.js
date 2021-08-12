@@ -4,33 +4,9 @@ import { apiConfig } from '../config';
 const ApiContext = createContext();
 const useApi = () => useContext(ApiContext);
 const ApiProvider = ({children}) => {
-  // const BASE_URL = `${apiConfig.baseURL}`;
 
-
-
-  // API CALLS VOOR PERIODES
-  const createPeriode = async (data,author, authorMail) => {
-    let url = `/api/periode/add`;
-
-    const options = {
-      method: "post",
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        "data" : data,
-        "author" :author,
-        "authorMail" : authorMail
-      })
-    };
-    const response = await fetch(url, options);
-    if(response.status === 201){
-      return response
-    }else{
-      return(`Invalid response from API : status ${response.status}`)
-    }
-  }
+  
+  // API CALLS FOR GETTING DATA
 
   const getRenners = async () => {
     let url = `/api/renner`;
@@ -103,8 +79,30 @@ const ApiProvider = ({children}) => {
   }
 
 
-  // API CALLS VOOR RENNERS
+  // API CALLS FOR CREATING
 
+  const createPeriode = async (data,author, authorMail) => {
+    let url = `/api/periode/add`;
+
+    const options = {
+      method: "post",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        "data" : data,
+        "author" :author,
+        "authorMail" : authorMail
+      })
+    };
+    const response = await fetch(url, options);
+    if(response.status === 201){
+      return response
+    }else{
+      return(`Invalid response from API : status ${response.status}`)
+    }
+  }
 
   const createRenner = async (data,author,authorMail) => {
     let url = `/api/renner/add`;
@@ -145,7 +143,27 @@ const ApiProvider = ({children}) => {
         "authorMail" : authorMail
       })
     };
-    console.log(data);
+    const response = await fetch(url, options);
+    if(response.status === 201){
+      return response
+    }else{
+      return(`Invalid response from API : status ${response.status}`)
+    }
+  }
+
+  const createScore = async (data) => {
+    let url = `/api/score/add`;
+
+    const options = {
+      method: "post",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        "data" : data,
+      })
+    };
     const response = await fetch(url, options);
     if(response.status === 201){
       return response
