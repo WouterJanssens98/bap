@@ -8,6 +8,7 @@ const ApiProvider = ({children}) => {
   
   // API CALLS FOR GETTING DATA
 
+
   const getRenners = async () => {
     let url = `/api/renner`;
 
@@ -175,7 +176,7 @@ const ApiProvider = ({children}) => {
 
   return (
     <ApiContext.Provider value={{ 
-      createPeriode,getPeriodes,getPeriode,createRenner,getRenners,createRit,getRitten,getRidersFromPeriod
+      createPeriode,getPeriodes,getPeriode,createRenner,getRenners,createRit,getRitten,getRidersFromPeriod,createScore
       
       }}>
       {children}

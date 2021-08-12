@@ -2,8 +2,7 @@ import { default as React, Fragment,useState, useCallback, useEffect,useRef} fro
 import { useHistory, useParams } from 'react-router';
 import ReactDOM from 'react-dom';
 import * as Routes from '../../routes';
-import { useAuth, useApi } from '../../services';
-import {useSpring, animated} from 'react-spring';
+import { useApi } from '../../services';
 import { Loading,ListenIcon,InfoIcon,Taskbar } from '../../components';
 import AwesomeSlider from 'react-awesome-slider';
 import Popup from 'reactjs-popup';
