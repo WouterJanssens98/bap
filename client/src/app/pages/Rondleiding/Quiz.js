@@ -1,16 +1,8 @@
-import { default as React, Component  ,Fragment,useState,useEffect, useRef} from 'react';
-import { useAuth, useApi } from '../../services';
-import * as Routes from '../../routes';
-import { Button } from 'semantic-ui-react';
-import { useHistory } from 'react-router-dom';
-import Popup from 'reactjs-popup';
-import { TransitionGroup, CSSTransition } from "react-transition-group";
+import { default as React, Component  ,Fragment,useState,useEffect} from 'react';
 import {Fade,Slide} from 'react-reveal';
-import AwesomeSlider from 'react-awesome-slider';
-import 'react-awesome-slider/dist/styles.css';
 
 const Quiz = () => {
-
+  
   const vragen = [
 		{
 			vraag: 'What is the capital of France?',
@@ -55,31 +47,43 @@ const Quiz = () => {
 	const [score, setScore] = useState(0);
 
 	const handleoptieClick = (isCorrect) => {
+		const fadeEffect = document.getElementsByClassName('quiz-vragen')[0];
 		if (isCorrect) {
 			setScore(score + 1);
 		}
 
 		const nextQuestion = huidigeVraag + 1;
 		if (nextQuestion < vragen.length) {
-			sethuidigeVraag(nextQuestion);
+			fadeEffect.style.opacity = 0;
+			setTimeout(function(){ sethuidigeVraag(nextQuestion); }, 1500);
+			setTimeout(function(){ fadeEffect.style.opacity = 1; }, 1500);
+			
 		} else {
 			setToonScore(true);
+			const title = document.getElementById('quiz-info-title');
+			title.style.opacity = 0;
 		}
 	};
   
   const handleClick = (ev) => {
+	const fadeEffect = document.getElementsByClassName('quiz-vragen')[0];
     ev.preventDefault();
     const btn = document.getElementById('quiz-btn');
     const quiz = document.getElementById('quiz');
     btn.style.opacity =  0;
-    btn.parentNode.removeChild(btn);
+	setTimeout(function(){ 	btn.parentNode.removeChild(btn); }, 1500);
     quiz.style.display = 'block';
-   
+	setTimeout(function(){ fadeEffect.style.opacity = 1; }, 1500);
   }
 
   useEffect(() => {
       let el = document.querySelector('.page');
       el.classList.add('fade-in');
+	  const btn = document.getElementById('quiz-btn');
+	  if(btn){
+		setTimeout(function(){ 	btn.style.opacity = 1; }, 1000);
+	  }
+  	  
     });
 
     
@@ -92,13 +96,16 @@ const Quiz = () => {
             
             <Fade top>
               <div className="quiz-info">
-                  <h1 className="complete-info-title">Hoe goed ken jij je Flandriens? Doe de test!</h1>
+                  <h1 id="quiz-info-title" className="quiz-info-title">Hoe goed ken jij je Flandriens? Doe de test!</h1>
               </div>
             </Fade>
-            <Fade delay={1000} top>
+
+
+            {/* <Fade delay={1000} top> */}
             <button id="quiz-btn" onClick={(ev) => handleClick(ev)} className="button quiz-btn">TEST MIJN KENNIS!</button>
-            </Fade>
-            <Fade delay={1000} top>
+            {/* </Fade> */}
+
+
             <div id="quiz" className="quiz-vragen">
             {toonScore ? (
               <div className='score-section'>
@@ -106,21 +113,21 @@ const Quiz = () => {
               </div>
             ) : (
               <>
-                <div className='question-section'>
+                <div id="vragenDiv" className='question-section'>
                   <div className='question-count'>
-                    <span>Vraag {huidigeVraag + 1}</span>/{vragen.length}
+                    <span className="question-title">Vraag {huidigeVraag + 1}</span>
                   </div>
                   <div className='question-text'>{vragen[huidigeVraag].vraag}</div>
                 </div>
                 <div className='answer-section'>
                   {vragen[huidigeVraag].antwoordOpties.map((optie) => (
-                    <button onClick={() => handleoptieClick(optie.isCorrect)}>{optie.antwoord}</button>
+                    <button className='answer-text' onClick={() => handleoptieClick(optie.isCorrect)}>{optie.antwoord}</button>
                   ))}
                 </div>
               </>
             )}
             </div>
-            </Fade>
+            {/* </Fade> */}
                 
             </div>
             </Fragment>

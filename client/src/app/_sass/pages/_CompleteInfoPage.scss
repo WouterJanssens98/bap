@@ -41,6 +41,7 @@
 }
 
 .complete-btn {
+    transition: all 0.3s ease-in-out;
     text-align: center;
     background-color: $color-main;
     font-size: 1.3rem !important;
@@ -72,6 +73,10 @@
     &-small:hover{
             color : $color-secondary
     }
+}
+
+.complete-btn:hover{
+    color: $color-third 
 }
 
 .complete-field {

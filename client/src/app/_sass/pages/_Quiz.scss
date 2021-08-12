@@ -16,21 +16,23 @@
     padding-bottom: 15vh;
     padding-top: 15vh;
     &-title {
-        position: absolute;
+        transition: all 0.3s ease-in-out;
         text-align: center;
         color : $color-main;
-        font-size : 2.5rem;
+        font-size : 3rem;
         top : 10vh
     }
     
 }
 
 .quiz-vragen {
-    width : 30%;
-    margin-left : 35vw;
-    margin-right: 35vw;
+    width : 60%;
+    margin-left : 20vw;
+    margin-right: 20vw;
     text-align: center;
-    display: none;   
+    display: none;
+    transition : all 1s ease-in-out;
+    opacity : 0;
 }
 
 .quiz-btn {
@@ -46,11 +48,54 @@
     padding : 10px 10px;
     border-radius: 5px ;
     visibility: visible;
-    opacity: 1;
+    opacity: 0;
     border : none
     
 }
 
 .quiz-btn:hover{
     color : $color-third
+}
+
+.question-section {
+    transition: all 0.3s ease-in-out;
+    opacity:1
+}
+.question-count {
+    margin-bottom: 40px;
+}
+.question-title {
+    color : white;
+    font-weight: bold;
+    font-size : 2.5rem;
+   
+}
+
+.question-text {
+    color : white;
+    font-size : 2.5rem;
+    margin-top : 35px;
+    margin-bottom : 50px;
+    line-height : 35px
+}
+
+.answer-section {
+    width : 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.answer-text {
+    transition : all 0.3s ease-in-out;
+    margin : 20px 25px;
+    background-color :$color-main;
+    padding : 8px;
+    border : none;
+    font-weight: bold;
+    border-radius: 5px;
+    color : $color-third
+   
+
+}
+.answer-text:hover {
+    color : white
 }

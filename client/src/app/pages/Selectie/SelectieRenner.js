@@ -469,8 +469,8 @@ const SelectieRenner = () => {
                         <Slide right>
                       <div className="carousel-innerdiv" style={{  
                         backgroundImage: "url(" + riderData.media.youthPicture[index] + ")",
-                        
-                        backgroundSize: 'cover',
+                        backgroundPosition: 'center',
+                        backgroundSize: 'contain',
                         backgroundRepeat: 'no-repeat',
                       }}>
                       </div>

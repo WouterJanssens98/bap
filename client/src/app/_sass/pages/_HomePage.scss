@@ -30,6 +30,7 @@
        margin-bottom : 10vh
     }
     &-btn {
+        transition : all 0.3s ease-in-out !important;
         text-align: center;
         background-color: $color-main;
         font-size: 1.5rem !important;
@@ -38,7 +39,12 @@
         display:block;
         font-weight : bold !important;
         font-family: montserrat !important;
+        padding : 10px 10px !important;
         
     }
     
+}
+
+.home-btn:hover{
+    background-color : $color-third !important
 }
