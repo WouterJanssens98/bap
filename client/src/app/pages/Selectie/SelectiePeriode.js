@@ -46,7 +46,7 @@ const SelectiePeriode = () => {
                       riderData.map((item,index) => {
                         return (
                          
-                        <a href={`/selectie/${item.start}-${item.end}`} className="selectie-inner-div2" style={{  
+                        <a href={`/selectie/${periode}/${index+1}`} className="selectie-inner-div2" style={{  
                           backgroundImage: "url(" + item.media.bannerPicture + ")",
                           backgroundPosition: 'center',
                           backgroundSize: 'cover',

@@ -148,10 +148,7 @@ const RondleidingPeriode = () => {
       getInfo();
     });
   
-  const testHandler = async (ev) => {
-    history.push(Routes.RONDLEIDING_RENNERS.replace(':periode',periode).replace(':id',parseInt(id)+1))
-  }
-    
+      
     
   useEffect(() => {
     let el = document.querySelector('.page');
@@ -391,7 +388,7 @@ const RondleidingPeriode = () => {
              
               <div className="rider-victories">
                 
-                <h1 onClick={(ev) => testHandler(ev)} >Meest memorable overwinningen</h1>
+                <h1 >Meest memorable overwinningen</h1>
                
               <Fade delay={500} left cascade>
               <div>
@@ -474,8 +471,8 @@ const RondleidingPeriode = () => {
                         <Slide right>
                       <div className="carousel-innerdiv" style={{  
                         backgroundImage: "url(" + riderData.media.youthPicture[index] + ")",
-                        
-                        backgroundSize: 'cover',
+                        backgroundPosition: 'center',
+                        backgroundSize: 'contain',
                         backgroundRepeat: 'no-repeat',
                       }}>
                       </div>

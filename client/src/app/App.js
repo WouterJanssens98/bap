@@ -25,6 +25,7 @@ function App() {
               <RouteWithLayout exact path={Routes.SELECTION} component={Pages.SelectionPage} layout={PageLayout}/>
               <RouteWithLayout exact path={Routes.SELECTIE} component={Pages.Selectie} layout={PageLayout}/>
               <RouteWithLayout exact path={Routes.SELECTIE_PERIODE} component={Pages.SelectiePeriode} layout={PageLayout}/>
+              <RouteWithLayout exact path={Routes.SELECTIE_RENNER} component={Pages.SelectieRenner} layout={PageLayout}/>
               <RouteWithLayout exact path={Routes.COMPLETE_INFO} component={Pages.CompleteInfoPage} layout={PageLayout}/>
               <RouteWithLayout exact path={Routes.RONDLEIDING_PERIODE} component={Pages.RondleidingPeriode} layout={PageLayout}/>
               <RouteWithLayout exact path={Routes.RONDLEIDING_RENNERS} component={Pages.RondleidingRenners} layout={PageLayout}/>
