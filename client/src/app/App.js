@@ -2,12 +2,13 @@ import {React ,useEffect} from 'react';
 import {BrowserRouter as Router, Redirect, Switch} from 'react-router-dom';
 import * as Routes from './routes';
 import * as  Pages from './pages';
-import {DashboardLayout,PageLayout, TaskbarLayout, AuthLayout} from './layouts';
+import {DashboardLayout,PageLayout} from './layouts';
 import { AuthRouteWithLayout, RouteWithLayout } from './utilities';
 import { ApiProvider, AuthProvider } from './services';
 import 'semantic-ui-css/semantic.min.css';
 import 'reactjs-popup/dist/index.css';
-
+import AwesomeSlider from 'react-awesome-slider';
+import 'react-awesome-slider/dist/styles.css';
 
 import './app.scss';
 
@@ -29,6 +30,7 @@ function App() {
               <RouteWithLayout exact path={Routes.COMPLETE_INFO} component={Pages.CompleteInfoPage} layout={PageLayout}/>
               <RouteWithLayout exact path={Routes.RONDLEIDING_PERIODE} component={Pages.RondleidingPeriode} layout={PageLayout}/>
               <RouteWithLayout exact path={Routes.RONDLEIDING_RENNERS} component={Pages.RondleidingRenners} layout={PageLayout}/>
+              <RouteWithLayout exact path={Routes.RONDLEIDING_QUIZ} component={Pages.QuizPage} layout={PageLayout}/>
               <AuthRouteWithLayout exact path={Routes.DASHBOARD_HOME} component={Pages.DashboardHomePage} layout={DashboardLayout}/>
               <AuthRouteWithLayout exact path={Routes.DASHBOARD_RENNERS} component={Pages.DashboardRennersPage} layout={DashboardLayout}/>
               <AuthRouteWithLayout exact path={Routes.DASHBOARD_RITTEN} component={Pages.DashboardRittenPage} layout={DashboardLayout}/>

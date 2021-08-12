@@ -16,7 +16,6 @@ const SelectiePeriode = () => {
       () => {
         const getInfo = async () => {
           const riders = await getRidersFromPeriod(periode);
-          console.log(riders);
           setRiderData(riders);
         }
         getInfo();

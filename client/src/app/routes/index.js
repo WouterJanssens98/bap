@@ -30,15 +30,14 @@ export const DASHBOARD_PERIODES_EDIT = '/dashboard/periodes/edit/:id';
 
 /// RONDLEIDING
 
-export const RONDLEIDING_PERIODE = '/rondleiding/:id'
-export const RONDLEIDING_RENNERS = '/rondleiding/:periode/:id'
+export const RONDLEIDING_PERIODE = '/rondleiding/:id';
+export const RONDLEIDING_RENNERS = '/rondleiding/:periode/:id';
+export const RONDLEIDING_QUIZ = '/quiz';
 
 // EIGEN KEUZES
 
-export const SELECTIE = '/selectie'
-
-export const SELECTIE_PERIODE = '/selectie/:periode'
-
-export const SELECTIE_RENNER = '/selectie/:periode/:id'
+export const SELECTIE = '/selectie';
+export const SELECTIE_PERIODE = '/selectie/:periode';
+export const SELECTIE_RENNER = '/selectie/:periode/:id';
 
 
