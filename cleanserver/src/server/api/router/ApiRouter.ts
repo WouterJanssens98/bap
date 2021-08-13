@@ -79,19 +79,19 @@ class ApiRouter {
     this.router.get('/renner/:id', this.rennerController.show)
     this.router.get('/renner-periode/:id', this.rennerController.showRidersFromPeriod)
 
+    /*
+    * Ritten routes
+    */
+    this.router.get('/ritten', this.rittenController.index)
+    this.router.post('/ritten/add', this.rittenController.create)
+    this.router.get('/ritten/:id', this.rittenController.show)
+
+
       /*
-     * Ritten routes
-     */
-      this.router.get('/ritten', this.rittenController.index)
-      this.router.post('/ritten/add', this.rittenController.create)
-      this.router.get('/ritten/:id', this.rittenController.show)
-
-
-       /*
-     * Score routes
-     */
-      this.router.get('/score/', this.rittenController.index)
-      this.router.post('/score/add', this.scoreController.create)
+    * Score routes
+    */
+    this.router.get('/score/', this.scoreController.index)
+    this.router.post('/score/add', this.scoreController.create)
       
     
 

@@ -19,10 +19,10 @@ class ScoreController {
     
     try {
       const scoreCreate = new Score({
-        score: req.body.score,
-        name: req.body.name,
-        location: req.body.location,
-        age: req.body.age,
+        score: req.body.data.score,
+        name: req.body.data.name,
+        location: req.body.data.location,
+        age: req.body.data.age,
       });
       const createdScore = await scoreCreate.save();
       return res.status(201).json(createdScore);

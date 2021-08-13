@@ -1,12 +1,8 @@
-import { default as React, Fragment,useState, useCallback, useEffect,useRef} from 'react';
+import { default as React, useState, useCallback, useEffect,useRef} from 'react';
 import { useParams } from 'react-router';
-import { useHistory } from 'react-router-dom';
-import ReactDOM from 'react-dom';
-import * as Routes from '../../routes';
-import { useAuth, useApi } from '../../services';
-import {useSpring, animated} from 'react-spring';
-import { Loading,ListenIcon,InfoIcon,Taskbar } from '../../components';
-import {Fade,Slide,Zoom,Mirror} from 'react-reveal';
+import { useApi } from '../../services';
+import { ListenIcon,InfoIcon,Taskbar } from '../../components';
+import {Fade,Slide} from 'react-reveal';
 import Popup from 'reactjs-popup';
 import makeCarousel from 'react-reveal/makeCarousel';
 
@@ -17,7 +13,7 @@ const RondleidingPeriode = () => {
   const [audioState, setAudioState] = useState("");
   const [dataLength, setDataLength] = useState();
   const { getRidersFromPeriod,getPeriodes} = useApi();
-  let history = useHistory();
+  const [isPlaying, setPlayingState] = useState(false);
  
   const [open1,setOpen1] = useState(false)
   const [open2,setOpen2] = useState(false)
@@ -46,12 +42,16 @@ const RondleidingPeriode = () => {
     setAudioState("")
   }
 
-  const ref = useRef();
+
   const ref1 = useRef();
   const ref2 = useRef();
   const ref3 = useRef();
 
-  const openModal1 = () => ref1.current.open();
+  const openModal1 = () => {
+    setPlayingState(true);
+    ref1.current.open();
+  }
+
   const closeModal1 = () => ref1.current.close();
 
   const openModal2 = () => ref2.current.open();
@@ -59,16 +59,6 @@ const RondleidingPeriode = () => {
 
   const openModal3 = () => ref3.current.open();
   const closeModal3 = () => ref3.current.close();
-
-  const handleClick = async (ev,id) => {
-    ev.preventDefault();
-    switch(id) {
-      case 1:
-        openModal1();
-        break;
-      
-    } 
-  }
 
   const handleOpen1 = (ev) => {
     ev.preventDefault();
@@ -125,13 +115,20 @@ const RondleidingPeriode = () => {
     const periodes = ['1960-1970','1970-1980','1980-1990','1990-2000','2000-2010']
     return periodes.indexOf(periode)+1
   }
+
   const update = async() => {
     console.log("Finished listening/reading")
     setAudioState("")
   }
 
-  const start = async() => {
-    await openModal1();
+  const handleFile = () => {
+    console.log("Stopped!")
+  }
+
+  const togglePlayingState = () => {
+    console.log("toggling state!");
+    console.log(`Current playing status": ${isPlaying}`);
+    setPlayingState(false)
   }
 
   const initFetch = useCallback(
@@ -161,7 +158,7 @@ const RondleidingPeriode = () => {
   
   return (
     <div>
-        <Taskbar length={dataLength} periodeID={resolvePeriodeID(periode)} id={id} periode={periode} update={update} start={console.log("starting!")} clearAudioState={clearAudioState} updateAudioState={updateAudioState} audioState={audioState}/>
+        <Taskbar togglePlayingState={togglePlayingState} length={dataLength} periodeID={resolvePeriodeID(periode)} id={id} periode={periode} handleFile={handleFile} update={update} clearAudioState={clearAudioState} updateAudioState={updateAudioState} audioState={audioState}/>
         {riderData  ?
         ( 
         <div className="riderpage">
@@ -225,7 +222,7 @@ const RondleidingPeriode = () => {
                     <div className="youth-left">
                       <p>{`jeugd`}</p>
                       <div className="youth-listen">
-                        <ListenIcon type={1} className={"rondleidingrenner-icon"} onClick={(ev) => handleClick(ev)} updateAudioState={updateAudioState} audioURL={riderData.media.audioURLYouth}/> 
+                        <ListenIcon type={1} className={"rondleidingrenner-icon"} updateAudioState={updateAudioState} audioURL={riderData.media.audioURLYouth}/> 
                         <div onClick={(ev) => handleOpen1(ev)}>
                           <InfoIcon />
                         </div>
@@ -282,7 +279,7 @@ const RondleidingPeriode = () => {
                     <div className="career-left">
                       <p>{`WIELERCARRIERE`}</p>
                       <div className="career-listen">
-                        <ListenIcon type={2} className={"rondleidingrenner-icon"} onClick={(ev) => handleClick(ev)} updateAudioState={updateAudioState} audioURL={riderData.media.audioURLCareer}/> 
+                        <ListenIcon type={2} className={"rondleidingrenner-icon"} updateAudioState={updateAudioState} audioURL={riderData.media.audioURLCareer}/> 
                         <div onClick={(ev) => handleOpen2(ev)}>
                           <InfoIcon />
                         </div>
@@ -327,7 +324,7 @@ const RondleidingPeriode = () => {
                     <div className="aftercareer-left">
                       <p>{"Na het wielrennen"}</p>
                       <div className="aftercareer-listen">
-                        <ListenIcon  type={3} className={"rondleidingrenner-icon"} onClick={(ev) => handleClick(ev)} updateAudioState={updateAudioState} audioURL={riderData.media.audioURLAfterCareer}/> 
+                        <ListenIcon  type={3} className={"rondleidingrenner-icon"} updateAudioState={updateAudioState} audioURL={riderData.media.audioURLAfterCareer}/> 
                         <div onClick={(ev) => handleOpen3(ev)}>
                           <InfoIcon />
                         </div>
@@ -451,9 +448,10 @@ const RondleidingPeriode = () => {
       (
         <div>
         <Popup      
-                modal
+                
                 nested
                 ref={ref1}
+                closeOnDocumentClick={false}
             >
                 {close => (
                 <div className="popup-modal completepage">
@@ -484,16 +482,27 @@ const RondleidingPeriode = () => {
                   </Carousel>
                     </div>
                     </Fade>
-                    <div className="actions">
-                    <button
-                        className="complete-btn-small"
-                        onClick={() => {
-                          closeModal1();
-                        }}
-                    >
-                        SLUITEN
-                    </button>
-                    </div>
+                    {!isPlaying ?
+                    (
+                      <Fade bottom>
+                      <div className="actions">
+                      <button
+                          className="complete-btn-small"
+                          onClick={() => {
+                            closeModal1();
+                          }}
+                      >
+                          SLUITEN
+                      </button>
+                      </div>
+                      </Fade>
+                    )
+                  :
+                  (
+                    <p></p>
+                  )
+                  }
+                   
                 </div>
                 )}
         </Popup>

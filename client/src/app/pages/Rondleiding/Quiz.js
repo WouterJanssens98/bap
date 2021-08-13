@@ -1,10 +1,19 @@
 import { default as React, Component  ,Fragment,useState,useEffect} from 'react';
-import {Fade,Slide} from 'react-reveal';
+import {Fade} from 'react-reveal';
 import { useApi } from '../../services';
+import * as Routes from '../../routes';
+import { useHistory } from 'react-router';
 
 const Quiz = () => {
 
-	const { addScore } = useApi();
+	const { createScore,getScores } = useApi();
+	const history = useHistory();
+	const [huidigeVraag, sethuidigeVraag] = useState(0);
+	const [toonScore, setToonScore] = useState(false);
+	const [score, setScore] = useState(0);
+	const [scorePosted,setScorePosted] = useState(false);
+	const [visitorScores,setVisitorScores] = useState();
+
 
 	function getCookie(cname) {
 		let name = cname + "=";
@@ -31,10 +40,18 @@ const Quiz = () => {
 		let data = {
 			"name" : name,
 			"location" : location,
-			"age" : age
+			"age" : age,
+			"score" : score
 		};
-		let response = await addScore(data);
-		console.log(response)
+		let response = await createScore(data);
+		return response
+	}
+
+	const handleHome = ()  => {
+		document.cookie = "name=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+		document.cookie = "location=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+		document.cookie = "age=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+		history.push(Routes.HOME)
 	}
 
 
@@ -77,11 +94,8 @@ const Quiz = () => {
 			},
 		];
 
-		const [huidigeVraag, sethuidigeVraag] = useState(0);
-		const [toonScore, setToonScore] = useState(false);
-		const [score, setScore] = useState(0);
 
-		const handleoptieClick = (isCorrect) => {
+		const handleoptieClick = async (isCorrect) => {
 			const fadeEffect = document.getElementsByClassName('quiz-vragen')[0];
 			if (isCorrect) {
 				setScore(score + 1);
@@ -94,9 +108,21 @@ const Quiz = () => {
 				setTimeout(function(){ fadeEffect.style.opacity = 1; }, 1500);
 				
 			} else {
-				setToonScore(true);
+				const questionSection = document.getElementsByClassName('question-section')[0];
+				const info = document.getElementsByClassName('quiz-info')[0];
+				const answerSection = document.getElementsByClassName('answer-section')[0];
+				info.style.opacity = 0;
+				questionSection.style.opacity = 0;
+				answerSection.style.opacity = 0;
+				await handleScore();
+				const scores = await getScores();
+				const lastScores = scores.slice(Math.max(scores.length - 5, 0))
+				setVisitorScores(lastScores);
 				const title = document.getElementById('quiz-info-title');
 				title.style.opacity = 0;
+				setTimeout(function(){ setToonScore(true); }, 1500);
+				setTimeout(function(){ 	info.style.padding = '50px'; }, 1500);
+				setScorePosted(true);
 			}
 		};
 	
@@ -135,17 +161,50 @@ const Quiz = () => {
               </div>
             </Fade>
 
-
-            {/* <Fade delay={1000} top> */}
             <button id="quiz-btn" onClick={(ev) => handleClick(ev)} className="button quiz-btn">TEST MIJN KENNIS!</button>
-            {/* </Fade> */}
-
 
             <div id="quiz" className="quiz-vragen">
             {toonScore ? (
+			  <Fade>
               <div className='score-section'>
                 <p>Je beantwoordde {score} van de {vragen.length} vragen correct!</p>
               </div>
+			  {scorePosted ?
+			  (	<div className="quiz-result">
+				  	<p>Resultaten van recente bezoekers</p>
+					<div className='quiz-results'>
+						<table className="quiz-table">
+							<tr>
+								<th className="quiz-header">Naam</th>
+								<th className="quiz-header">Afkomstig uit</th>
+								<th className="quiz-header">Correcte vragen</th>							
+								
+							</tr>
+
+							{visitorScores.map((item) => {
+								return (
+								<Fade top cascade>
+								<tr >
+									<td className="quiz-data">{item.name}</td>
+									<td className="quiz-data">{item.location}</td>
+									<td className="quiz-data"> {item.score}</td>							
+									
+								</tr>
+								</Fade>
+								)
+							})}
+							
+							
+						</table>
+					</div>
+					<a onClick={(ev) => handleHome(ev)} className="button quiz-end">RONDLEIDING AFLSUITEN</a>
+				</div>
+			  )
+			 :
+			(
+				<p></p>	
+			)}
+			  </Fade>
             ) : (
               <>
                 <div id="vragenDiv" className='question-section'>
@@ -159,10 +218,12 @@ const Quiz = () => {
                     <button className='answer-text' onClick={() => handleoptieClick(optie.isCorrect)}>{optie.antwoord}</button>
                   ))}
                 </div>
+
+				
               </>
             )}
             </div>
-            {/* </Fade> */}
+            
                 
             </div>
             </Fragment>
