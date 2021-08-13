@@ -1,7 +1,5 @@
 import { default as React, Fragment,useState, useCallback, useEffect,useRef} from 'react';
 import { useParams } from 'react-router';
-import { useHistory } from 'react-router-dom';
-import ReactDOM from 'react-dom';
 import * as Routes from '../../routes';
 import { useAuth, useApi } from '../../services';
 import {useSpring, animated} from 'react-spring';
@@ -17,7 +15,7 @@ const SelectieRenner = () => {
   const [audioState, setAudioState] = useState("");
   const [dataLength, setDataLength] = useState();
   const { getRidersFromPeriod,getPeriodes} = useApi();
-  let history = useHistory();
+  const [isPlaying, setPlayingState] = useState(false);
  
   const [open1,setOpen1] = useState(false)
   const [open2,setOpen2] = useState(false)
@@ -37,26 +35,46 @@ const SelectieRenner = () => {
       case 3:
         openModal3();
         break;
+      case 4:
+        break;
     }
   }
 
   const clearAudioState = async () => {
-    setAudioState("")
+    setAudioState("",4)
   }
 
-  const ref = useRef();
   const ref1 = useRef();
   const ref2 = useRef();
   const ref3 = useRef();
 
-  const openModal1 = () => ref1.current.open();
-  const closeModal1 = () => ref1.current.close();
+  const openModal1 = () => {
+    setPlayingState(true);
+    ref1.current.open();
+  }
 
-  const openModal2 = () => ref2.current.open();
-  const closeModal2 = () => ref2.current.close();
+  const closeModal1 = async () => {
+    await updateAudioState("",4);
+    ref1.current.close();
+  }
 
-  const openModal3 = () => ref3.current.open();
-  const closeModal3 = () => ref3.current.close();
+  const openModal2 = () => {
+    setPlayingState(true);
+    ref2.current.open();
+  }
+  const closeModal2 = async () => {
+    await updateAudioState("",4);
+    ref2.current.close();
+  }
+  const openModal3 = () => {
+    setPlayingState(true);
+    ref3.current.open();
+  }
+
+  const closeModal3 = async () => {
+    await updateAudioState("",4);
+    ref3.current.close();
+  }
 
   const handleClick = async (ev,id) => {
     ev.preventDefault();
@@ -119,10 +137,6 @@ const SelectieRenner = () => {
     }
   }
 
-  const resolvePeriodeID = (periode) => {
-    const periodes = ['1960-1970','1970-1980','1980-1990','1990-2000','2000-2010']
-    return periodes.indexOf(periode)+1
-  }
   const update = async() => {
     console.log("Finished listening/reading")
     setAudioState("")
@@ -130,6 +144,12 @@ const SelectieRenner = () => {
 
   const start = async() => {
     await openModal1();
+  }
+
+  const togglePlayingState = () => {
+    setAudioState("",4);
+    console.log(`Current playing status": ${isPlaying}`);
+    setPlayingState(false)
   }
 
   const initFetch = useCallback(
@@ -141,7 +161,6 @@ const SelectieRenner = () => {
         console.log(ridersData);
         setDataLength(ridersData.length)
         setRiderData(ridersData[id-1]);
-       
       }
       getInfo();
     });
@@ -159,7 +178,7 @@ const SelectieRenner = () => {
   
   return (
     <div>
-        <TaskbarSelectie periode={periode} id={id} periode={periode} update={update} start={console.log("starting!")} clearAudioState={clearAudioState} updateAudioState={updateAudioState} audioState={audioState}/>
+        <TaskbarSelectie togglePlayingState={togglePlayingState} periode={periode} id={id} periode={periode} update={update} start={console.log("starting!")} clearAudioState={clearAudioState} updateAudioState={updateAudioState} audioState={audioState}/>
         {riderData  ?
         ( 
         <div className="riderpage">
@@ -312,12 +331,7 @@ const SelectieRenner = () => {
           }}>
                   </div>
                 </div>
-                </Fade>
-
-               
-
-
-
+                </Fade>        
               </div>
               </Fade>
               <div className="aftercareer">
@@ -452,6 +466,7 @@ const SelectieRenner = () => {
                 modal
                 nested
                 ref={ref1}
+                closeOnDocumentClick={false}
             >
                 {close => (
                 <div className="popup-modal completepage">
@@ -482,16 +497,26 @@ const SelectieRenner = () => {
                   </Carousel>
                     </div>
                     </Fade>
-                    <div className="actions">
-                    <button
-                        className="complete-btn-small"
-                        onClick={() => {
-                          closeModal1();
-                        }}
-                    >
-                        SLUITEN
-                    </button>
-                    </div>
+                    {!isPlaying ?
+                    (
+                      <Fade bottom>
+                      <div className="actions">
+                      <button
+                          className="complete-btn-small"
+                          onClick={async () => {
+                            await closeModal1();
+                          }}
+                      >
+                          SLUITEN
+                      </button>
+                      </div>
+                      </Fade>
+                    )
+                  :
+                  (
+                    <p></p>
+                  )
+                  }
                 </div>
                 )}
         </Popup>
@@ -501,6 +526,7 @@ const SelectieRenner = () => {
                 modal
                 nested
                 ref={ref2}
+                closeOnDocumentClick={false}
             >
                 {close => (
                 <div className="popup-modal completepage">
@@ -531,16 +557,26 @@ const SelectieRenner = () => {
                   </Carousel>
                     </div>
                     </Fade>
-                    <div className="actions">
-                    <button
-                        className="complete-btn-small"
-                        onClick={() => {
-                          closeModal2();
-                        }}
-                    >
-                        SLUITEN
-                    </button>
-                    </div>
+                    {!isPlaying ?
+                    (
+                      <Fade bottom>
+                      <div className="actions">
+                      <button
+                          className="complete-btn-small"
+                          onClick={async () => {
+                            await closeModal2();
+                          }}
+                      >
+                          SLUITEN
+                      </button>
+                      </div>
+                      </Fade>
+                    )
+                  :
+                  (
+                    <p></p>
+                  )
+                  }
                 </div>
                 )}
         </Popup>
@@ -549,6 +585,7 @@ const SelectieRenner = () => {
                 modal
                 nested
                 ref={ref3}
+                closeOnDocumentClick={false}
             >
                 {close => (
                 <div className="popup-modal completepage">
@@ -580,16 +617,26 @@ const SelectieRenner = () => {
                   </Carousel>
                     </div>
                     </Fade>
-                    <div className="actions">
-                    <button
-                        className="complete-btn-small"
-                        onClick={() => {
-                          closeModal3();
-                        }}
-                    >
-                        SLUITEN
-                    </button>
-                    </div>
+                    {!isPlaying ?
+                    (
+                      <Fade bottom>
+                      <div className="actions">
+                      <button
+                          className="complete-btn-small"
+                          onClick={async () => {
+                           await closeModal3();
+                          }}
+                      >
+                          SLUITEN
+                      </button>
+                      </div>
+                      </Fade>
+                    )
+                  :
+                  (
+                    <p></p>
+                  )
+                  }
                 </div>
                 )}
         </Popup>

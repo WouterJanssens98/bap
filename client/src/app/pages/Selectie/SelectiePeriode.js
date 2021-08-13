@@ -31,9 +31,11 @@ const SelectiePeriode = () => {
        <Fragment>
             <div className="selectie-div2">
             <a href={'/selectie'} >
+                <Fade top >
                 <div className="selectie-return">
                 Periodes bekijken
                   </div>
+                </Fade>
                 
               </a>
 

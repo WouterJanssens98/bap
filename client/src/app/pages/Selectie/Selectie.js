@@ -28,10 +28,11 @@ const Selectie = () => {
        <Fragment>
             <div className="selectie-div">
               <a href='/selection' >
+              <Fade top>
                 <div className="selectie-return">
                 Naar keuzemenu
                   </div>
-                
+              </Fade>
               </a>
 
                 {periodesData && periodesData.length>0 ? 

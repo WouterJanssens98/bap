@@ -4,6 +4,7 @@ import * as Routes from '../routes';
 import { Button } from 'semantic-ui-react';
 import { useHistory } from 'react-router-dom';
 import {Fade,Slide} from 'react-reveal';
+import CookieConsent from "react-cookie-consent";
 
 const HomePage = () => {
 
@@ -38,8 +39,23 @@ const HomePage = () => {
         </div>
         </Fade>
 
-        <Button onClick={() => handleClick()} className="home-btn" color="yellow">DE GESCHIEDENIS START HIER</Button>
-        {/* <Button onClick={() => handleClick2()} className="home-btn" color="yellow">DASH</Button> */}
+        <Fade bottom>
+          <Button onClick={() => handleClick()} className="home-btn" color="yellow">DE GESCHIEDENIS START HIER</Button>
+        </Fade>
+
+        
+        <CookieConsent
+          location="bottom"
+          buttonText="Gebruik van cookies toestaan"
+          cookieName="allowCookies"
+          style={{ background: "#535353",  }}
+          buttonStyle={{ color: "#4e503b", fontSize: "12px" }}
+          expires={150}
+        >
+          Deze website gebruikt cookies om de juiste werking en functionaliteit te garanderen.{" "}
+          <span style={{ fontSize: "13px" }}></span>
+        </CookieConsent>
+  
       </div>
     </Fragment>
   );

@@ -63,10 +63,11 @@ const CompleteInfoPage = () => {
        <Fragment>
             <div className="complete-div">
             <a href={'/selection'} >
+                <Fade top>
                 <div className="selectie-return">
                 naar keuzemenu
                   </div>
-                
+                </Fade>
               </a>
                 
                     <div className="complete-info">

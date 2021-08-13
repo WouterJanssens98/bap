@@ -38,26 +38,12 @@ const Taskbar = (props) => {
             <i draggable="true" onDragStart={(ev) => drag(ev)}  class="taskbar-button fas fa-headphones-alt"></i>
 
             <AudioPlayerProvider>
-                <AudioPlayer start={props.start} handleFile={handleFile} update={props.update} clearAudioState={props.clearAudioState} updateAudioState={props.updateAudioState} file={file}/>
+                <AudioPlayer togglePlayingState={props.togglePlayingState} start={props.start} handleFile={handleFile} update={props.update} clearAudioState={props.clearAudioState} updateAudioState={props.updateAudioState} file={file}/>
             </AudioPlayerProvider>     
 
 
           </div>
 
-          {/* {
-            (() => {
-                if (props.periode != undefined && props.length === parseInt(props.id) && parseInt(props.periodeID) != 2)
-                    return <a href={Routes.RONDLEIDING_PERIODE.replace(':id',props.periodeID+1)} className="taskbar-link2">Volgende periode</a>
-                if (props.periode != undefined && props.length != parseInt(props.id) && parseInt(props.periodeID) != 2)
-                    return <a href={Routes.RONDLEIDING_RENNERS.replace(':periode',props.periode).replace(':id',parseInt(props.id)+1)} className="taskbar-link2">Volgende renner</a>
-                if (props.periode != undefined && props.length != parseInt(props.id) && parseInt(props.periodeID) === 2)
-                    return <a href={Routes.RONDLEIDING_RENNERS.replace(':periode',props.periode).replace(':id',parseInt(props.id)+1)} className="taskbar-link2">Volgende renner</a>
-                if (props.periode != undefined && props.length === parseInt(props.id) && parseInt(props.periodeID) === 2)
-                    return <a href={Routes.HOME} className="taskbar-link2">Einde rondleiding</a>  
-                else
-                  return <p></p>
-            })()
-          } */}
           </Fade>
   
     </div>

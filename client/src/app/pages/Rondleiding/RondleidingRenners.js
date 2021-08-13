@@ -34,12 +34,14 @@ const RondleidingPeriode = () => {
       case 3:
         openModal3();
         break;
+      case 4:
+        break;
     }
     
   }
 
-  const clearAudioState = async () => {
-    setAudioState("")
+  const clearAudioState =  () => {
+    setAudioState("",4)
   }
 
 
@@ -52,13 +54,28 @@ const RondleidingPeriode = () => {
     ref1.current.open();
   }
 
-  const closeModal1 = () => ref1.current.close();
+  const closeModal1 = async () => {
+    await updateAudioState("",4);
+    ref1.current.close();
+  }
 
-  const openModal2 = () => ref2.current.open();
-  const closeModal2 = () => ref2.current.close();
+  const openModal2 = () => {
+    setPlayingState(true);
+    ref2.current.open();
+  }
+  const closeModal2 = async () => {
+    await updateAudioState("",4);
+    ref2.current.close();
+  }
+  const openModal3 = () => {
+    setPlayingState(true);
+    ref3.current.open();
+  }
 
-  const openModal3 = () => ref3.current.open();
-  const closeModal3 = () => ref3.current.close();
+  const closeModal3 = async () => {
+    await updateAudioState("",4);
+    ref3.current.close();
+  }
 
   const handleOpen1 = (ev) => {
     ev.preventDefault();
@@ -126,7 +143,7 @@ const RondleidingPeriode = () => {
   }
 
   const togglePlayingState = () => {
-    console.log("toggling state!");
+    setAudioState("",4);
     console.log(`Current playing status": ${isPlaying}`);
     setPlayingState(false)
   }
@@ -136,8 +153,6 @@ const RondleidingPeriode = () => {
       const getInfo = async () => {
         const ridersData = await getRidersFromPeriod(periode);
         const periodes = await getPeriodes();
-        console.log(periodes);
-        console.log(ridersData);
         setDataLength(ridersData.length)
         setRiderData(ridersData[id-1]);
        
@@ -148,6 +163,7 @@ const RondleidingPeriode = () => {
       
     
   useEffect(() => {
+    console.log("Current audio state: " + audioState);
     let el = document.querySelector('.page');
     el.classList.add('fade-in');
     initFetch();
@@ -488,8 +504,8 @@ const RondleidingPeriode = () => {
                       <div className="actions">
                       <button
                           className="complete-btn-small"
-                          onClick={() => {
-                            closeModal1();
+                          onClick={async () => {
+                            await closeModal1();
                           }}
                       >
                           SLUITEN
@@ -512,6 +528,7 @@ const RondleidingPeriode = () => {
                 modal
                 nested
                 ref={ref2}
+                closeOnDocumentClick={false}
             >
                 {close => (
                 <div className="popup-modal completepage">
@@ -542,16 +559,26 @@ const RondleidingPeriode = () => {
                   </Carousel>
                     </div>
                     </Fade>
-                    <div className="actions">
-                    <button
-                        className="complete-btn-small"
-                        onClick={() => {
-                          closeModal2();
-                        }}
-                    >
-                        SLUITEN
-                    </button>
-                    </div>
+                    {!isPlaying ?
+                    (
+                      <Fade bottom>
+                      <div className="actions">
+                      <button
+                          className="complete-btn-small"
+                          onClick={ async() => {
+                            await closeModal2();
+                          }}
+                      >
+                          SLUITEN
+                      </button>
+                      </div>
+                      </Fade>
+                    )
+                  :
+                  (
+                    <p></p>
+                  )
+                  }
                 </div>
                 )}
         </Popup>
@@ -560,6 +587,7 @@ const RondleidingPeriode = () => {
                 modal
                 nested
                 ref={ref3}
+                closeOnDocumentClick={false}
             >
                 {close => (
                 <div className="popup-modal completepage">
@@ -591,16 +619,26 @@ const RondleidingPeriode = () => {
                   </Carousel>
                     </div>
                     </Fade>
-                    <div className="actions">
-                    <button
-                        className="complete-btn-small"
-                        onClick={() => {
-                          closeModal3();
-                        }}
-                    >
-                        SLUITEN
-                    </button>
-                    </div>
+                    {!isPlaying ?
+                    (
+                      <Fade bottom>
+                      <div className="actions">
+                      <button
+                          className="complete-btn-small"
+                          onClick={ async () => {
+                            await closeModal3();
+                          }}
+                      >
+                          SLUITEN
+                      </button>
+                      </div>
+                      </Fade>
+                    )
+                  :
+                  (
+                    <p></p>
+                  )
+                  }
                 </div>
                 )}
         </Popup>
