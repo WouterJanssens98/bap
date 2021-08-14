@@ -6,7 +6,7 @@ import { Footer, Header } from '../components';
 const DashboardLayout = ({children}) => {
 
   return (
-    <div className="page d-flex">
+    <div className="page d-flex dash-color">
         <Header/>
             <main className="page-main">
                 {children}

@@ -46,7 +46,6 @@ const DashboardPeriodesPage = () => {
             <td>ID</td>
             <td>START</td>
             <td>EINDE</td>
-            <td>ACTIES</td>
           </tr>
      
       
@@ -60,18 +59,6 @@ const DashboardPeriodesPage = () => {
                       <td>{index + 1}</td>
                       <td>{item.start}</td>
                       <td>{item.end}</td>
-                      <td>
-                        <div class="renner-tableactions d-flex">
-                          <a href="/edit" class="d-flex renner-tablelink mr-4">
-                            <i class="fas fa-pen mr-2"></i>
-                            {/* <p>BEWERK</p> */}
-                          </a>
-                          <a href="/edit" class="d-flex renner-tablelink">
-                            <i class="fas fa-eye mr-2"></i>
-                            {/* <p>TONEN</p> */}
-                          </a>
-                        </div>
-                      </td>
                     </tr>
                     )
                 })

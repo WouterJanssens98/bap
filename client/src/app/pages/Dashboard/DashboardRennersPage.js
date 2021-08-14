@@ -39,7 +39,6 @@ const DashboardRennersPage = () => {
             <td>ID</td>
             <td>NAAM</td>
             <td>PERIODE</td>
-            <td>ACTIES</td>
           </tr>
      
       
@@ -53,18 +52,6 @@ const DashboardRennersPage = () => {
                       <td>{index + 1}</td>
                       <td>{item.info.name.toUpperCase()}</td>
                       <td>{item.info.periode.toUpperCase()}</td>
-                      <td>
-                        <div class="renner-tableactions d-flex">
-                          <a href="/edit" class="d-flex renner-tablelink mr-4">
-                            <i class="fas fa-pen mr-2"></i>
-                            {/* <p>BEWERK</p> */}
-                          </a>
-                          <a href="/edit" class="d-flex renner-tablelink">
-                            <i class="fas fa-eye mr-2"></i>
-                            {/* <p>TONEN</p> */}
-                          </a>
-                        </div>
-                      </td>
                     </tr>
                     )
                 })

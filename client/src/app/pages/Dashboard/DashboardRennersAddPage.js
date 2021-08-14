@@ -383,9 +383,9 @@ const DashboardRennersAddPage = () => {
                             <td class="pl-5">RIT</td>
                             <td>PLOEG</td>
                         </th>
-                    </div>
+                    
 
-                    <div>
+                   
                         <tr class="renner-tablecontent">
                             <td class="mt-2">1</td>
                             <td>
