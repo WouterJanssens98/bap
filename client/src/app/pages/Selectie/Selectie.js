@@ -17,12 +17,12 @@ const Selectie = () => {
         }
         getInfo();
       });
-
+    
     useEffect(() => {
         let el = document.querySelector('.page');
         el.classList.add('fade-in');
         initFetch();
-      });
+      },[]);
 
   return (
        <Fragment>

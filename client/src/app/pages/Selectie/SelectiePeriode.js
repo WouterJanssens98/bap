@@ -25,7 +25,7 @@ const SelectiePeriode = () => {
         let el = document.querySelector('.page');
         el.classList.add('fade-in');
         initFetch();
-      });
+      },[]);
 
   return (
        <Fragment>
