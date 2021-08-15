@@ -1,13 +1,7 @@
 import React from 'react';
 import Popup from 'reactjs-popup';
-import * as Routes from '../routes';
-import { useHistory } from 'react-router-dom';
 const Modal = (props) => {
 
-    let history = useHistory();
-    const handleClick = () => {
-    history.push(Routes.SELECTION)
-    }
 
     function setCookie(name,value,days) {
         var expires = "";

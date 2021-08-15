@@ -1,5 +1,4 @@
-import { default as React,Fragment, useState } from 'react';
-import { NavLink } from "react-router-dom";
+import { default as React } from 'react';
 import Popup from 'reactjs-popup';
 
 const InfoIcon = (props) => {

@@ -1,4 +1,4 @@
-import { default as React, useState,useEffect } from 'react';
+import { default as React } from 'react';
 import { useAudioPlayer } from "react-use-audio-player";
  
 const AudioPlayer = (props) => {
@@ -7,8 +7,7 @@ const AudioPlayer = (props) => {
         src: props.file,
         format: "mp3",
         autoplay: true,
-        onend: props.togglePlayingState,
-        onplay : console.log("Starting")
+        onend: props.togglePlayingState
     })
  
     if (!ready && !loading) return <i disabled onClick={togglePlayPause} class="taskbar-button3 far fa-play-circle"></i>

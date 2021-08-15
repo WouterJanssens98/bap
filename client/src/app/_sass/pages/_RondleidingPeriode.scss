@@ -43,10 +43,6 @@
     margin-top : 35vh;
   
     color : $color-main;
-    // font-size : 3rem;
-    // padding : 8px !important;
-    // border-radius: 50%;
-    // background-color :white
     
 }
 
@@ -58,8 +54,7 @@
   background: none;
   position: relative;
   display: inline-block;
-  // Scales well with transform too!
-  // transform: scale(2.5);
+  
   &::before {
     top: 3px;
     right: 6px;

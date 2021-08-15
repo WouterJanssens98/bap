@@ -1,5 +1,4 @@
 import React, { createContext, useContext, useState } from 'react';
-import { apiConfig } from '../config';
 
 const AuthContext = createContext();
 const useAuth = () => useContext(AuthContext);

@@ -1,6 +1,5 @@
 import { default as React } from 'react';
 
-import { Taskbar } from '../components';
 
 
 const TaskbarLayout = ({children}) => {

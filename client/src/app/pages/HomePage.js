@@ -1,23 +1,17 @@
 import { default as React, Fragment, useEffect} from 'react';
-import { useAuth, useApi } from '../services';
 import * as Routes from '../routes';
 import { Button } from 'semantic-ui-react';
 import { useHistory } from 'react-router-dom';
-import {Fade,Slide} from 'react-reveal';
+import {Fade} from 'react-reveal';
 import CookieConsent from "react-cookie-consent";
 
 const HomePage = () => {
 
   let history = useHistory();
 
-  const handleClick2 = () => {
-    history.push(Routes.DASHBOARD_HOME)
-  }
-
   const handleClick = () => {
-    // check screen width here
-    history.push(Routes.SELECTION)
-  }
+    history.push(Routes.SELECTION);
+  };
 
   useEffect(() => {
     let el = document.querySelector('.page');

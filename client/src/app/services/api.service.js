@@ -1,4 +1,4 @@
-import { default as React, useContext, createContext, useState} from 'react';
+import { default as React, useContext, createContext} from 'react';
 import { apiConfig } from '../config';
 
 const ApiContext = createContext();
@@ -6,6 +6,8 @@ const useApi = () => useContext(ApiContext);
 const ApiProvider = ({children}) => {
 
   const BASE_URL = `${apiConfig.baseURL}`;
+
+  
   // API CALLS FOR GETTING DATA
 
 

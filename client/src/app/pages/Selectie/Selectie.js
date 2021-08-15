@@ -1,13 +1,9 @@
-import { default as React, Component  ,Fragment,useState,useEffect,useCallback, useRef} from 'react';
-import { useAuth, useApi } from '../../services';
-import * as Routes from '../../routes';
-import { Button } from 'semantic-ui-react';
-import { useHistory } from 'react-router-dom';
-import {Fade,Slide} from 'react-reveal';
+import { default as React ,Fragment,useState,useEffect,useCallback} from 'react';
+import { useApi } from '../../services';
+import {Fade} from 'react-reveal';
 
 const Selectie = () => {
   const { getPeriodes} = useApi();
-    let history = useHistory();
     const [periodesData, setPeriodesData] = useState();
     const initFetch = useCallback(
       () => {

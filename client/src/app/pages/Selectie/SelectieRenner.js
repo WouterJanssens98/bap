@@ -1,9 +1,8 @@
-import { default as React, Fragment,useState, useCallback, useEffect,useRef} from 'react';
+import { default as React, useState, useCallback, useEffect,useRef} from 'react';
 import { useParams } from 'react-router';
-import * as Routes from '../../routes';
-import { useAuth, useApi } from '../../services';
+import { useApi } from '../../services';
 import { ListenIcon,InfoIcon,TaskbarSelectie } from '../../components';
-import {Fade,Slide,Zoom,Mirror} from 'react-reveal';
+import {Fade,Slide} from 'react-reveal';
 import Popup from 'reactjs-popup';
 import makeCarousel from 'react-reveal/makeCarousel';
 
@@ -12,7 +11,6 @@ const SelectieRenner = () => {
   const { periode,id } = useParams();
   const [riderData, setRiderData] = useState();
   const [audioState, setAudioState] = useState("");
-  const [dataLength, setDataLength] = useState();
   const { getRidersFromPeriod,getPeriodes} = useApi();
   const [isPlaying, setPlayingState] = useState(false);
  
@@ -158,7 +156,6 @@ const SelectieRenner = () => {
         const periodes = await getPeriodes();
         console.log(periodes);
         console.log(ridersData);
-        setDataLength(ridersData.length)
         setRiderData(ridersData[id-1]);
       }
       getInfo();

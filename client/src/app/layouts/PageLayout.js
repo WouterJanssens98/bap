@@ -1,6 +1,6 @@
 import { default as React } from 'react';
 
-import { Footer, Header } from '../components';
+import { Footer} from '../components';
 
 import './PageLayout.scss';
 

@@ -1,19 +1,16 @@
 import { default as React, useState,useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
 import { useParams } from 'react-router';
 import * as Routes from '../routes';
 import { AudioPlayerProvider } from "react-use-audio-player";
 import { AudioPlayer } from '../components';
-import {Fade,Slide} from 'react-reveal';
+import {Fade} from 'react-reveal';
 
 const Taskbar = (props) => {
 
   const { id } = useParams();
   const [file, setFile] = useState("");
 
-  function drag(ev) {
-    console.log("dragging!");
-  }
+ 
   const handleFile = () => {
     setFile("")
   }
@@ -35,7 +32,7 @@ const Taskbar = (props) => {
 
           <div className="taskbar-actions">
 
-            <i draggable="true" onDragStart={(ev) => drag(ev)}  class="taskbar-button fas fa-headphones-alt"></i>
+            <i draggable="true"  class="taskbar-button fas fa-headphones-alt"></i>
 
             <AudioPlayerProvider>
                 <AudioPlayer togglePlayingState={props.togglePlayingState} start={props.start} handleFile={handleFile} update={props.update} clearAudioState={props.clearAudioState} updateAudioState={props.updateAudioState} file={file}/>

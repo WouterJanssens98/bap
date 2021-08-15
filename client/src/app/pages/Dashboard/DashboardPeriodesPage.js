@@ -1,5 +1,5 @@
 import { default as React, Fragment,useState,useEffect, useCallback} from 'react';
-import { useAuth, useApi } from '../../services';
+import { useApi } from '../../services';
 import { Loading } from '../../components';
 
 const DashboardPeriodesPage = () => {

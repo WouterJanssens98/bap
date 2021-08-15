@@ -12,9 +12,6 @@ const Taskbar = (props) => {
 
   const [file, setFile] = useState("");
  
-  function drag(ev) {
-    console.log("dragging!");
-  }
   
 
   useEffect(() => {
@@ -27,7 +24,7 @@ const Taskbar = (props) => {
     <div className="taskbar-header">
         <Fade top>
 
-          {props.periode != undefined ? 
+          {props.periode !== undefined ? 
           (
             props.id> 1 ?
             (
@@ -64,7 +61,7 @@ const Taskbar = (props) => {
 
           <div className="taskbar-actions">
 
-            <i draggable="true" onDragStart={(ev) => drag(ev)}  class="taskbar-button fas fa-headphones-alt"></i>
+            <i draggable="true"  class="taskbar-button fas fa-headphones-alt"></i>
 
             <AudioPlayerProvider>
                 <AudioPlayer togglePlayingState={props.togglePlayingState} handleFile={props.handleFile} update={props.update} clearAudioState={props.clearAudioState} updateAudioState={props.updateAudioState} file={file}/>
@@ -75,13 +72,13 @@ const Taskbar = (props) => {
 
           {
             (() => {
-                if (props.periode != undefined && props.length === parseInt(props.id) && parseInt(props.periodeID) != 5)
+                if (props.periode !== undefined && props.length === parseInt(props.id) && parseInt(props.periodeID) !== 5)
                     return <a href={Routes.RONDLEIDING_PERIODE.replace(':id',props.periodeID+1)} className="taskbar-link2">Volgende periode</a>
-                if (props.periode != undefined && props.length != parseInt(props.id) && parseInt(props.periodeID) != 5)
+                if (props.periode !== undefined && props.length !== parseInt(props.id) && parseInt(props.periodeID) !== 5)
                     return <a href={Routes.RONDLEIDING_RENNERS.replace(':periode',props.periode).replace(':id',parseInt(props.id)+1)} className="taskbar-link2">Volgende renner</a>
-                if (props.periode != undefined && props.length != parseInt(props.id) && parseInt(props.periodeID) === 5)
+                if (props.periode !== undefined && props.length !== parseInt(props.id) && parseInt(props.periodeID) === 5)
                     return <a href={Routes.RONDLEIDING_RENNERS.replace(':periode',props.periode).replace(':id',parseInt(props.id)+1)} className="taskbar-link2">Volgende renner</a>
-                if (props.periode != undefined && props.length === parseInt(props.id) && parseInt(props.periodeID) === 5)
+                if (props.periode !== undefined && props.length === parseInt(props.id) && parseInt(props.periodeID) === 5)
                     return <a href={Routes.RONDLEIDING_QUIZ} className="taskbar-link2">Einde rondleiding</a>  
                 else
                   return <p></p>

@@ -1,13 +1,10 @@
 import { default as React, Fragment,useEffect} from 'react';
-import { useAuth, useApi } from '../services';
 import * as Routes from '../routes';
-import { Button } from 'semantic-ui-react';
 import { useHistory } from 'react-router-dom';
-import {Fade,Slide} from 'react-reveal';
+import {Slide} from 'react-reveal';
 
 const SelectionPage = () => {
 
-  const { getPeriodes} = useApi();
   let history = useHistory();
 
   const handleClick2 = () => {

@@ -1,15 +1,11 @@
 import { default as React, Fragment, useState, useCallback, useEffect } from 'react';
-import { useAuth, useApi } from '../../services';
-import { useHistory, useParams } from 'react-router';
-import { DropdownLarge, DropdownMedium } from '../../components';
-import { Button } from 'semantic-ui-react';
+import { useApi } from '../../services';
+import { useParams } from 'react-router';
 
 const DashboardPeriodesShow = () => {
 
-const {currentUser, getCookie} = useAuth();
 const {getPeriode} = useApi();
 const { id } = useParams();
-const { getPeriodes } = useApi();
 const [ periode, setPeriode ] = useState();
 
   const initFetch = useCallback(

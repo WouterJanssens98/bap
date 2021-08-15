@@ -1,6 +1,5 @@
-import {useRef,useState, useEffect, Fragment} from 'react'
+import {useRef, Fragment} from 'react'
 import { useAuth, useApi } from '../../services';
-import { DropdownLarge, DropdownMedium } from '../../components';
 import { Button } from 'semantic-ui-react';
 import * as Routes from '../../routes';
 import { useHistory } from 'react-router-dom';
@@ -9,7 +8,7 @@ import S3 from "react-aws-s3";
 
 const DashboardPeriodesAddPage = () => {
     let history = useHistory();
-    const {currentUser, getCookie} = useAuth();
+    const {getCookie} = useAuth();
     const {createPeriode} = useApi();
     const bannerPicture = useRef();
     const audioURL = useRef();

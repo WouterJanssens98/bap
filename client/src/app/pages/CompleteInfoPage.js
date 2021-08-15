@@ -1,11 +1,8 @@
-import { default as React, Component  ,Fragment,useState,useEffect, useRef} from 'react';
-import { useAuth, useApi } from '../services';
+import { default as React ,Fragment,useEffect, useRef} from 'react';
 import * as Routes from '../routes';
-import { Button } from 'semantic-ui-react';
 import { useHistory } from 'react-router-dom';
 import Popup from 'reactjs-popup';
-import { TransitionGroup, CSSTransition } from "react-transition-group";
-import {Fade,Slide} from 'react-reveal';
+import {Fade} from 'react-reveal';
 
 const CompleteInfoPage = () => {
 
@@ -25,7 +22,6 @@ const CompleteInfoPage = () => {
  
     const ref = useRef();
     const openModal = () => ref.current.open();
-    const closeModal = () => ref.current.close();
 
     const handleClick = async (ev) => {
         ev.preventDefault();

@@ -1,6 +1,4 @@
 import { default as React,Fragment, useState } from 'react';
-import { NavLink } from "react-router-dom";
-import Popup from 'reactjs-popup';
 
 const ListenIcon = (props) => {
 

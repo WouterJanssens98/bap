@@ -1,12 +1,10 @@
 import { default as React, Fragment,useState, useCallback, useEffect,useRef} from 'react';
 import { useHistory, useParams } from 'react-router';
-import ReactDOM from 'react-dom';
 import * as Routes from '../../routes';
 import { useApi } from '../../services';
-import { Loading,ListenIcon,InfoIcon,Taskbar } from '../../components';
-import AwesomeSlider from 'react-awesome-slider';
+import {ListenIcon,InfoIcon,Taskbar } from '../../components';
 import Popup from 'reactjs-popup';
-import {Fade,Slide} from 'react-reveal';
+import {Fade} from 'react-reveal';
 
 const RondleidingPeriode = () => {
   const { id } = useParams();

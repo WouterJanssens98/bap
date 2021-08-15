@@ -12,7 +12,7 @@ const SignInPage = ({children}) => {
   const handleSubmit = async (ev) => {
     ev.preventDefault();
     const user = await signIn(email, password);
-    if(user.status == 404){
+    if(user.status === 404){
       document.getElementsByClassName('error-status')[0].style.display = "block" ;
       console.log("Bad credentials!")
     }

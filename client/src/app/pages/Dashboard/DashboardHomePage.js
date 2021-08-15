@@ -1,6 +1,5 @@
 import { default as React, Fragment,useState, useCallback, useEffect} from 'react';
-import ReactDOM from 'react-dom'
-import { useAuth, useApi } from '../../services';
+import { useApi } from '../../services';
 import {useSpring, animated} from 'react-spring';
 import { Loading } from '../../components';
 

@@ -1,4 +1,4 @@
-import {React ,useEffect} from 'react';
+import {React } from 'react';
 import {BrowserRouter as Router, Redirect, Switch} from 'react-router-dom';
 import * as Routes from './routes';
 import * as  Pages from './pages';
@@ -7,7 +7,6 @@ import { AuthRouteWithLayout, RouteWithLayout } from './utilities';
 import { ApiProvider, AuthProvider } from './services';
 import 'semantic-ui-css/semantic.min.css';
 import 'reactjs-popup/dist/index.css';
-import AwesomeSlider from 'react-awesome-slider';
 import 'react-awesome-slider/dist/styles.css';
 
 import './app.scss';
