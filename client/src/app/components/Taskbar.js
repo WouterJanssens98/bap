@@ -8,11 +8,8 @@ import {Fade} from 'react-reveal';
 const Taskbar = (props) => {
 
   const { id } = useParams();
-  
-
   const [file, setFile] = useState("");
  
-  
 
   useEffect(() => {
     setFile(props.audioState)
@@ -64,7 +61,7 @@ const Taskbar = (props) => {
             <i draggable="true"  class="taskbar-button fas fa-headphones-alt"></i>
 
             <AudioPlayerProvider>
-                <AudioPlayer togglePlayingState={props.togglePlayingState} handleFile={props.handleFile} update={props.update} clearAudioState={props.clearAudioState} updateAudioState={props.updateAudioState} file={file}/>
+                <AudioPlayer togglePlayingState={props.togglePlayingState} clearAudioState={props.clearAudioState} updateAudioState={props.updateAudioState} file={file}/>
             </AudioPlayerProvider>     
 
 

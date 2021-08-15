@@ -11,7 +11,7 @@ const SelectieRenner = () => {
   const { periode,id } = useParams();
   const [riderData, setRiderData] = useState();
   const [audioState, setAudioState] = useState("");
-  const { getRidersFromPeriod,getPeriodes} = useApi();
+  const { getRidersFromPeriod} = useApi();
   const [isPlaying, setPlayingState] = useState(false);
  
   const [open1,setOpen1] = useState(false)
@@ -134,18 +134,9 @@ const SelectieRenner = () => {
     }
   }
 
-  const update = async() => {
-    console.log("Finished listening/reading")
-    setAudioState("")
-  }
-
-  const start = async() => {
-    await openModal1();
-  }
 
   const togglePlayingState = () => {
     setAudioState("",4);
-    console.log(`Current playing status": ${isPlaying}`);
     setPlayingState(false)
   }
 
@@ -153,9 +144,6 @@ const SelectieRenner = () => {
     () => {
       const getInfo = async () => {
         const ridersData = await getRidersFromPeriod(periode);
-        const periodes = await getPeriodes();
-        console.log(periodes);
-        console.log(ridersData);
         setRiderData(ridersData[id-1]);
       }
       getInfo();
@@ -174,7 +162,7 @@ const SelectieRenner = () => {
   
   return (
     <div>
-        <TaskbarSelectie togglePlayingState={togglePlayingState} periode={periode} id={id} periode={periode} update={update} start={console.log("starting!")} clearAudioState={clearAudioState} updateAudioState={updateAudioState} audioState={audioState}/>
+        <TaskbarSelectie togglePlayingState={togglePlayingState} periode={periode} id={id} periode={periode} clearAudioState={clearAudioState} updateAudioState={updateAudioState} audioState={audioState}/>
         {riderData  ?
         ( 
         <div className="riderpage">

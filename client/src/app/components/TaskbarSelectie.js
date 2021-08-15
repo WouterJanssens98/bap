@@ -10,10 +10,6 @@ const Taskbar = (props) => {
   const { id } = useParams();
   const [file, setFile] = useState("");
 
- 
-  const handleFile = () => {
-    setFile("")
-  }
 
 
   useEffect(() => {
@@ -35,7 +31,7 @@ const Taskbar = (props) => {
             <i draggable="true"  class="taskbar-button fas fa-headphones-alt"></i>
 
             <AudioPlayerProvider>
-                <AudioPlayer togglePlayingState={props.togglePlayingState} start={props.start} handleFile={handleFile} update={props.update} clearAudioState={props.clearAudioState} updateAudioState={props.updateAudioState} file={file}/>
+                <AudioPlayer togglePlayingState={props.togglePlayingState} update={props.update} clearAudioState={props.clearAudioState} updateAudioState={props.updateAudioState} file={file}/>
             </AudioPlayerProvider>     
 
 

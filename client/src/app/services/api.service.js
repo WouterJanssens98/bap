@@ -138,7 +138,6 @@ const ApiProvider = ({children}) => {
         "authorMail" : authorMail
       })
     };
-    console.log(data);
     const response = await fetch(url, options);
     if(response.status === 201){
       return response

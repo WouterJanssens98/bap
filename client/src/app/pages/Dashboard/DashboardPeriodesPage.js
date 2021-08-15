@@ -12,7 +12,6 @@ const DashboardPeriodesPage = () => {
       const getInfo = async () => {
         const data = await getPeriodes();
         setPeriodes(data);
-        console.log(data)
       }
       getInfo();
     },[],

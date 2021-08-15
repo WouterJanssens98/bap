@@ -13,7 +13,6 @@ const RondleidingPeriode = () => {
   const [audioState, setAudioState] = useState("");
 
   const updateAudioState = async (url) => {
-    console.log("Setting new URl");
     setAudioState(url)
   }
 
@@ -34,13 +33,11 @@ const RondleidingPeriode = () => {
   const ref = useRef();
   const openModal = () => ref.current.open();
   const closeModal = async () => {
-    await update();
     ref.current.close();
   }
 
   const handleClick = async (ev) => {
     ev.preventDefault();
-    console.log("Clicked!")
     openModal();
   }
 
@@ -48,9 +45,6 @@ const RondleidingPeriode = () => {
     history.push(Routes.RONDLEIDING_RENNERS.replace(':periode',`${periodesData[id-1].start}-${periodesData[id-1].end}`).replace(':id',1));
   }
 
-  const update = async() => {
-    console.log("Finished listening/reading")
-  }
 
   useEffect(() => {
     let el = document.querySelector('.page');
@@ -67,7 +61,7 @@ const RondleidingPeriode = () => {
       {periodesData ? 
       ( 
       <div>
-        <Taskbar update={update} clearAudioState={clearAudioState} updateAudioState={updateAudioState} audioState={audioState}/>
+        <Taskbar clearAudioState={clearAudioState} updateAudioState={updateAudioState} audioState={audioState}/>
         <div className=" taskbar-setup">
           <div className="rondleiding-info" style={{  
             backgroundImage: "url(" + periodesData[id-1].bannerImage + ")",

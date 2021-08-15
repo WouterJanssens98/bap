@@ -71,7 +71,6 @@ const DashboardRittenAddPage = () => {
                     return false
                 }else {
                     counter +=1
-                    console.log(counter)
                 }
             }
             if(counter === pictures.length){

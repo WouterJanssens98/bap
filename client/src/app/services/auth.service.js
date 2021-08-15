@@ -55,7 +55,6 @@ const AuthProvider = ({ children }) => {
       const response = await fetch(`${url}`, options);
       setCurrentUser(email);
       const data = await response.json();
-      console.log(data['id'])
       setCookie('user',JSON.stringify(data['id']),2)
       setCookie('userEmail',JSON.stringify(email),2)
       return response;

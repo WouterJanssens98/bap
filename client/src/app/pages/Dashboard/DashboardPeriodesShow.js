@@ -13,7 +13,6 @@ const [ periode, setPeriode ] = useState();
       const getInfo = async () => {
         const data = await getPeriode(id);
         setPeriode(data);
-        console.log(data)
       }
       getInfo();
     },[],

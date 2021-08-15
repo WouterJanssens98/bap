@@ -102,7 +102,6 @@ class PeriodeController {
     
 
     store = async (req: Request, res: Response, next: NextFunction) => {
-      console.log(req.body);
       const { id } = req.params;
       try {
         const portfolioCreate = new Periode({
@@ -110,8 +109,7 @@ class PeriodeController {
         });
         const portfolio = await portfolioCreate.save();
         return res.status(201).json(portfolio);
-      } catch (err) {
-        console.log(err);
+      } catch (err) {        
         next(err);
       }
     };

@@ -69,7 +69,6 @@ const DashboardRennersAddPage = () => {
             let pictureArray = [];
             let fileInput = pictures[i]
             let files = fileInput.current.files;
-            console.log(files);
             for(let i=0;i<files.length;i++){
                 let file = fileInput.current.files[i];
                 let newfilename = fileInput.current.files[i].name;
@@ -130,12 +129,10 @@ const DashboardRennersAddPage = () => {
             for(let i=0;i<pictures.length;i++) {
                 let fileInput = pictures[i]
                 let file = fileInput.current.files[0]
-                console.log(file)
                 if(file == undefined){
                     return false
                 }else {
                     counter +=1
-                    console.log(counter)
                 }
             }
             if(counter === pictures.length){

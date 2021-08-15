@@ -22,7 +22,6 @@ const RondleidingPeriode = () => {
   const Carousel = makeCarousel(CarouselUI);
 
   const updateAudioState = async (url,type) => {
-    console.log("Setting new URl");
     setAudioState(url);
     switch(type){
       case 1:
@@ -134,17 +133,11 @@ const RondleidingPeriode = () => {
   }
 
   const update = async() => {
-    console.log("Finished listening/reading")
     setAudioState("")
-  }
-
-  const handleFile = () => {
-    console.log("Stopped!")
   }
 
   const togglePlayingState = () => {
     setAudioState("",4);
-    console.log(`Current playing status": ${isPlaying}`);
     setPlayingState(false)
   }
 
@@ -153,9 +146,8 @@ const RondleidingPeriode = () => {
       const getInfo = async () => {
         const ridersData = await getRidersFromPeriod(periode);
         const periodes = await getPeriodes();
-        setDataLength(ridersData.length)
+        setDataLength(ridersData.length);
         setRiderData(ridersData[id-1]);
-       
       }
       getInfo();
     });
@@ -163,7 +155,6 @@ const RondleidingPeriode = () => {
       
     
   useEffect(() => {
-    console.log("Current audio state: " + audioState);
     let el = document.querySelector('.page');
     el.classList.add('fade-in');
     initFetch();
@@ -174,7 +165,7 @@ const RondleidingPeriode = () => {
   
   return (
     <div>
-        <Taskbar togglePlayingState={togglePlayingState} length={dataLength} periodeID={resolvePeriodeID(periode)} id={id} periode={periode} handleFile={handleFile} update={update} clearAudioState={clearAudioState} updateAudioState={updateAudioState} audioState={audioState}/>
+        <Taskbar togglePlayingState={togglePlayingState} length={dataLength} periodeID={resolvePeriodeID(periode)} id={id} periode={periode} update={update} clearAudioState={clearAudioState} updateAudioState={updateAudioState} audioState={audioState}/>
         {riderData  ?
         ( 
         <div className="riderpage">

@@ -14,7 +14,6 @@ const SignInPage = ({children}) => {
     const user = await signIn(email, password);
     if(user.status === 404){
       document.getElementsByClassName('error-status')[0].style.display = "block" ;
-      console.log("Bad credentials!")
     }
     else{
       history.push(Routes.DASHBOARD_HOME);
