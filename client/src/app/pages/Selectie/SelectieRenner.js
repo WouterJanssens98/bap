@@ -2,7 +2,6 @@ import { default as React, Fragment,useState, useCallback, useEffect,useRef} fro
 import { useParams } from 'react-router';
 import * as Routes from '../../routes';
 import { useAuth, useApi } from '../../services';
-import {useSpring, animated} from 'react-spring';
 import { ListenIcon,InfoIcon,TaskbarSelectie } from '../../components';
 import {Fade,Slide,Zoom,Mirror} from 'react-reveal';
 import Popup from 'reactjs-popup';
