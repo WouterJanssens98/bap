@@ -24,7 +24,6 @@ interface IUser extends Document {
   _createdAt: number;
   _modifiedAt: number;
   _deletedAt: number;
-
   localProvider?: ILocalProvider;
   facebookProvider?: IFacebookProvider;
 
@@ -72,9 +71,6 @@ const userSchema: Schema = new Schema(
       lastName: String,
       avatar: String,
     },
-    _messageIds: [
-      { type: Schema.Types.ObjectId, ref: 'Message', required: false },
-    ],
   },
   {
     toJSON: { virtuals: true },
@@ -105,12 +101,6 @@ userSchema.pre<IUser>('save', function(next) {
 
 userSchema.virtual('id').get(function(this: IUser) {
   return this._id;
-});
-userSchema.virtual('messages', {
-  ref: 'Message',
-  localField: '_messageIds',
-  foreignField: '_id',
-  justOne: false,
 });
 
 userSchema.methods.comparePassword = function(

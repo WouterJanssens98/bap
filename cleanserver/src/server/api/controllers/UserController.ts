@@ -16,32 +16,32 @@ class UserController {
     this.authService = authService;
   }
 
-  public index = async (
-    req: Request,
-    res: Response,
-    next: NextFunction,
-  ): Promise<Response<any>> => {
-    try {
-      const { limit, skip } = req.query;
-      let users = null;
-      if (limit && skip) {
-        const options = {
-          page: parseInt(skip, 10) || 1,
-          limit: parseInt(limit, 10) || 10,
-          sort: { created_at: -1 },
-        };
-        users = await User.paginate({}, options);
-      } else {
-        users = await User.find()
-          .sort({ created_at: -1 })
-          .exec();
-      }
+  // public index = async (
+  //   req: Request,
+  //   res: Response,
+  //   next: NextFunction,
+  // ): Promise<Response<any>> => {
+  //   try {
+  //     const { limit, skip } = req.query;
+  //     let users = null;
+  //     if (limit && skip) {
+  //       const options = {
+  //         page: parseInt(skip, 10) || 1,
+  //         limit: parseInt(limit, 10) || 10,
+  //         sort: { created_at: -1 },
+  //       };
+  //       users = await User.paginate({}, options);
+  //     } else {
+  //       users = await User.find()
+  //         .sort({ created_at: -1 })
+  //         .exec();
+  //     }
 
-      return res.status(200).json(users);
-    } catch (err) {
-      next(err);
-    }
-  };
+  //     return res.status(200).json(users);
+  //   } catch (err) {
+  //     next(err);
+  //   }
+  // };
 
   public show = async (req: Request, res: Response, next: NextFunction) => {
     try {
@@ -54,26 +54,26 @@ class UserController {
     }
   };
 
-  public upload = async (req: Request, res: Response, next: NextFunction) => {
+  // public upload = async (req: Request, res: Response, next: NextFunction) => {
 
-    const storage = multer.diskStorage({
-      destination : 'uploads/',
-      filename: function (req, file, cb) {
-        cb(null, file.originalname);
-      }
-    });
-    const upload = multer({ storage: storage });
+  //   const storage = multer.diskStorage({
+  //     destination : 'uploads/',
+  //     filename: function (req, file, cb) {
+  //       cb(null, file.originalname);
+  //     }
+  //   });
+  //   const upload = multer({ storage: storage });
 
 
-    try {
-      const { id } = req.params;
+  //   try {
+  //     const { id } = req.params;
 
-      const post = await User.findById(id).exec();
-      return res.status(200).json(post);
-    } catch (err) {
-      next(err);
-    }
-  };
+  //     const post = await User.findById(id).exec();
+  //     return res.status(200).json(post);
+  //   } catch (err) {
+  //     next(err);
+  //   }
+  // };
 
 
 

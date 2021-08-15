@@ -5,12 +5,13 @@ const ApiContext = createContext();
 const useApi = () => useContext(ApiContext);
 const ApiProvider = ({children}) => {
 
-  
+  const BASE_URL = `${apiConfig.baseURL}`;
   // API CALLS FOR GETTING DATA
 
 
   const getRenners = async () => {
-    let url = `/api/renner`;
+    let url = `${BASE_URL}/api/renner`;
+    
 
     const options = {
       method: "get",
@@ -24,7 +25,7 @@ const ApiProvider = ({children}) => {
   }
 
   const getScores = async () => {
-    let url = `/api/score`;
+    let url = `${BASE_URL}/api/score`;
 
     const options = {
       method: "get",
@@ -39,7 +40,7 @@ const ApiProvider = ({children}) => {
 
 
   const getRidersFromPeriod = async (id) => {
-    let url = `/api/renner-periode/${id}`;
+    let url = `${BASE_URL}/api/renner-periode/${id}`;
 
     const options = {
       method: "get",
@@ -53,7 +54,7 @@ const ApiProvider = ({children}) => {
   }
 
   const getRitten = async () => {
-    let url = `/api/ritten`;
+    let url = `${BASE_URL}/api/ritten`;
 
     const options = {
       method: "get",
@@ -67,7 +68,7 @@ const ApiProvider = ({children}) => {
   }
   
   const getPeriodes = async () => {
-    let url = `/api/periode`;
+    let url = `${BASE_URL}/api/periode`;
 
     const options = {
       method: "get",
@@ -81,7 +82,7 @@ const ApiProvider = ({children}) => {
   }
 
   const getPeriode = async (id) => {
-    let url = `/api/periode/${id}`;
+    let url = `${BASE_URL}/api/periode/${id}`;
 
     const options = {
       method: "get",
@@ -98,7 +99,7 @@ const ApiProvider = ({children}) => {
   // API CALLS FOR CREATING
 
   const createPeriode = async (data,author, authorMail) => {
-    let url = `/api/periode/add`;
+    let url = `${BASE_URL}/api/periode/add`;
 
     const options = {
       method: "post",
@@ -121,7 +122,7 @@ const ApiProvider = ({children}) => {
   }
 
   const createRenner = async (data,author,authorMail) => {
-    let url = `/api/renner/add`;
+    let url = `${BASE_URL}/api/renner/add`;
 
     const options = {
       method: "post",
@@ -145,7 +146,7 @@ const ApiProvider = ({children}) => {
   }
 
   const createRit = async (data,author,authorMail) => {
-    let url = `/api/ritten/add`;
+    let url = `${BASE_URL}/api/ritten/add`;
 
     const options = {
       method: "post",
@@ -168,7 +169,7 @@ const ApiProvider = ({children}) => {
   }
 
   const createScore = async (data) => {
-    let url = `/api/score/add`;
+    let url = `${BASE_URL}/api/score/add`;
 
     const options = {
       method: "post",

@@ -32,25 +32,6 @@
     "enabled" "2.0.x"
     "kuler" "^2.0.0"
 
-"@fimbul/bifrost@^0.21.0":
-  "integrity" "sha512-ou8VU+nTmOW1jeg+FT+sn+an/M0Xb9G16RucrfhjXGWv1Q97kCoM5CG9Qj7GYOSdu7km72k7nY83Eyr53Bkakg=="
-  "resolved" "https://registry.npmjs.org/@fimbul/bifrost/-/bifrost-0.21.0.tgz"
-  "version" "0.21.0"
-  dependencies:
-    "@fimbul/ymir" "^0.21.0"
-    "get-caller-file" "^2.0.0"
-    "tslib" "^1.8.1"
-    "tsutils" "^3.5.0"
-
-"@fimbul/ymir@^0.21.0":
-  "integrity" "sha512-T/y7WqPsm4n3zhT08EpB5sfdm2Kvw3gurAxr2Lr5dQeLi8ZsMlNT/Jby+ZmuuAAd1PnXYzKp+2SXgIkQIIMCUg=="
-  "resolved" "https://registry.npmjs.org/@fimbul/ymir/-/ymir-0.21.0.tgz"
-  "version" "0.21.0"
-  dependencies:
-    "inversify" "^5.0.0"
-    "reflect-metadata" "^0.1.12"
-    "tslib" "^1.8.1"
-
 "@mapbox/node-pre-gyp@^1.0.0":
   "integrity" "sha512-4srsKPXWlIxp5Vbqz5uLfBN+du2fJChBoYn/f2h991WLdk7jUvcSk/McVLSv/X+xQIPI8eGD5GjrnygdyHnhPA=="
   "resolved" "https://registry.npmjs.org/@mapbox/node-pre-gyp/-/node-pre-gyp-1.0.5.tgz"
@@ -1157,14 +1138,6 @@
   dependencies:
     "path-type" "^3.0.0"
 
-"doctrine@0.7.2":
-  "integrity" "sha1-fLhgNZujvpDgQLJrcpzkv6ZUxSM="
-  "resolved" "https://registry.npmjs.org/doctrine/-/doctrine-0.7.2.tgz"
-  "version" "0.7.2"
-  dependencies:
-    "esutils" "^1.1.6"
-    "isarray" "0.0.1"
-
 "doctrine@3.0.0":
   "integrity" "sha512-yS+Q5i3hBf7GBkd4KG8a7eBNNWNGLTaEwwYWUijIYM7zrlYDM0BFXHjjPWlWZ1Rg7UaddZeIDmi9jF3HmqiQ2w=="
   "resolved" "https://registry.npmjs.org/doctrine/-/doctrine-3.0.0.tgz"
@@ -1239,11 +1212,6 @@
   "integrity" "sha512-eGuFFw7Upda+g4p+QHvnW0RyTX/SVeJBDM/gCtMARO0cLuT2HcEKnTPvhjV6aGeqrCB/sbNop0Kszm0jsaWU4A=="
   "resolved" "https://registry.npmjs.org/esprima/-/esprima-4.0.1.tgz"
   "version" "4.0.1"
-
-"esutils@^1.1.6":
-  "integrity" "sha1-wBzKqa5LiXxtDD4hCuUvPHqEQ3U="
-  "resolved" "https://registry.npmjs.org/esutils/-/esutils-1.1.6.tgz"
-  "version" "1.1.6"
 
 "esutils@^2.0.2":
   "integrity" "sha512-kVscqXk4OCp68SZ0dkgEKVi6/8ij300KBWTJq32P/dYeWTSwK41WyTxalN1eRmA5Z9UU/LX9D7FWSmV9SAYx6g=="
@@ -1500,11 +1468,6 @@
     "string-width" "^1.0.1"
     "strip-ansi" "^3.0.1"
     "wide-align" "^1.1.0"
-
-"get-caller-file@^2.0.0":
-  "integrity" "sha512-DyFP3BM/3YHTQOCUL/w0OZHR0lpKeGrxotcHWcqNEdnltqFwXVfhEBQ94eIo34AfQpo0rGki4cyIiftY06h2Fg=="
-  "resolved" "https://registry.npmjs.org/get-caller-file/-/get-caller-file-2.0.5.tgz"
-  "version" "2.0.5"
 
 "get-stdin@^4.0.1":
   "integrity" "sha1-uWjGsKBDhDJJAui/Gl3zJXmkUP4="
@@ -1775,11 +1738,6 @@
   "integrity" "sha1-Yzwsg+PaQqUC9SRmAiSA9CCCYd4="
   "resolved" "https://registry.npmjs.org/inherits/-/inherits-2.0.3.tgz"
   "version" "2.0.3"
-
-"inversify@^5.0.0":
-  "integrity" "sha512-60QsfPz8NAU/GZqXu8hJ+BhNf/C/c+Hp0eDc6XMIJTxBiP36AQyyQKpBkOVTLWBFDQWYVHpbbEuIsHu9dLuJDA=="
-  "resolved" "https://registry.npmjs.org/inversify/-/inversify-5.0.5.tgz"
-  "version" "5.0.5"
 
 "ipaddr.js@1.9.1":
   "integrity" "sha512-0KI/607xoxSToH7GjN1FfSbLoU0+btTicjsQSWQlh/hZykN8KpmMf7uYwPW3R+akZ6R/w18ZlXSHBYXiYUPO3g=="
@@ -3087,11 +3045,6 @@
   "resolved" "https://registry.npmjs.org/referrer-policy/-/referrer-policy-1.2.0.tgz"
   "version" "1.2.0"
 
-"reflect-metadata@^0.1.12":
-  "integrity" "sha512-Ts1Y/anZELhSsjMcU605fU9RE4Oi3p5ORujwbIKXfWa+0Zxs510Qrmrce5/Jowq3cHSZSJqBjypxmHarc+vEWg=="
-  "resolved" "https://registry.npmjs.org/reflect-metadata/-/reflect-metadata-0.1.13.tgz"
-  "version" "0.1.13"
-
 "regex-not@^1.0.0", "regex-not@^1.0.2":
   "integrity" "sha512-J6SDjUgDxQj5NusnOtdFxDwN/+HWykR8GELwctJ7mdqhcyy1xEc4SRFHUXvxTp661YaVKAjfRLZ9cCqS6tn32A=="
   "resolved" "https://registry.npmjs.org/regex-not/-/regex-not-1.0.2.tgz"
@@ -3702,54 +3655,15 @@
     "strip-bom" "^3.0.0"
     "strip-json-comments" "^2.0.0"
 
-"tslib@^1.13.0", "tslib@^1.7.1", "tslib@^1.8.1":
+"tslib@^1.13.0", "tslib@^1.8.1":
   "integrity" "sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg=="
   "resolved" "https://registry.npmjs.org/tslib/-/tslib-1.14.1.tgz"
   "version" "1.14.1"
-
-"tslib@1.9.0":
-  "integrity" "sha512-f/qGG2tUkrISBlQZEjEqoZ3B2+npJjIf04H1wuAv9iA8i04Icp+61KRXxFdha22670NJopsZCIjhC3SnjPRKrQ=="
-  "resolved" "https://registry.npmjs.org/tslib/-/tslib-1.9.0.tgz"
-  "version" "1.9.0"
-
-"tslint-config-airbnb@^5.11.2":
-  "integrity" "sha512-mUpHPTeeCFx8XARGG/kzYP4dPSOgoCqNiYbGHh09qTH8q+Y1ghsOgaeZKYYQT7IyxMos523z/QBaiv2zKNBcow=="
-  "resolved" "https://registry.npmjs.org/tslint-config-airbnb/-/tslint-config-airbnb-5.11.2.tgz"
-  "version" "5.11.2"
-  dependencies:
-    "tslint-consistent-codestyle" "^1.14.1"
-    "tslint-eslint-rules" "^5.4.0"
-    "tslint-microsoft-contrib" "~5.2.1"
 
 "tslint-config-prettier@^1.18.0":
   "integrity" "sha512-xPw9PgNPLG3iKRxmK7DWr+Ea/SzrvfHtjFt5LBl61gk2UBG/DB9kCXRjv+xyIU1rUtnayLeMUVJBcMX8Z17nDg=="
   "resolved" "https://registry.npmjs.org/tslint-config-prettier/-/tslint-config-prettier-1.18.0.tgz"
   "version" "1.18.0"
-
-"tslint-consistent-codestyle@^1.14.1":
-  "integrity" "sha512-ebR/xHyMEuU36hGNOgCfjGBNYxBPixf0yU1Yoo6s3BrpBRFccjPOmIVaVvQsWAUAMdmfzHOCihVkcaMfimqvHw=="
-  "resolved" "https://registry.npmjs.org/tslint-consistent-codestyle/-/tslint-consistent-codestyle-1.16.0.tgz"
-  "version" "1.16.0"
-  dependencies:
-    "@fimbul/bifrost" "^0.21.0"
-    "tslib" "^1.7.1"
-    "tsutils" "^2.29.0"
-
-"tslint-eslint-rules@^5.4.0":
-  "integrity" "sha512-WlSXE+J2vY/VPgIcqQuijMQiel+UtmXS+4nvK4ZzlDiqBfXse8FAvkNnTcYhnQyOTW5KFM+uRRGXxYhFpuBc6w=="
-  "resolved" "https://registry.npmjs.org/tslint-eslint-rules/-/tslint-eslint-rules-5.4.0.tgz"
-  "version" "5.4.0"
-  dependencies:
-    "doctrine" "0.7.2"
-    "tslib" "1.9.0"
-    "tsutils" "^3.0.0"
-
-"tslint-microsoft-contrib@~5.2.1":
-  "integrity" "sha512-PDYjvpo0gN9IfMULwKk0KpVOPMhU6cNoT9VwCOLeDl/QS8v8W2yspRpFFuUS7/c5EIH/n8ApMi8TxJAz1tfFUA=="
-  "resolved" "https://registry.npmjs.org/tslint-microsoft-contrib/-/tslint-microsoft-contrib-5.2.1.tgz"
-  "version" "5.2.1"
-  dependencies:
-    "tsutils" "^2.27.2 <2.29.0"
 
 "tslint@^6.1.0":
   "integrity" "sha512-IbR4nkT96EQOvKE2PW/djGz8iGNeJ4rF2mBfiYaR/nvUWYKJhLwimoJKgjIFEIDibBtOevj7BqCRL4oHeWWUCg=="
@@ -3770,31 +3684,10 @@
     "tslib" "^1.13.0"
     "tsutils" "^2.29.0"
 
-"tsutils@^2.27.2 <2.29.0":
-  "integrity" "sha512-bh5nAtW0tuhvOJnx1GLRn5ScraRLICGyJV5wJhtRWOLsxW70Kk5tZtpK3O/hW6LDnqKS9mlUMPZj9fEMJ0gxqA=="
-  "resolved" "https://registry.npmjs.org/tsutils/-/tsutils-2.28.0.tgz"
-  "version" "2.28.0"
-  dependencies:
-    "tslib" "^1.8.1"
-
 "tsutils@^2.29.0":
   "integrity" "sha512-g5JVHCIJwzfISaXpXE1qvNalca5Jwob6FjI4AoPlqMusJ6ftFE7IkkFoMhVLRgK+4Kx3gkzb8UZK5t5yTTvEmA=="
   "resolved" "https://registry.npmjs.org/tsutils/-/tsutils-2.29.0.tgz"
   "version" "2.29.0"
-  dependencies:
-    "tslib" "^1.8.1"
-
-"tsutils@^3.0.0":
-  "integrity" "sha512-mHKK3iUXL+3UF6xL5k0PEhKRUBKPBCv/+RkEOpjRWxxx27KKRBmmA60A9pgOUvMi8GKhRMPEmjBRPzs2W7O1OA=="
-  "resolved" "https://registry.npmjs.org/tsutils/-/tsutils-3.21.0.tgz"
-  "version" "3.21.0"
-  dependencies:
-    "tslib" "^1.8.1"
-
-"tsutils@^3.5.0":
-  "integrity" "sha512-mHKK3iUXL+3UF6xL5k0PEhKRUBKPBCv/+RkEOpjRWxxx27KKRBmmA60A9pgOUvMi8GKhRMPEmjBRPzs2W7O1OA=="
-  "resolved" "https://registry.npmjs.org/tsutils/-/tsutils-3.21.0.tgz"
-  "version" "3.21.0"
   dependencies:
     "tslib" "^1.8.1"
 
