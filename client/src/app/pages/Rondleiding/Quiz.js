@@ -32,7 +32,7 @@ const Quiz = () => {
 	  }
 
 
-	const handleScore = async () => {
+	const handleScore = async (tempScore) => {
 		const name = getCookie('name');
 		const location = getCookie('location');
 		const age = getCookie('age');
@@ -41,7 +41,7 @@ const Quiz = () => {
 			"name" : name,
 			"location" : location,
 			"age" : age,
-			"score" : score
+			"score" : tempScore
 		};
 		let response = await createScore(data);
 		return response
@@ -151,7 +151,10 @@ const Quiz = () => {
 
 		const handleoptieClick = async (isCorrect) => {
 			const fadeEffect = document.getElementsByClassName('quiz-vragen')[0];
+			let tempScore = score;
+
 			if (isCorrect) {
+				tempScore += 1
 				setScore(score + 1);
 			}
 
@@ -168,7 +171,7 @@ const Quiz = () => {
 				info.style.opacity = 0;
 				questionSection.style.opacity = 0;
 				answerSection.style.opacity = 0;
-				setTimeout(async function(){ await handleScore(); }, 1500);
+				setTimeout(async function(){ await handleScore(tempScore); }, 1500);
 				
 				const handleNext = async () => {
 					const scores = await getScores();
