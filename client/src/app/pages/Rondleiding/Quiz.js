@@ -168,7 +168,7 @@ const Quiz = () => {
 				info.style.opacity = 0;
 				questionSection.style.opacity = 0;
 				answerSection.style.opacity = 0;
-				setTimeout(function(){ handleScore(); }, 1500);
+				setTimeout(async function(){ await handleScore(); }, 1500);
 				
 				const handleNext = async () => {
 					const scores = await getScores();
@@ -180,7 +180,7 @@ const Quiz = () => {
 					setTimeout(function(){ 	info.style.padding = '50px'; }, 1500);
 					setScorePosted(true);
 				}
-				setTimeout(function(){ handleNext(); }, 1500);
+				setTimeout( async function(){ await handleNext(); }, 1500);
 
 				
 			}
