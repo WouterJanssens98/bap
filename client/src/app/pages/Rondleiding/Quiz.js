@@ -57,39 +57,93 @@ const Quiz = () => {
 
 	const vragen = [
 			{
-				vraag: 'What is the capital of France?',
+				vraag: 'Hoeveel overwinningen behaalde Eddy Merckx in zijn carrière?',
 				antwoordOpties: [
-					{ antwoord: 'New York', isCorrect: false },
-					{ antwoord: 'London', isCorrect: false },
-					{ antwoord: 'Paris', isCorrect: true },
-					{ antwoord: 'Dublin', isCorrect: false },
+					{ antwoord: '610', isCorrect: false },
+					{ antwoord: '398', isCorrect: false },
+					{ antwoord: '525', isCorrect: true },
+					{ antwoord: '270', isCorrect: false },
 				],
 			},
 			{
-				vraag: 'Who is CEO of Tesla?',
+				vraag: 'Hoeveel keer won Roger De Vlaeminck Parijs Roubaix?',
 				antwoordOpties: [
-					{ antwoord: 'Jeff Bezos', isCorrect: false },
-					{ antwoord: 'Elon Musk', isCorrect: true },
-					{ antwoord: 'Bill Gates', isCorrect: false },
-					{ antwoord: 'Tony Stark', isCorrect: false },
+					{ antwoord: '7', isCorrect: false },
+					{ antwoord: '4', isCorrect: true },
+					{ antwoord: '3', isCorrect: false },
+					{ antwoord: '5', isCorrect: false },
 				],
 			},
 			{
-				vraag: 'The iPhone was created by which company?',
+				vraag: 'Wat is de bijnaam van Rik van Looy?',
 				antwoordOpties: [
-					{ antwoord: 'Apple', isCorrect: true },
-					{ antwoord: 'Intel', isCorrect: false },
-					{ antwoord: 'Amazon', isCorrect: false },
-					{ antwoord: 'Microsoft', isCorrect: false },
+					{ antwoord: 'De keizer van Herentals', isCorrect: true },
+					{ antwoord: 'De keizer van Geel', isCorrect: false },
+					{ antwoord: 'De keizer van Lommel', isCorrect: false },
+					{ antwoord: 'De keizer van Leuven', isCorrect: false },
 				],
 			},
 			{
-				vraag: 'How many Harry Potter books are there?',
+				vraag: 'In welk jaar won Eddy Planckaert zijn allereerste Ronde van Vlaanderen?',
 				antwoordOpties: [
-					{ antwoord: '1', isCorrect: false },
-					{ antwoord: '4', isCorrect: false },
-					{ antwoord: '6', isCorrect: false },
-					{ antwoord: '7', isCorrect: true },
+					{ antwoord: '1989', isCorrect: false },
+					{ antwoord: '1990', isCorrect: false },
+					{ antwoord: '1986', isCorrect: false },
+					{ antwoord: '1988', isCorrect: true },
+				],
+			},
+			{
+				vraag: 'Welke Flandrien slaagde erin 2 jaar na elkaar de Ronde van Vlaanderen te winnen?',
+				antwoordOpties: [
+					{ antwoord: 'Roger De Vlaeminck', isCorrect: false },
+					{ antwoord: 'Freddy Maertens', isCorrect: false },
+					{ antwoord: 'Eddy Planckaert', isCorrect: false },
+					{ antwoord: 'Eric Leman', isCorrect: true },
+				],
+			},
+			{
+				vraag: 'Wie wordt "De zwarte van Brakel" genoemd?',
+				antwoordOpties: [
+					{ antwoord: 'Frank Vandenbroucke', isCorrect: false },
+					{ antwoord: 'Johan Museeuw', isCorrect: false },
+					{ antwoord: 'Peter Van Petegem', isCorrect: true },
+					{ antwoord: 'Eric Vanderaerden', isCorrect: false },
+				],
+			},
+			{
+				vraag: 'Wie reed meer dan 10 jaar bij Quick Step?',
+				antwoordOpties: [
+					{ antwoord: 'Jan Bakelants', isCorrect: false },
+					{ antwoord: 'Tom Boonen', isCorrect: true },
+					{ antwoord: 'Philippe Gilbert', isCorrect: false },
+					{ antwoord: 'Stijn Devolder', isCorrect: false },
+				],
+			},
+			{
+				vraag: 'Wie werd wereldkampioen in Valkenburg in 2012?',
+				antwoordOpties: [
+					{ antwoord: 'Philippe Gilbert', isCorrect: true },
+					{ antwoord: 'Tom Boonen', isCorrect: false },
+					{ antwoord: 'Alejandro Valverde', isCorrect: false },
+					{ antwoord: 'Stijn Devolder', isCorrect: false },
+				],
+			},
+			{
+				vraag: 'Welke renner werd geboren in Herk-de-Stad?',
+				antwoordOpties: [
+					{ antwoord: 'Erik Vanderaerden', isCorrect: true },
+					{ antwoord: 'Roger De Vlaeminck', isCorrect: false },
+					{ antwoord: 'Eddy Merckx', isCorrect: false },
+					{ antwoord: 'Tom Boonen', isCorrect: false },
+				],
+			},
+			{
+				vraag: 'Wie werd na zijn carrière ambassadeur van de Damiaanactie?',
+				antwoordOpties: [
+					{ antwoord: 'Philippe Gilbert', isCorrect: false },
+					{ antwoord: 'Tom Boonen', isCorrect: false },
+					{ antwoord: 'Eddy Merckx', isCorrect: true },
+					{ antwoord: 'Stijn Devolder', isCorrect: false },
 				],
 			},
 		];
