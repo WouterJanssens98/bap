@@ -35,7 +35,6 @@ const CompleteInfoPage = () => {
             setCookie("age", age)
             openModal();
         }else{
-            openModal();
             document.getElementsByClassName('error-completion')[0].style.display = "block" ;
         }
     }
