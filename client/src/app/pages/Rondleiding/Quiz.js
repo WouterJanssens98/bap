@@ -171,7 +171,7 @@ const Quiz = () => {
 				info.style.opacity = 0;
 				questionSection.style.opacity = 0;
 				answerSection.style.opacity = 0;
-				setTimeout(async function(){ await handleScore(tempScore); }, 1500);
+				await handleScore(tempScore);
 				
 				const handleNext = async () => {
 					const scores = await getScores();
