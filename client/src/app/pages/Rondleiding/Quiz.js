@@ -168,15 +168,21 @@ const Quiz = () => {
 				info.style.opacity = 0;
 				questionSection.style.opacity = 0;
 				answerSection.style.opacity = 0;
-				await handleScore();
-				const scores = await getScores();
-				const lastScores = scores.slice(Math.max(scores.length - 5, 0))
-				setVisitorScores(lastScores);
-				const title = document.getElementById('quiz-info-title');
-				title.style.opacity = 0;
-				setTimeout(function(){ setToonScore(true); }, 1500);
-				setTimeout(function(){ 	info.style.padding = '50px'; }, 1500);
-				setScorePosted(true);
+				setTimeout(function(){ handleScore(); }, 1500);
+				
+				const handleNext = async () => {
+					const scores = await getScores();
+					const lastScores = scores.slice(Math.max(scores.length - 5, 0))
+					setVisitorScores(lastScores);
+					const title = document.getElementById('quiz-info-title');
+					title.style.opacity = 0;
+					setTimeout(function(){ setToonScore(true); }, 1500);
+					setTimeout(function(){ 	info.style.padding = '50px'; }, 1500);
+					setScorePosted(true);
+				}
+				setTimeout(function(){ handleNext(); }, 1500);
+
+				
 			}
 		};
 	
