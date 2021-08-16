@@ -78,8 +78,8 @@ const userSchema: Schema = new Schema(
   },
 );
 
-userSchema.pre<IUser>('save', function(next) {
-  const user: IUser = this as IUser;
+userSchema.pre("save", function(this: IUser, next: any): any {
+  const user = this;
 
   if (!user.isModified('localProvider.password')) return next();
 
@@ -107,7 +107,7 @@ userSchema.methods.comparePassword = function(
   candidatePassword: String,
   cb: Function,
 ) {
-  const user = this;
+  const user = this as IUser;
   bcrypt.compare(candidatePassword, user.localProvider.password, (err, isMatch) => {
     if (err) return cb(err, null);
     return cb(null, isMatch);

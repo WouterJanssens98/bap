@@ -10,7 +10,6 @@ import {
 import { default as Router } from './router';
 import {
   GlobalMiddleware,
-  MorganMiddleware,
   SwaggerMiddleware,
 } from './middleware';
 import { IAppError } from './utilities';
@@ -39,9 +38,6 @@ class App {
     this.app = express();
     //this.app.use(bodyParser.json());
     GlobalMiddleware.load(this.rootPath, this.app, this.config);
-    if (this.config.env === Environment.development) {
-      MorganMiddleware.load(this.app);
-    }
     SwaggerMiddleware.load(this.rootPath, this.app, this.config);
     this.createPassport();
     this.createRouter();
