@@ -1,11 +1,12 @@
 import React, { createContext, useContext, useState } from 'react';
+import { apiConfig } from '../config';
 
 const AuthContext = createContext();
 const useAuth = () => useContext(AuthContext);
 
 const AuthProvider = ({ children }) => {
   const [currentUser, setCurrentUser]= useState(JSON.parse(getCookie('user')));
-  // const BASE_URL = `${apiConfig.baseURL}`;
+  const BASE_URL = `${apiConfig.baseURL}`;
 
   function setCookie(cname, cvalue, exdays) {
     var d = new Date();
@@ -31,7 +32,7 @@ const AuthProvider = ({ children }) => {
   }
 
   const signIn = async (email, password) => {
-    const url = `api/auth/signin`;
+    const url = `${BASE_URL}/api/auth/signin`;
 
     const body = {
       "email": email,
@@ -65,7 +66,7 @@ const AuthProvider = ({ children }) => {
   }
 
   const signup = async (email, password, confirmPassword) => {
-    const url = `/api/auth/signup`;
+    const url = `${BASE_URL}/api/auth/signup`;
 
     const body = {
       "email": email,
