@@ -243,7 +243,7 @@ const RondleidingPeriode = () => {
                   </Fade>
                   <Fade delay={500} right>
                   <div className="youth-right">               
-                    <p>1945</p>                  
+                    <p>{riderData.info.dateofbirth.split("-")[0]}</p>                  
                   </div>
                   </Fade>
               </div>

@@ -1530,3 +1530,9 @@
 2021-08-16 13:16:06 [[32minfo[39m]: 	Server is listening on 0.0.0.0:8080 {
   "object": {}
 }
+2021-08-22 09:00:08 [[32minfo[39m]: 	Connected to the mongodb database {
+  "object": {}
+}
+2021-08-22 09:00:08 [[32minfo[39m]: 	Server is listening on 0.0.0.0:8080 {
+  "object": {}
+}
